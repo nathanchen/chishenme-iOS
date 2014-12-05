@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C55F33691A318D7C00EEE2E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33681A318D7C00EEE2E2 /* main.m */; };
+		C55F336C1A318D7C00EEE2E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F336B1A318D7C00EEE2E2 /* AppDelegate.m */; };
+		C55F336F1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C55F336D1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld */; };
+		C55F33721A318D7C00EEE2E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33711A318D7C00EEE2E2 /* ViewController.m */; };
+		C55F33751A318D7C00EEE2E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55F33731A318D7C00EEE2E2 /* Main.storyboard */; };
+		C55F33771A318D7C00EEE2E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C55F33761A318D7C00EEE2E2 /* Images.xcassets */; };
+		C55F33831A318D7C00EEE2E2 /* ChiShenMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C55F337D1A318D7C00EEE2E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C55F335B1A318D7C00EEE2E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C55F33621A318D7C00EEE2E2;
+			remoteInfo = ChiShenMe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C55F33631A318D7C00EEE2E2 /* ChiShenMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChiShenMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C55F33671A318D7C00EEE2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C55F33681A318D7C00EEE2E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C55F336A1A318D7C00EEE2E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C55F336B1A318D7C00EEE2E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C55F336E1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChiShenMe.xcdatamodel; sourceTree = "<group>"; };
+		C55F33701A318D7C00EEE2E2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C55F33711A318D7C00EEE2E2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C55F33741A318D7C00EEE2E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C55F33761A318D7C00EEE2E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C55F337C1A318D7C00EEE2E2 /* ChiShenMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChiShenMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C55F33811A318D7C00EEE2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChiShenMeTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C55F33601A318D7C00EEE2E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C55F33791A318D7C00EEE2E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C55F335A1A318D7C00EEE2E2 = {
+			isa = PBXGroup;
+			children = (
+				C55F33651A318D7C00EEE2E2 /* ChiShenMe */,
+				C55F337F1A318D7C00EEE2E2 /* ChiShenMeTests */,
+				C55F33641A318D7C00EEE2E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C55F33641A318D7C00EEE2E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C55F33631A318D7C00EEE2E2 /* ChiShenMe.app */,
+				C55F337C1A318D7C00EEE2E2 /* ChiShenMeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C55F33651A318D7C00EEE2E2 /* ChiShenMe */ = {
+			isa = PBXGroup;
+			children = (
+				C55F336A1A318D7C00EEE2E2 /* AppDelegate.h */,
+				C55F336B1A318D7C00EEE2E2 /* AppDelegate.m */,
+				C55F33701A318D7C00EEE2E2 /* ViewController.h */,
+				C55F33711A318D7C00EEE2E2 /* ViewController.m */,
+				C55F33731A318D7C00EEE2E2 /* Main.storyboard */,
+				C55F33761A318D7C00EEE2E2 /* Images.xcassets */,
+				C55F336D1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld */,
+				C55F33661A318D7C00EEE2E2 /* Supporting Files */,
+			);
+			path = ChiShenMe;
+			sourceTree = "<group>";
+		};
+		C55F33661A318D7C00EEE2E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C55F33671A318D7C00EEE2E2 /* Info.plist */,
+				C55F33681A318D7C00EEE2E2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C55F337F1A318D7C00EEE2E2 /* ChiShenMeTests */ = {
+			isa = PBXGroup;
+			children = (
+				C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */,
+				C55F33801A318D7C00EEE2E2 /* Supporting Files */,
+			);
+			path = ChiShenMeTests;
+			sourceTree = "<group>";
+		};
+		C55F33801A318D7C00EEE2E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C55F33811A318D7C00EEE2E2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C55F33621A318D7C00EEE2E2 /* ChiShenMe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C55F33861A318D7C00EEE2E2 /* Build configuration list for PBXNativeTarget "ChiShenMe" */;
+			buildPhases = (
+				C55F335F1A318D7C00EEE2E2 /* Sources */,
+				C55F33601A318D7C00EEE2E2 /* Frameworks */,
+				C55F33611A318D7C00EEE2E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChiShenMe;
+			productName = ChiShenMe;
+			productReference = C55F33631A318D7C00EEE2E2 /* ChiShenMe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C55F337B1A318D7C00EEE2E2 /* ChiShenMeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C55F33891A318D7C00EEE2E2 /* Build configuration list for PBXNativeTarget "ChiShenMeTests" */;
+			buildPhases = (
+				C55F33781A318D7C00EEE2E2 /* Sources */,
+				C55F33791A318D7C00EEE2E2 /* Frameworks */,
+				C55F337A1A318D7C00EEE2E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C55F337E1A318D7C00EEE2E2 /* PBXTargetDependency */,
+			);
+			name = ChiShenMeTests;
+			productName = ChiShenMeTests;
+			productReference = C55F337C1A318D7C00EEE2E2 /* ChiShenMeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C55F335B1A318D7C00EEE2E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Nathan CHEN";
+				TargetAttributes = {
+					C55F33621A318D7C00EEE2E2 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					C55F337B1A318D7C00EEE2E2 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = C55F33621A318D7C00EEE2E2;
+					};
+				};
+			};
+			buildConfigurationList = C55F335E1A318D7C00EEE2E2 /* Build configuration list for PBXProject "ChiShenMe" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C55F335A1A318D7C00EEE2E2;
+			productRefGroup = C55F33641A318D7C00EEE2E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C55F33621A318D7C00EEE2E2 /* ChiShenMe */,
+				C55F337B1A318D7C00EEE2E2 /* ChiShenMeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C55F33611A318D7C00EEE2E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C55F33751A318D7C00EEE2E2 /* Main.storyboard in Resources */,
+				C55F33771A318D7C00EEE2E2 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C55F337A1A318D7C00EEE2E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C55F335F1A318D7C00EEE2E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C55F336C1A318D7C00EEE2E2 /* AppDelegate.m in Sources */,
+				C55F33691A318D7C00EEE2E2 /* main.m in Sources */,
+				C55F33721A318D7C00EEE2E2 /* ViewController.m in Sources */,
+				C55F336F1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C55F33781A318D7C00EEE2E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C55F33831A318D7C00EEE2E2 /* ChiShenMeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C55F337E1A318D7C00EEE2E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C55F33621A318D7C00EEE2E2 /* ChiShenMe */;
+			targetProxy = C55F337D1A318D7C00EEE2E2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C55F33731A318D7C00EEE2E2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C55F33741A318D7C00EEE2E2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C55F33841A318D7C00EEE2E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C55F33851A318D7C00EEE2E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C55F33871A318D7C00EEE2E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = ChiShenMe/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C55F33881A318D7C00EEE2E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = ChiShenMe/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C55F338A1A318D7C00EEE2E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ChiShenMe.app/ChiShenMe";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ChiShenMeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		C55F338B1A318D7C00EEE2E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ChiShenMe.app/ChiShenMe";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ChiShenMeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C55F335E1A318D7C00EEE2E2 /* Build configuration list for PBXProject "ChiShenMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C55F33841A318D7C00EEE2E2 /* Debug */,
+				C55F33851A318D7C00EEE2E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C55F33861A318D7C00EEE2E2 /* Build configuration list for PBXNativeTarget "ChiShenMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C55F33871A318D7C00EEE2E2 /* Debug */,
+				C55F33881A318D7C00EEE2E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C55F33891A318D7C00EEE2E2 /* Build configuration list for PBXNativeTarget "ChiShenMeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C55F338A1A318D7C00EEE2E2 /* Debug */,
+				C55F338B1A318D7C00EEE2E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C55F336D1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C55F336E1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodel */,
+			);
+			currentVersion = C55F336E1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodel */;
+			path = ChiShenMe.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C55F335B1A318D7C00EEE2E2 /* Project object */;
+}
