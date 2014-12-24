@@ -24,8 +24,9 @@
 
 + (NSURL *)URLForLoginWith: (NSString *)name And:(NSString *)password
 {
-    NSLog(@"%@", [NSString stringWithFormat:@"%@/user/login?name=%@&pwd=%@", CHISHENME_DOMAIN, name, password]);
-    return [self URLForQuery:[NSString stringWithFormat:@"%@/user/login?name=%@&pwd=%@", CHISHENME_DOMAIN, name, password]];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/user/login?name=%@&pwd=%@", CHISHENME_DOMAIN, name, password];
+    NSLog(requestURL);
+    return [self URLForQuery:requestURL];
 }
 
 + (NSURL *)URLForRequestToAddFriend: (int)user_id And: (int)friend_id

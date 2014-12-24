@@ -1,0 +1,18 @@
+//
+//  Chishenme-Prefix.pch
+//  ChiShenMe
+//
+//  Created by Nate on 24/12/2014.
+//  Copyright (c) 2014 Nathan CHEN. All rights reserved.
+//
+
+#ifndef ChiShenMe_Chishenme_Prefix_pch
+#define ChiShenMe_Chishenme_Prefix_pch
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "ExtendNSLogFunctionality.h"
+#endif
+
+#endif

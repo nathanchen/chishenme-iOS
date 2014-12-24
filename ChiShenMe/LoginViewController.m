@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 @end
 
@@ -27,6 +27,37 @@
             NSLog(@"%@", [[loginResponseJson objectForKey:@"code"] stringValue]);
         }
     }];
+}
+
+// click anywhere on the screen to hide the keyboard
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([_nameTextField isFirstResponder] && ([touch view] != _nameTextField)) {
+        [_nameTextField resignFirstResponder];
+    } else if ([_passwordTextField isFirstResponder] && ([touch view] != _passwordTextField)) {
+        [_passwordTextField resignFirstResponder];
+    }
+    [super touchesEnded:touches withEvent:event];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    if (textField == _nameTextField) {
+        [_passwordTextField becomeFirstResponder];
+    } else {
+        [self login];
+    }
+    
+    return YES;
+}
+
+- (void)viewDidLoad
+{
+    _nameTextField.delegate = self;
+    _passwordTextField.delegate = self;
 }
 
 @end
