@@ -14,6 +14,8 @@
 		C55F33751A318D7C00EEE2E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55F33731A318D7C00EEE2E2 /* Main.storyboard */; };
 		C55F33771A318D7C00EEE2E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C55F33761A318D7C00EEE2E2 /* Images.xcassets */; };
 		C55F33831A318D7C00EEE2E2 /* ChiShenMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */; };
+		C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */; };
+		C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		C55F337C1A318D7C00EEE2E2 /* ChiShenMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChiShenMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55F33811A318D7C00EEE2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChiShenMeTests.m; sourceTree = "<group>"; };
+		C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C5C9C3B51A4A8CB0003522D0 /* ChishenmeFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChishenmeFetcher.h; path = ChishenmeFetcher/ChishenmeFetcher.h; sourceTree = "<group>"; };
+		C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChishenmeFetcher.m; path = ChishenmeFetcher/ChishenmeFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +87,9 @@
 		C55F33651A318D7C00EEE2E2 /* ChiShenMe */ = {
 			isa = PBXGroup;
 			children = (
-				C55F336A1A318D7C00EEE2E2 /* AppDelegate.h */,
-				C55F336B1A318D7C00EEE2E2 /* AppDelegate.m */,
+				C5C9C3B41A4A8C77003522D0 /* ChishenmeFetcher */,
+				C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */,
+				C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */,
 				C55F33701A318D7C00EEE2E2 /* ViewController.h */,
 				C55F33711A318D7C00EEE2E2 /* ViewController.m */,
 				C55F33731A318D7C00EEE2E2 /* Main.storyboard */,
@@ -96,6 +103,8 @@
 		C55F33661A318D7C00EEE2E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C55F336A1A318D7C00EEE2E2 /* AppDelegate.h */,
+				C55F336B1A318D7C00EEE2E2 /* AppDelegate.m */,
 				C55F33671A318D7C00EEE2E2 /* Info.plist */,
 				C55F33681A318D7C00EEE2E2 /* main.m */,
 			);
@@ -117,6 +126,15 @@
 				C55F33811A318D7C00EEE2E2 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C5C9C3B41A4A8C77003522D0 /* ChishenmeFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				C5C9C3B51A4A8CB0003522D0 /* ChishenmeFetcher.h */,
+				C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */,
+			);
+			name = ChishenmeFetcher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +240,8 @@
 				C55F33691A318D7C00EEE2E2 /* main.m in Sources */,
 				C55F33721A318D7C00EEE2E2 /* ViewController.m in Sources */,
 				C55F336F1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld in Sources */,
+				C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */,
+				C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +428,7 @@
 				C55F33881A318D7C00EEE2E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C55F33891A318D7C00EEE2E2 /* Build configuration list for PBXNativeTarget "ChiShenMeTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +437,7 @@
 				C55F338B1A318D7C00EEE2E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
