@@ -16,7 +16,7 @@
 
 + (NSURL *)URLForCreateUserWith: (NSString *) name And:(NSString *)password And:(NSString *)confirmPassword;
 
-+ (NSURL *)URLForLoginWith: (NSString *)name And:(NSString *)password;
++ (NSURL *)URLForLoginWith: (NSString *)name And:(NSString *)password And:(NSString *)checksum;
 
 + (NSURL *)URLForRequestToAddFriend: (int)user_id And: (int)friend_id;
 

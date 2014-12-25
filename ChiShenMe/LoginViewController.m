@@ -16,15 +16,21 @@
 
 - (IBAction)login
 {
+    // get inputs
     NSString *name = _nameTextField.text;
     NSString *password = _passwordTextField.text;
     
-    NSURL *url = [ChishenmeFetcher URLForLoginWith:name And:password];
+    // form proper url
+    NSString *encryptedPassword = [Encryption md5:password];
+    NSString *checksum = [Encryption md5:[name stringByAppendingString:encryptedPassword]];
+    
+    // send url request
+    NSURL *url = [ChishenmeFetcher URLForLoginWith:name And:encryptedPassword And:checksum];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (data.length > 0 && connectionError == nil) {
             NSDictionary *loginResponseJson = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-            NSLog(@"%@", [[loginResponseJson objectForKey:@"code"] stringValue]);
+            NSLog(@"Log in return code: %@", [[loginResponseJson objectForKey:@"code"] stringValue]);
         }
     }];
 }

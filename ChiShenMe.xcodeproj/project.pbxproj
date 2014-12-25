@@ -19,6 +19,7 @@
 		C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */; };
 		C5C9C3B91A4AA832003522D0 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = C5C9C3B81A4AA832003522D0 /* PodFile */; };
 		C5C9C3BC1A4AB512003522D0 /* ExtendNSLogFunctionality.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3BB1A4AB512003522D0 /* ExtendNSLogFunctionality.m */; };
+		C5C9C3D21A4BA29D003522D0 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3D11A4BA29D003522D0 /* Encryption.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		C5C9C3BA1A4AB512003522D0 /* ExtendNSLogFunctionality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendNSLogFunctionality.h; sourceTree = "<group>"; };
 		C5C9C3BB1A4AB512003522D0 /* ExtendNSLogFunctionality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendNSLogFunctionality.m; sourceTree = "<group>"; };
 		C5C9C3C81A4ABB36003522D0 /* Chishenme-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chishenme-Prefix.pch"; sourceTree = "<group>"; };
+		C5C9C3D01A4BA29D003522D0 /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
+		C5C9C3D11A4BA29D003522D0 /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,7 @@
 		C55F33651A318D7C00EEE2E2 /* ChiShenMe */ = {
 			isa = PBXGroup;
 			children = (
+				C5C9C3C91A4B9FEA003522D0 /* util */,
 				C5C9C3BA1A4AB512003522D0 /* ExtendNSLogFunctionality.h */,
 				C5C9C3BB1A4AB512003522D0 /* ExtendNSLogFunctionality.m */,
 				C5C9C3B41A4A8C77003522D0 /* ChishenmeFetcher */,
@@ -161,6 +165,15 @@
 				C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */,
 			);
 			name = ChishenmeFetcher;
+			sourceTree = "<group>";
+		};
+		C5C9C3C91A4B9FEA003522D0 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				C5C9C3D01A4BA29D003522D0 /* Encryption.h */,
+				C5C9C3D11A4BA29D003522D0 /* Encryption.m */,
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 		EF8A0114A675022BB14F7312 /* Frameworks */ = {
@@ -308,6 +321,7 @@
 			files = (
 				C55F336C1A318D7C00EEE2E2 /* AppDelegate.m in Sources */,
 				C55F33691A318D7C00EEE2E2 /* main.m in Sources */,
+				C5C9C3D21A4BA29D003522D0 /* Encryption.m in Sources */,
 				C55F33721A318D7C00EEE2E2 /* ViewController.m in Sources */,
 				C55F336F1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld in Sources */,
 				C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */,

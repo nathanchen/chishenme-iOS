@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ChishenmeFetcher.h"
+#import "Encryption.h"
 
 @interface LoginViewController : ViewController
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;

@@ -22,9 +22,9 @@
     return [self URLForQuery:[NSString stringWithFormat:@"%@/user/add?name=%@&pwd=%@&confirm_pwd=%@", CHISHENME_DOMAIN, name, password, confirmPassword]];
 }
 
-+ (NSURL *)URLForLoginWith: (NSString *)name And:(NSString *)password
++ (NSURL *)URLForLoginWith: (NSString *)name And:(NSString *)password And:(NSString *)checksum
 {
-    NSString *requestURL = [NSString stringWithFormat:@"%@/user/login?name=%@&pwd=%@", CHISHENME_DOMAIN, name, password];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/user/login?name=%@&pwd=%@&checksum=%@", CHISHENME_DOMAIN, name, password, checksum];
     NSLog(requestURL);
     return [self URLForQuery:requestURL];
 }
