@@ -16,7 +16,7 @@
     
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
     
-    CC_MD5(cStr, (int)strlen(cStr), md5Buffer);
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), md5Buffer);
     
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)

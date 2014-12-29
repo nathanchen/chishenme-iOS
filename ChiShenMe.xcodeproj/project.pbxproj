@@ -15,11 +15,17 @@
 		C55F33751A318D7C00EEE2E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55F33731A318D7C00EEE2E2 /* Main.storyboard */; };
 		C55F33771A318D7C00EEE2E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C55F33761A318D7C00EEE2E2 /* Images.xcassets */; };
 		C55F33831A318D7C00EEE2E2 /* ChiShenMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */; };
+		C595940D1A4BE390000B6DF3 /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = C595940C1A4BE390000B6DF3 /* Strings.m */; };
+		C59594101A4BE51E000B6DF3 /* Times.m in Sources */ = {isa = PBXBuildFile; fileRef = C595940F1A4BE51E000B6DF3 /* Times.m */; };
+		C59594131A4BEE92000B6DF3 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594121A4BEE92000B6DF3 /* Notifications.m */; };
+		C59594191A4BEFE3000B6DF3 /* Networks.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594181A4BEFE3000B6DF3 /* Networks.m */; };
+		C59594271A4BF382000B6DF3 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594201A4BF382000B6DF3 /* Encryption.m */; };
+		C59594281A4BF382000B6DF3 /* ExtendNSLogFunctionality.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594221A4BF382000B6DF3 /* ExtendNSLogFunctionality.m */; };
+		C59594291A4BF382000B6DF3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594241A4BF382000B6DF3 /* Reachability.m */; };
+		C595942A1A4BF382000B6DF3 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594261A4BF382000B6DF3 /* UIView+Toast.m */; };
 		C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */; };
 		C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */; };
 		C5C9C3B91A4AA832003522D0 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = C5C9C3B81A4AA832003522D0 /* PodFile */; };
-		C5C9C3BC1A4AB512003522D0 /* ExtendNSLogFunctionality.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3BB1A4AB512003522D0 /* ExtendNSLogFunctionality.m */; };
-		C5C9C3D21A4BA29D003522D0 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3D11A4BA29D003522D0 /* Encryption.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,16 +55,29 @@
 		C55F337C1A318D7C00EEE2E2 /* ChiShenMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChiShenMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55F33811A318D7C00EEE2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChiShenMeTests.m; sourceTree = "<group>"; };
+		C595940B1A4BE390000B6DF3 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Strings.h; path = Utils/Strings.h; sourceTree = "<group>"; };
+		C595940C1A4BE390000B6DF3 /* Strings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Strings.m; path = Utils/Strings.m; sourceTree = "<group>"; };
+		C595940E1A4BE51E000B6DF3 /* Times.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Times.h; path = Utils/Times.h; sourceTree = "<group>"; };
+		C595940F1A4BE51E000B6DF3 /* Times.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Times.m; path = Utils/Times.m; sourceTree = "<group>"; };
+		C59594111A4BEE92000B6DF3 /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Notifications.h; path = Utils/Notifications.h; sourceTree = "<group>"; };
+		C59594121A4BEE92000B6DF3 /* Notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Notifications.m; path = Utils/Notifications.m; sourceTree = "<group>"; };
+		C59594171A4BEFE3000B6DF3 /* Networks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Networks.h; path = Utils/Networks.h; sourceTree = "<group>"; };
+		C59594181A4BEFE3000B6DF3 /* Networks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Networks.m; path = Utils/Networks.m; sourceTree = "<group>"; };
+		C595941F1A4BF382000B6DF3 /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Encryption.h; path = Utils/Encryption.h; sourceTree = "<group>"; };
+		C59594201A4BF382000B6DF3 /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Encryption.m; path = Utils/Encryption.m; sourceTree = "<group>"; };
+		C59594211A4BF382000B6DF3 /* ExtendNSLogFunctionality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtendNSLogFunctionality.h; path = Utils/ExtendNSLogFunctionality.h; sourceTree = "<group>"; };
+		C59594221A4BF382000B6DF3 /* ExtendNSLogFunctionality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExtendNSLogFunctionality.m; path = Utils/ExtendNSLogFunctionality.m; sourceTree = "<group>"; };
+		C59594231A4BF382000B6DF3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Utils/Reachability.h; sourceTree = "<group>"; };
+		C59594241A4BF382000B6DF3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Utils/Reachability.m; sourceTree = "<group>"; };
+		C59594251A4BF382000B6DF3 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Toast.h"; path = "Utils/UIView+Toast.h"; sourceTree = "<group>"; };
+		C59594261A4BF382000B6DF3 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "Utils/UIView+Toast.m"; sourceTree = "<group>"; };
+		C595942B1A4BF8CA000B6DF3 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C5C9C3B51A4A8CB0003522D0 /* ChishenmeFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChishenmeFetcher.h; path = ChishenmeFetcher/ChishenmeFetcher.h; sourceTree = "<group>"; };
 		C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChishenmeFetcher.m; path = ChishenmeFetcher/ChishenmeFetcher.m; sourceTree = "<group>"; };
 		C5C9C3B81A4AA832003522D0 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
-		C5C9C3BA1A4AB512003522D0 /* ExtendNSLogFunctionality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendNSLogFunctionality.h; sourceTree = "<group>"; };
-		C5C9C3BB1A4AB512003522D0 /* ExtendNSLogFunctionality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendNSLogFunctionality.m; sourceTree = "<group>"; };
 		C5C9C3C81A4ABB36003522D0 /* Chishenme-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chishenme-Prefix.pch"; sourceTree = "<group>"; };
-		C5C9C3D01A4BA29D003522D0 /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
-		C5C9C3D11A4BA29D003522D0 /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,12 +133,9 @@
 		C55F33651A318D7C00EEE2E2 /* ChiShenMe */ = {
 			isa = PBXGroup;
 			children = (
-				C5C9C3C91A4B9FEA003522D0 /* util */,
-				C5C9C3BA1A4AB512003522D0 /* ExtendNSLogFunctionality.h */,
-				C5C9C3BB1A4AB512003522D0 /* ExtendNSLogFunctionality.m */,
+				C595941D1A4BF1BB000B6DF3 /* Controllers */,
+				C5C9C3C91A4B9FEA003522D0 /* Utils */,
 				C5C9C3B41A4A8C77003522D0 /* ChishenmeFetcher */,
-				C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */,
-				C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */,
 				C55F33701A318D7C00EEE2E2 /* ViewController.h */,
 				C55F33711A318D7C00EEE2E2 /* ViewController.m */,
 				C55F33731A318D7C00EEE2E2 /* Main.storyboard */,
@@ -158,6 +174,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C595941D1A4BF1BB000B6DF3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C595941E1A4BF1E6000B6DF3 /* Login&Management */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C595941E1A4BF1E6000B6DF3 /* Login&Management */ = {
+			isa = PBXGroup;
+			children = (
+				C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */,
+				C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */,
+			);
+			name = "Login&Management";
+			sourceTree = "<group>";
+		};
 		C5C9C3B41A4A8C77003522D0 /* ChishenmeFetcher */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,13 +200,28 @@
 			name = ChishenmeFetcher;
 			sourceTree = "<group>";
 		};
-		C5C9C3C91A4B9FEA003522D0 /* util */ = {
+		C5C9C3C91A4B9FEA003522D0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C5C9C3D01A4BA29D003522D0 /* Encryption.h */,
-				C5C9C3D11A4BA29D003522D0 /* Encryption.m */,
+				C595941F1A4BF382000B6DF3 /* Encryption.h */,
+				C59594201A4BF382000B6DF3 /* Encryption.m */,
+				C59594211A4BF382000B6DF3 /* ExtendNSLogFunctionality.h */,
+				C59594221A4BF382000B6DF3 /* ExtendNSLogFunctionality.m */,
+				C59594231A4BF382000B6DF3 /* Reachability.h */,
+				C59594241A4BF382000B6DF3 /* Reachability.m */,
+				C59594251A4BF382000B6DF3 /* UIView+Toast.h */,
+				C59594261A4BF382000B6DF3 /* UIView+Toast.m */,
+				C595940B1A4BE390000B6DF3 /* Strings.h */,
+				C595940C1A4BE390000B6DF3 /* Strings.m */,
+				C595940E1A4BE51E000B6DF3 /* Times.h */,
+				C595940F1A4BE51E000B6DF3 /* Times.m */,
+				C59594111A4BEE92000B6DF3 /* Notifications.h */,
+				C59594121A4BEE92000B6DF3 /* Notifications.m */,
+				C59594171A4BEFE3000B6DF3 /* Networks.h */,
+				C59594181A4BEFE3000B6DF3 /* Networks.m */,
+				C595942B1A4BF8CA000B6DF3 /* Config.h */,
 			);
-			name = util;
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		EF8A0114A675022BB14F7312 /* Frameworks */ = {
@@ -319,14 +367,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C59594291A4BF382000B6DF3 /* Reachability.m in Sources */,
 				C55F336C1A318D7C00EEE2E2 /* AppDelegate.m in Sources */,
 				C55F33691A318D7C00EEE2E2 /* main.m in Sources */,
-				C5C9C3D21A4BA29D003522D0 /* Encryption.m in Sources */,
 				C55F33721A318D7C00EEE2E2 /* ViewController.m in Sources */,
+				C595942A1A4BF382000B6DF3 /* UIView+Toast.m in Sources */,
 				C55F336F1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld in Sources */,
 				C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */,
-				C5C9C3BC1A4AB512003522D0 /* ExtendNSLogFunctionality.m in Sources */,
+				C59594281A4BF382000B6DF3 /* ExtendNSLogFunctionality.m in Sources */,
+				C59594131A4BEE92000B6DF3 /* Notifications.m in Sources */,
+				C59594101A4BE51E000B6DF3 /* Times.m in Sources */,
 				C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */,
+				C59594271A4BF382000B6DF3 /* Encryption.m in Sources */,
+				C59594191A4BEFE3000B6DF3 /* Networks.m in Sources */,
+				C595940D1A4BE390000B6DF3 /* Strings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
