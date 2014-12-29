@@ -102,7 +102,7 @@
                 if ([code isEqualToString:@"0"])
                 {
                     NSLog(@"Sign up successfully");
-                    [self performSegueWithIdentifier:@"" sender:nil];
+                    [self performSegueWithIdentifier:SIGNUP_SUCCESSFULLY_SEGUE_IDENTIFIER sender:nil];
                 }
                 else if ([code isEqualToString:@"2"])
                 {

@@ -30,7 +30,6 @@
                                 </state>
                                 <connections>
                                     <action selector="gotoSignupPage" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GuL-54-TM0"/>
-                                    <segue destination="Sty-0h-nlL" kind="modal" identifier="signup" id="CAM-lF-YTm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfC-xx-AxM">
@@ -67,6 +66,7 @@
                         <outlet property="nameTextField" destination="FY4-9g-fBa" id="DH0-mM-Iyn"/>
                         <outlet property="passwordTextField" destination="84D-Ft-fd3" id="u3L-y4-vtF"/>
                         <segue destination="g4V-Vr-22K" kind="modal" identifier="loginSuccessfully" id="0V7-Cn-sHI"/>
+                        <segue destination="Sty-0h-nlL" kind="modal" identifier="signup" modalTransitionStyle="partialCurl" id="2pE-T6-fkc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -130,8 +130,17 @@
                     <view key="view" contentMode="scaleToFill" id="x58-5i-uYR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKW-hu-sfZ">
+                                <rect key="frame" x="108" y="57" width="105" height="57"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9f1-wm-oxT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sk7-J0-Bwq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -174,8 +183,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="gotoLoginPage:" destination="Sty-0h-nlL" eventType="touchUpInside" id="Ojh-G6-y5E"/>
-                                    <segue destination="vXZ-lx-hvc" kind="modal" identifier="login" id="eYE-rt-cgs"/>
+                                    <action selector="gotoLoginPage:" destination="Sty-0h-nlL" eventType="touchUpInside" id="Czh-Ot-jDm"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Join ChiShenMe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFX-3w-QKq">
@@ -192,7 +200,8 @@
                         <outlet property="emailTextField" destination="Pro-89-6zd" id="aUz-ym-yuD"/>
                         <outlet property="passwordTextField" destination="EZY-dN-yAZ" id="eyl-Wp-eGy"/>
                         <outlet property="signupButton" destination="g89-YD-GVs" id="54w-AV-iqb"/>
-                        <segue destination="XRz-fe-ut7" kind="modal" id="rdo-az-Bhr"/>
+                        <segue destination="XRz-fe-ut7" kind="modal" identifier="signupSuccessfully" id="rdo-az-Bhr"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="login" modalTransitionStyle="partialCurl" id="bsR-xq-aTF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kn0-Ci-nWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
