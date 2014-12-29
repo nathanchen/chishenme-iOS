@@ -23,6 +23,7 @@
 		C59594281A4BF382000B6DF3 /* ExtendNSLogFunctionality.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594221A4BF382000B6DF3 /* ExtendNSLogFunctionality.m */; };
 		C59594291A4BF382000B6DF3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594241A4BF382000B6DF3 /* Reachability.m */; };
 		C595942A1A4BF382000B6DF3 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594261A4BF382000B6DF3 /* UIView+Toast.m */; };
+		C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C595942D1A5105ED000B6DF3 /* SignUpViewController.m */; };
 		C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */; };
 		C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */; };
 		C5C9C3B91A4AA832003522D0 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = C5C9C3B81A4AA832003522D0 /* PodFile */; };
@@ -72,6 +73,8 @@
 		C59594251A4BF382000B6DF3 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Toast.h"; path = "Utils/UIView+Toast.h"; sourceTree = "<group>"; };
 		C59594261A4BF382000B6DF3 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "Utils/UIView+Toast.m"; sourceTree = "<group>"; };
 		C595942B1A4BF8CA000B6DF3 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		C595942C1A5105ED000B6DF3 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		C595942D1A5105ED000B6DF3 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C5C9C3B51A4A8CB0003522D0 /* ChishenmeFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChishenmeFetcher.h; path = ChishenmeFetcher/ChishenmeFetcher.h; sourceTree = "<group>"; };
@@ -177,18 +180,20 @@
 		C595941D1A4BF1BB000B6DF3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C595941E1A4BF1E6000B6DF3 /* Login&Management */,
+				C595941E1A4BF1E6000B6DF3 /* Account&Management */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		C595941E1A4BF1E6000B6DF3 /* Login&Management */ = {
+		C595941E1A4BF1E6000B6DF3 /* Account&Management */ = {
 			isa = PBXGroup;
 			children = (
 				C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */,
 				C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */,
+				C595942C1A5105ED000B6DF3 /* SignUpViewController.h */,
+				C595942D1A5105ED000B6DF3 /* SignUpViewController.m */,
 			);
-			name = "Login&Management";
+			name = "Account&Management";
 			sourceTree = "<group>";
 		};
 		C5C9C3B41A4A8C77003522D0 /* ChishenmeFetcher */ = {
@@ -378,6 +383,7 @@
 				C59594131A4BEE92000B6DF3 /* Notifications.m in Sources */,
 				C59594101A4BE51E000B6DF3 /* Times.m in Sources */,
 				C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */,
+				C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */,
 				C59594271A4BF382000B6DF3 /* Encryption.m in Sources */,
 				C59594191A4BEFE3000B6DF3 /* Networks.m in Sources */,
 				C595940D1A4BE390000B6DF3 /* Strings.m in Sources */,

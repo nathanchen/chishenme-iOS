@@ -7,8 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "Utils/Networks.h"
-#import "Utils/Notifications.h"
 
 #define NETWORK_CONNECTION_FAIL_ALERTVIEW_MESSAGE @"Please check your network connection"
 #define NETWORK_CONNECTION_FAIL_ALERTVIEW_TITILE @"Timeout"
@@ -21,6 +19,10 @@
 #define LOGIN_FAILED_NETWORK_FAIL_ALERTVIEW_MESSAGE @"Timeout"
 #define LOGIN_FAILED_NETWORK_FAIL_ALERTVIEW_TITLE @""
 #define LOGIN_FAILED_NETWORK_FAIL_ALTERVIEW_CANCELBUTTON @"OK"
+
+#define LOGIN_SUCCESSFULLY_SEGUE_IDENTIFIER @"loginSuccessfully"
+
+#define SIGNUP_PAGE_SEGUE_IDENTIFIER @"signup"
 
 
 
@@ -43,8 +45,6 @@
     // get inputs
     NSString *name = _nameTextField.text;
     NSString *password = _passwordTextField.text;
-//    NSString *name = @"John@g";
-//    NSString *password = @"123456";
     
     // check if _nameTextField is empty
     if ([Strings isEmptyString:name])
@@ -70,6 +70,7 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NETWORK_CONNECTION_FAIL_ALERTVIEW_TITILE message:NETWORK_CONNECTION_FAIL_ALERTVIEW_MESSAGE delegate:self cancelButtonTitle:NETWORK_CONNECTION_FAIL_ALTERVIEW_CANCELBUTTON otherButtonTitles: nil];
         [alertView show];
         NSLog(@"Network connection failed");
+        return;
     }
     else
     {
@@ -78,7 +79,7 @@
         NSString *checksum = [Encryption md5:[name stringByAppendingString:encryptedPassword]];
         
         // send url request
-        NSURL *url = [ChishenmeFetcher URLForLoginWith:name And:encryptedPassword And:checksum];
+        NSURL *url = [ChishenmeFetcher URLForLoginWithName:name password:encryptedPassword checksum:checksum];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -88,7 +89,6 @@
             if (data.length > 0 && connectionError == nil)
             {
                 NSDictionary *loginResponseJson = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-                
                 NSString *code = [NSString stringWithFormat:@"%@", [loginResponseJson objectForKey:@"code"]];
                 
                 NSLog(@"Response code: %@" ,code);
@@ -96,8 +96,8 @@
                 if ([code isEqualToString:@"0"])
                 {
                     // login successfully
-                    NSLog(@"Login successfully")
-                    [self performSegueWithIdentifier:@"success" sender:nil];
+                    NSLog(@"Login successfully");
+                    [self performSegueWithIdentifier:LOGIN_SUCCESSFULLY_SEGUE_IDENTIFIER sender:nil];
                 }
                 else
                 {
@@ -145,17 +145,12 @@
     {
         [_passwordTextField becomeFirstResponder];
     }
-    
-    if (_passwordTextField.isFirstResponder)
-    {
-        NSLog(@"123");
-    }
-    
     return YES;
 }
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     _nameTextField.delegate = self;
     _passwordTextField.delegate = self;
 }
@@ -184,5 +179,9 @@
     _passwordTextField.text = @"";
 }
 
+- (IBAction)gotoSignupPage
+{
+    [self performSegueWithIdentifier:SIGNUP_PAGE_SEGUE_IDENTIFIER sender:self];
+}
 
 @end

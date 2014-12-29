@@ -10,12 +10,17 @@
 #import "ChishenmeFetcher.h"
 #import "Encryption.h"
 #import "Strings.h"
+#import "Networks.h"
+#import "Notifications.h"
 
 @interface LoginViewController : ViewController
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *signupButton;
 
 - (IBAction)login;
+- (IBAction)gotoSignupPage;
+
 
 @end

@@ -14,10 +14,10 @@
 
 + (NSURL *)URLForQuery:(NSString *)query;
 
-+ (NSURL *)URLForCreateUserWith: (NSString *) name And:(NSString *)password And:(NSString *)confirmPassword;
++ (NSURL *)URLForCreateUserWith: (NSString *) name password:(NSString *)password confirmpassword:(NSString *)confirmPassword checksum: (NSString *)checksum;
 
-+ (NSURL *)URLForLoginWith: (NSString *)name And:(NSString *)password And:(NSString *)checksum;
++ (NSURL *)URLForLoginWithName: (NSString *)name password:(NSString *)password checksum:(NSString *)checksum;
 
-+ (NSURL *)URLForRequestToAddFriend: (int)user_id And: (int)friend_id;
++ (NSURL *)URLForRequestToAddFriendWithUserId: (int)user_id friendId: (int)friend_id;
 
 @end

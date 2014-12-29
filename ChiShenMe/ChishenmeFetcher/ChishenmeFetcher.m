@@ -17,19 +17,21 @@
     return [NSURL URLWithString:query];
 }
 
-+ (NSURL *)URLForCreateUserWith: (NSString *) name And:(NSString *)password And:(NSString *)confirmPassword
++ (NSURL *)URLForCreateUserWith: (NSString *) name password:(NSString *)password confirmpassword:(NSString *)confirmPassword checksum: (NSString *)checksum
 {
-    return [self URLForQuery:[NSString stringWithFormat:@"%@/user/add?name=%@&pwd=%@&confirm_pwd=%@", CHISHENME_DOMAIN, name, password, confirmPassword]];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/user/add?name=%@&pwd=%@&confirm_pwd=%@&checksum=%@", CHISHENME_DOMAIN, name, password, confirmPassword, checksum];
+    NSLog(requestURL);
+    return [self URLForQuery:requestURL];
 }
 
-+ (NSURL *)URLForLoginWith: (NSString *)name And:(NSString *)password And:(NSString *)checksum
++ (NSURL *)URLForLoginWithName: (NSString *)name password:(NSString *)password checksum:(NSString *)checksum
 {
     NSString *requestURL = [NSString stringWithFormat:@"%@/user/login?name=%@&pwd=%@&checksum=%@", CHISHENME_DOMAIN, name, password, checksum];
     NSLog(requestURL);
     return [self URLForQuery:requestURL];
 }
 
-+ (NSURL *)URLForRequestToAddFriend: (int)user_id And: (int)friend_id
++ (NSURL *)URLForRequestToAddFriendWithUserId: (int)user_id friendId: (int)friend_id
 {
     return [self URLForQuery:[NSString stringWithFormat:@"%@/friend/add?userid=%d&friendid=%d", CHISHENME_DOMAIN, user_id, friend_id]];
 }
