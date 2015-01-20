@@ -20,11 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _amountTextField.text = @"1";
     
+    ShoppingListItem *item = _itemToEdit;
+    if (item)
+    {
+        self.navigationController.title = @"Edit Item";
+        _subjectTextField.text = item.subject;
+        _amountTextField.text = [NSString stringWithFormat:@"%ld", (long)item.quantity];
+    }
     [self.subjectTextField becomeFirstResponder];
     
-    _amountTextField.text = @"1";
 }
 
 - (void)didReceiveMemoryWarning {

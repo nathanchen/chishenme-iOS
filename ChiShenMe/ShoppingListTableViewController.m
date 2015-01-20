@@ -16,6 +16,8 @@
 - (void)configureTextForCell:(UITableViewCell *)cell
         withShoppinglistItem: (ShoppingListItem *)item;
 
+- (AddItemViewController *)setAddItemViewControllerDelegate:(UIStoryboardSegue *)segue;
+
 @end
 
 @implementation ShoppingListTableViewController
@@ -44,22 +46,27 @@
     row4item = [[ShoppingListItem alloc] init];
 
     row0item.subject = @"Walk the dog";
+    row0item.quantity = 2;
     row0item.checked = NO;
     [items addObject:row0item];
     
     row1item.subject = @"Brush my teeth";
+    row1item.quantity = 1;
     row1item.checked = YES;
     [items addObject:row1item];
     
     row2item.subject = @"Soccer practice";
+    row2item.quantity = 3;
     row2item.checked = NO;
     [items addObject:row2item];
     
     row3item.subject = @"Learn iOS development";
+    row3item.quantity = 9;
     row3item.checked = YES;
     [items addObject:row3item];
     
     row4item.subject = @"Eat ice cream";
+    row4item.quantity = 5;
     row4item.checked = NO;
     [items addObject:row4item];
 }
@@ -131,13 +138,14 @@
 - (void)configureCheckmarkForCell:(UITableViewCell *)cell
              withShoppinglistItem:(ShoppingListItem *)item
 {
+    UILabel *checkSignLabel = (UILabel *)[cell viewWithTag:1001];
     if (item.checked)
     {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        checkSignLabel.text = @"☑️";
     }
     else
     {
-        cell.accessoryType = UITableViewRowAnimationNone;
+        checkSignLabel.text = @"";
     }
 }
 
@@ -170,12 +178,25 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString: @"AddItem"])
+    NSString *identifier = segue.identifier;
+    if ([identifier isEqualToString: @"AddItem"])
     {
-        UINavigationController *navigationController = segue.destinationViewController;
-        AddItemViewController *controller = (AddItemViewController *)navigationController.topViewController;
-        controller.delegate = self;
+        [self setAddItemViewControllerDelegate:segue];
     }
+    else if ([identifier isEqualToString:@"EditItem"])
+    {
+        AddItemViewController *controller = [self setAddItemViewControllerDelegate:segue];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        controller.itemToEdit = items[indexPath.row];
+    }
+}
+
+- (AddItemViewController *)setAddItemViewControllerDelegate:(UIStoryboardSegue *)segue
+{
+    UINavigationController *navigationController = segue.destinationViewController;
+    AddItemViewController *controller = (AddItemViewController *)navigationController.topViewController;
+    controller.delegate = self;
+    return controller;
 }
 
 @end

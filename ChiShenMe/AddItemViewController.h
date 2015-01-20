@@ -26,6 +26,8 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 
+@property (nonatomic, strong) ShoppingListItem *itemToEdit;
+
 @property (nonatomic, weak) id<AddItemViewControllerDelegate> delegate;
 
 - (IBAction)cancel:(id)sender;
