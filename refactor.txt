@@ -1,0 +1,5 @@
+one cell has two labels. one for subject; one for quantity.
+
+when click subject label, you can edit and only edit subject label; same to quantity label
+
+click on the button will check the item

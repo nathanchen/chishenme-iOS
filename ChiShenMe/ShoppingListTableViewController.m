@@ -10,13 +10,19 @@
 
 @interface ShoppingListTableViewController ()
 
-- (void)configureCheckmarkForCell:(UITableViewCell *)cell
-             withShoppinglistItem:(ShoppingListItem *)item;
+- (void)configureCheckmarkForButtonTag:(NSInteger)tag
+                               ForCell:(UITableViewCell *)cell
+                  withShoppinglistItem:(ShoppingListItem *)item
+                         withIndexPath:(NSIndexPath *)indexPath;
 
 - (void)configureTextForCell:(UITableViewCell *)cell
         withShoppinglistItem: (ShoppingListItem *)item;
 
-- (ItemDetailViewController *)setAddItemViewControllerDelegate:(UIStoryboardSegue *)segue;
+- (void)checkButtonClicked:(NSIndexPath *)indexPath;
+
+- (void)setButton: (UIButton *)button backgroundImageForShoppingListItem:(ShoppingListItem *)shoppinglistItem;
+
+- (ItemDetailViewController *)setItemDetailViewControllerDelegate:(UIStoryboardSegue *)segue;
 
 @end
 
@@ -99,9 +105,10 @@
     ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
     
     [self configureTextForCell:cell withShoppinglistItem:item];
-    
-    [self configureCheckmarkForCell:cell withShoppinglistItem:item];
-    
+    [self configureCheckmarkForButtonTag:TAG_CHECKSIGN_BUTTON
+                                 ForCell:cell
+                    withShoppinglistItem:item
+                           withIndexPath:indexPath];
     return cell;
 }
 
@@ -114,11 +121,7 @@
     
     if (cell)
     {
-        ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
         
-        [item toggleChecked];
-        
-        [self configureCheckmarkForCell:cell withShoppinglistItem:item];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:true];
@@ -135,26 +138,28 @@
                           withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)configureCheckmarkForCell:(UITableViewCell *)cell
-             withShoppinglistItem:(ShoppingListItem *)item
+#pragma mark - configure for each cell
+- (void)configureCheckmarkForButtonTag:(NSInteger)tag
+                               ForCell:(UITableViewCell *)cell
+                  withShoppinglistItem:(ShoppingListItem *)item
+                         withIndexPath:(NSIndexPath *)indexPath
 {
-    UIButton *checkSignButton = (UIButton *)[cell viewWithTag:2000];
-    if (item.checked)
-    {
-        [checkSignButton setBackgroundImage:[UIImage imageNamed:@"checkbox-checked"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [checkSignButton setBackgroundImage:[UIImage imageNamed:@"checkbox-uncheck"] forState:UIControlStateNormal];
-    }
+    UIButton *checkSignButton = (UIButton *)[cell viewWithTag:tag];
+    
+    [self setButton:checkSignButton backgroundImageForShoppingListItem:item];
+    [self setTagForButton:checkSignButton withIndexPath:indexPath];
+    
+    [checkSignButton addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)configureTextForCell:(UITableViewCell *)cell
         withShoppinglistItem: (ShoppingListItem *)item
 {
-    UILabel *label = (UILabel *)[cell viewWithTag:1000];
-    
+    UILabel *label = (UILabel *)[cell viewWithTag:TAG_SUBJECT_LABEL];
     label.text = item.subject;
+    
+    label = (UILabel *)[cell viewWithTag:TAG_QUANTITY_LABEL];
+    label.text = [NSString stringWithFormat:@"%ld", (long)item.quantity];
 }
 
 #pragma mark - AddItemViewControllerDelegate
@@ -186,6 +191,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (ItemDetailViewController *)setItemDetailViewControllerDelegate:(UIStoryboardSegue *)segue
+{
+    UINavigationController *navigationController = segue.destinationViewController;
+    ItemDetailViewController *controller = (ItemDetailViewController *)navigationController.topViewController;
+    controller.delegate = self;
+    return controller;
+}
+
 - (void)addItemViewControllerDidCancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -196,22 +209,51 @@
     NSString *identifier = segue.identifier;
     if ([identifier isEqualToString: @"AddItem"])
     {
-        [self setAddItemViewControllerDelegate:segue];
+        [self setItemDetailViewControllerDelegate:segue];
     }
     else if ([identifier isEqualToString:@"EditItem"])
     {
-        ItemDetailViewController *controller = [self setAddItemViewControllerDelegate:segue];
+        ItemDetailViewController *controller = [self setItemDetailViewControllerDelegate:segue];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         controller.itemToEdit = items[indexPath.row];
     }
 }
 
-- (ItemDetailViewController *)setAddItemViewControllerDelegate:(UIStoryboardSegue *)segue
+- (void)checkButtonClicked:(UIButton *)sender
 {
-    UINavigationController *navigationController = segue.destinationViewController;
-    ItemDetailViewController *controller = (ItemDetailViewController *)navigationController.topViewController;
-    controller.delegate = self;
-    return controller;
+    NSIndexPath *indexPath = [self initialIndexPathWithButton:sender];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    if (cell)
+    {
+        ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
+        [item toggleChecked];
+        [self configureCheckmarkForButtonTag:sender.tag
+                                     ForCell:cell
+                        withShoppinglistItem:item
+                               withIndexPath:indexPath];
+    }
 }
 
+- (void)setButton:(UIButton *)button
+        backgroundImageForShoppingListItem:(ShoppingListItem *)shoppinglistItem
+{
+    [button setBackgroundImage:[UIImage imageNamed:shoppinglistItem.checked ? @"checkbox-checked" : @"checkbox-uncheck"] forState:UIControlStateNormal];
+}
+
+/*
+ * use button's tag to record corresponding indexpath info
+ * in case every object's default tag is 0
+ * button's tag = TAG_CHECKSIGN_BUTTON + indexPath.row
+ */
+- (void)setTagForButton:(UIButton *)button
+          withIndexPath:(NSIndexPath *)indexPath
+{
+    button.tag = indexPath.row + TAG_CHECKSIGN_BUTTON;
+}
+
+- (NSIndexPath *)initialIndexPathWithButton:(UIButton *)button
+{
+    return [NSIndexPath indexPathForRow:button.tag - TAG_CHECKSIGN_BUTTON inSection:0];
+}
 @end

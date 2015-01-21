@@ -27,6 +27,7 @@
 		C59594291A4BF382000B6DF3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594241A4BF382000B6DF3 /* Reachability.m */; };
 		C595942A1A4BF382000B6DF3 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594261A4BF382000B6DF3 /* UIView+Toast.m */; };
 		C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C595942D1A5105ED000B6DF3 /* SignUpViewController.m */; };
+		C59DB2FD1A6F801300C9040E /* refactor.txt in Resources */ = {isa = PBXBuildFile; fileRef = C59DB2FC1A6F801300C9040E /* refactor.txt */; };
 		C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */; };
 		C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */; };
 		C5C9C3B91A4AA832003522D0 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = C5C9C3B81A4AA832003522D0 /* PodFile */; };
@@ -84,6 +85,7 @@
 		C595942B1A4BF8CA000B6DF3 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		C595942C1A5105ED000B6DF3 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		C595942D1A5105ED000B6DF3 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		C59DB2FC1A6F801300C9040E /* refactor.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = refactor.txt; sourceTree = "<group>"; };
 		C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C5C9C3B51A4A8CB0003522D0 /* ChishenmeFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChishenmeFetcher.h; path = ChishenmeFetcher/ChishenmeFetcher.h; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		C55F335A1A318D7C00EEE2E2 = {
 			isa = PBXGroup;
 			children = (
+				C59DB2FC1A6F801300C9040E /* refactor.txt */,
 				C5C9C3C81A4ABB36003522D0 /* Chishenme-Prefix.pch */,
 				C55F33731A318D7C00EEE2E2 /* Main.storyboard */,
 				C5C9C3B81A4AA832003522D0 /* PodFile */,
@@ -342,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C59DB2FD1A6F801300C9040E /* refactor.txt in Resources */,
 				C5C9C3B91A4AA832003522D0 /* PodFile in Resources */,
 				C55F33751A318D7C00EEE2E2 /* Main.storyboard in Resources */,
 				C55F33771A318D7C00EEE2E2 /* Images.xcassets in Resources */,
