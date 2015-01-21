@@ -16,7 +16,7 @@
 - (void)configureTextForCell:(UITableViewCell *)cell
         withShoppinglistItem: (ShoppingListItem *)item;
 
-- (AddItemViewController *)setAddItemViewControllerDelegate:(UIStoryboardSegue *)segue;
+- (ItemDetailViewController *)setAddItemViewControllerDelegate:(UIStoryboardSegue *)segue;
 
 @end
 
@@ -106,7 +106,7 @@
 }
 
 #pragma mark - Table view delegate
-
+// TODO: should be edit rather than select/check
 - (void)tableView:(UITableView *)tableView
         didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -138,14 +138,14 @@
 - (void)configureCheckmarkForCell:(UITableViewCell *)cell
              withShoppinglistItem:(ShoppingListItem *)item
 {
-    UILabel *checkSignLabel = (UILabel *)[cell viewWithTag:1001];
+    UIButton *checkSignButton = (UIButton *)[cell viewWithTag:2000];
     if (item.checked)
     {
-        checkSignLabel.text = @"☑️";
+        [checkSignButton setBackgroundImage:[UIImage imageNamed:@"checkbox-checked"] forState:UIControlStateNormal];
     }
     else
     {
-        checkSignLabel.text = @"";
+        [checkSignButton setBackgroundImage:[UIImage imageNamed:@"checkbox-uncheck"] forState:UIControlStateNormal];
     }
 }
 
@@ -171,6 +171,21 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)addItemViewControllerDidFinishEditingItem:(ShoppingListItem *)item
+{
+    NSInteger index = [items indexOfObject:item];
+    if (index)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell)
+        {
+            [self configureTextForCell:cell withShoppinglistItem:item];
+        }
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)addItemViewControllerDidCancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -185,16 +200,16 @@
     }
     else if ([identifier isEqualToString:@"EditItem"])
     {
-        AddItemViewController *controller = [self setAddItemViewControllerDelegate:segue];
+        ItemDetailViewController *controller = [self setAddItemViewControllerDelegate:segue];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         controller.itemToEdit = items[indexPath.row];
     }
 }
 
-- (AddItemViewController *)setAddItemViewControllerDelegate:(UIStoryboardSegue *)segue
+- (ItemDetailViewController *)setAddItemViewControllerDelegate:(UIStoryboardSegue *)segue
 {
     UINavigationController *navigationController = segue.destinationViewController;
-    AddItemViewController *controller = (AddItemViewController *)navigationController.topViewController;
+    ItemDetailViewController *controller = (ItemDetailViewController *)navigationController.topViewController;
     controller.delegate = self;
     return controller;
 }

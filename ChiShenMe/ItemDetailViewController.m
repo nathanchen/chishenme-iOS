@@ -6,17 +6,17 @@
 //  Copyright (c) 2015 Nathan CHEN. All rights reserved.
 //
 
-#import "AddItemViewController.h"
+#import "ItemDetailViewController.h"
 
 
 #define kSubjectTextField 1
 #define kAmountTextField 2
 
-@interface AddItemViewController ()
+@interface ItemDetailViewController ()
 
 @end
 
-@implementation AddItemViewController
+@implementation ItemDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,6 +28,8 @@
         self.navigationController.title = @"Edit Item";
         _subjectTextField.text = item.subject;
         _amountTextField.text = [NSString stringWithFormat:@"%ld", (long)item.quantity];
+        
+        _doneBarButton.enabled = YES;
     }
     [self.subjectTextField becomeFirstResponder];
     
@@ -40,12 +42,22 @@
 
 - (IBAction)done:(id)sender
 {
-    ShoppingListItem *item = [[ShoppingListItem alloc] init];
-    item.subject = _subjectTextField.text;
-    item.quantity = [_amountTextField.text integerValue];
-    item.checked = NO;
+    ShoppingListItem *item = _itemToEdit;
+    if (item)
+    {
+        item.subject = _subjectTextField.text;
+        item.quantity = [_amountTextField.text integerValue];
+        [_delegate addItemViewControllerDidFinishEditingItem:item];
+    }
+    else
+    {
+        item = [[ShoppingListItem alloc] init];
+        item.subject = _subjectTextField.text;
+        item.quantity = [_amountTextField.text integerValue];
+        item.checked = NO;
+        [_delegate addItemViewControllerDidFinishAddingItem: item];
+    }
     
-    [_delegate addItemViewControllerDidFinishAddingItem: item];
 }
 
 - (IBAction)cancel:(id)sender

@@ -9,16 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "ShoppingListItem.h"
 
-@protocol AddItemViewControllerDelegate
+@protocol ItemDetailViewControllerDelegate
 
 - (void)addItemViewControllerDidCancel;
 
 - (void)addItemViewControllerDidFinishAddingItem: (ShoppingListItem *) item;
 
+- (void)addItemViewControllerDidFinishEditingItem: (ShoppingListItem *) item;
+
 @end
 
 
-@interface AddItemViewController : UIViewController
+@interface ItemDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *subjectTextField;
 
@@ -28,7 +30,7 @@
 
 @property (nonatomic, strong) ShoppingListItem *itemToEdit;
 
-@property (nonatomic, weak) id<AddItemViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<ItemDetailViewControllerDelegate> delegate;
 
 - (IBAction)cancel:(id)sender;
 

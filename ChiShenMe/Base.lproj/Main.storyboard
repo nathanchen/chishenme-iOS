@@ -24,12 +24,12 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="☑️" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tka-ug-UnA">
-                                            <rect key="frame" x="14" y="8" width="25" height="27"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <button opaque="NO" tag="2000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkB-8P-lDK">
+                                            <rect key="frame" x="23" y="10" width="25" height="25"/>
+                                            <state key="normal" backgroundImage="checkbox-uncheck">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -52,12 +52,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYo-Lt-JxC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="171" y="-188"/>
+            <point key="canvasLocation" x="188" y="-173"/>
         </scene>
-        <!--Add Item View Controller-->
+        <!--Item Detail View Controller-->
         <scene sceneID="1b1-fl-v3m">
             <objects>
-                <viewController id="Zd9-5Q-FSq" customClass="AddItemViewController" sceneMemberID="viewController">
+                <viewController id="Zd9-5Q-FSq" customClass="ItemDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2yv-MY-NGh"/>
                         <viewControllerLayoutGuide type="bottom" id="NcX-H0-VN2"/>
@@ -392,6 +392,9 @@
             <point key="canvasLocation" x="657" y="-188"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkbox-uncheck" width="25" height="25"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

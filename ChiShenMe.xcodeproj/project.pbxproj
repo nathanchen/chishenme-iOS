@@ -17,7 +17,7 @@
 		C55F33831A318D7C00EEE2E2 /* ChiShenMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */; };
 		C57AC47E1A663E0300383CF0 /* ShoppingListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57AC47D1A663E0300383CF0 /* ShoppingListTableViewController.m */; };
 		C57AC4811A66639C00383CF0 /* ShoppingListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C57AC4801A66639C00383CF0 /* ShoppingListItem.m */; };
-		C58724EF1A67930600A56179 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C58724EE1A67930600A56179 /* AddItemViewController.m */; };
+		C58724EF1A67930600A56179 /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C58724EE1A67930600A56179 /* ItemDetailViewController.m */; };
 		C595940D1A4BE390000B6DF3 /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = C595940C1A4BE390000B6DF3 /* Strings.m */; };
 		C59594101A4BE51E000B6DF3 /* Times.m in Sources */ = {isa = PBXBuildFile; fileRef = C595940F1A4BE51E000B6DF3 /* Times.m */; };
 		C59594131A4BEE92000B6DF3 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594121A4BEE92000B6DF3 /* Notifications.m */; };
@@ -63,8 +63,8 @@
 		C57AC47D1A663E0300383CF0 /* ShoppingListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListTableViewController.m; sourceTree = "<group>"; };
 		C57AC47F1A66639C00383CF0 /* ShoppingListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItem.h; sourceTree = "<group>"; };
 		C57AC4801A66639C00383CF0 /* ShoppingListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListItem.m; sourceTree = "<group>"; };
-		C58724ED1A67930600A56179 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
-		C58724EE1A67930600A56179 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
+		C58724ED1A67930600A56179 /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
+		C58724EE1A67930600A56179 /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
 		C595940B1A4BE390000B6DF3 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Strings.h; path = Utils/Strings.h; sourceTree = "<group>"; };
 		C595940C1A4BE390000B6DF3 /* Strings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Strings.m; path = Utils/Strings.m; sourceTree = "<group>"; };
 		C595940E1A4BE51E000B6DF3 /* Times.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Times.h; path = Utils/Times.h; sourceTree = "<group>"; };
@@ -193,8 +193,8 @@
 				C57AC47D1A663E0300383CF0 /* ShoppingListTableViewController.m */,
 				C57AC47F1A66639C00383CF0 /* ShoppingListItem.h */,
 				C57AC4801A66639C00383CF0 /* ShoppingListItem.m */,
-				C58724ED1A67930600A56179 /* AddItemViewController.h */,
-				C58724EE1A67930600A56179 /* AddItemViewController.m */,
+				C58724ED1A67930600A56179 /* ItemDetailViewController.h */,
+				C58724EE1A67930600A56179 /* ItemDetailViewController.m */,
 			);
 			name = ShoppingList;
 			sourceTree = "<group>";
@@ -405,7 +405,7 @@
 				C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */,
 				C59594281A4BF382000B6DF3 /* ExtendNSLogFunctionality.m in Sources */,
 				C59594131A4BEE92000B6DF3 /* Notifications.m in Sources */,
-				C58724EF1A67930600A56179 /* AddItemViewController.m in Sources */,
+				C58724EF1A67930600A56179 /* ItemDetailViewController.m in Sources */,
 				C59594101A4BE51E000B6DF3 /* Times.m in Sources */,
 				C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */,
 				C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */,
