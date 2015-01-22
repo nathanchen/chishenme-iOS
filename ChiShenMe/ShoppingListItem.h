@@ -14,6 +14,10 @@
 @property (nonatomic) NSInteger quantity;
 @property (nonatomic) BOOL checked;
 
+- (instancetype)initWithDefault;
+- (instancetype)initShoppingListItemWithSubject:(NSString *)subject
+                                       quantity:(NSInteger)quantity
+                                          check:(BOOL)checked;
 - (void)toggleChecked;
 
 @end

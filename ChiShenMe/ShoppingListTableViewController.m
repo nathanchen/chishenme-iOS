@@ -8,21 +8,12 @@
 
 #import "ShoppingListTableViewController.h"
 
-@interface ShoppingListTableViewController ()
+#define TAG_CHECKSIGN_BUTTON 2000
+#define TAG_SUBJECT_TEXTFIELD 1000
+#define TAG_QUANTITY_TEXTFIELD 3000
+#define kTAG_BARBUTTONITEM_BUTTON 4000
 
-- (void)configureCheckmarkForButtonTag:(NSInteger)tag
-                               ForCell:(UITableViewCell *)cell
-                  withShoppinglistItem:(ShoppingListItem *)item
-                         withIndexPath:(NSIndexPath *)indexPath;
-
-- (void)configureTextForCell:(UITableViewCell *)cell
-        withShoppinglistItem: (ShoppingListItem *)item;
-
-- (void)checkButtonClicked:(NSIndexPath *)indexPath;
-
-- (void)setButton: (UIButton *)button backgroundImageForShoppingListItem:(ShoppingListItem *)shoppinglistItem;
-
-- (ItemDetailViewController *)setItemDetailViewControllerDelegate:(UIStoryboardSegue *)segue;
+@interface ShoppingListTableViewController () <UITextFieldDelegate>
 
 @end
 
@@ -75,6 +66,8 @@
     row4item.quantity = 5;
     row4item.checked = NO;
     [items addObject:row4item];
+    
+    _barButtonItem.title = @"+";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,7 +97,9 @@
     
     ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
     
-    [self configureTextForCell:cell withShoppinglistItem:item];
+    [self configureTextForCell:cell
+          withShoppinglistItem:item
+                 withIndexPath:indexPath];
     [self configureCheckmarkForButtonTag:TAG_CHECKSIGN_BUTTON
                                  ForCell:cell
                     withShoppinglistItem:item
@@ -117,13 +112,7 @@
 - (void)tableView:(UITableView *)tableView
         didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if (cell)
-    {
-        
-    }
-    
+    [self.view endEditing:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 
@@ -138,11 +127,36 @@
                           withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-#pragma mark - configure for each cell
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn: (UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    if (textField.tag < TAG_QUANTITY_TEXTFIELD)
+    {
+        NSIndexPath *indexPath = [self initialIndexPathWithTextField:textField initialTagValue:TAG_SUBJECT_TEXTFIELD];
+        NSLog(@"%d", indexPath.row);
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        UITextField *amountTextField = (UITextField *)[cell viewWithTag:textField.tag - TAG_SUBJECT_TEXTFIELD + TAG_QUANTITY_TEXTFIELD];
+        [amountTextField becomeFirstResponder];
+    }
+    else
+    {
+        // save
+        NSInteger index = textField.tag - TAG_QUANTITY_TEXTFIELD;
+        UITextField *subjectTextField = (UITextField *)[self.view viewWithTag:index + TAG_SUBJECT_TEXTFIELD];
+        ShoppingListItem *item = [[ShoppingListItem alloc] initShoppingListItemWithSubject:subjectTextField.text quantity:[textField.text intValue] check:NO];
+        
+        // record it in items array
+        [items replaceObjectAtIndex:index withObject:item];
+    }
+    return YES;
+}
+
+#pragma mark - Configure for each cell
 - (void)configureCheckmarkForButtonTag:(NSInteger)tag
                                ForCell:(UITableViewCell *)cell
-                  withShoppinglistItem:(ShoppingListItem *)item
-                         withIndexPath:(NSIndexPath *)indexPath
+                  withShoppinglistItem:(ShoppingListItem *)item withIndexPath:(NSIndexPath *)indexPath
 {
     UIButton *checkSignButton = (UIButton *)[cell viewWithTag:tag];
     
@@ -154,68 +168,33 @@
 
 - (void)configureTextForCell:(UITableViewCell *)cell
         withShoppinglistItem: (ShoppingListItem *)item
+               withIndexPath:(NSIndexPath *)indexPath
 {
-    UILabel *label = (UILabel *)[cell viewWithTag:TAG_SUBJECT_LABEL];
-    label.text = item.subject;
+    UITextField *textField = (UITextField *)[cell viewWithTag:TAG_SUBJECT_TEXTFIELD];
+    textField.text = item.subject;
+    [self setTagForSubjectTextField:textField withIndexPath:indexPath];
+    textField.delegate = self;
     
-    label = (UILabel *)[cell viewWithTag:TAG_QUANTITY_LABEL];
-    label.text = [NSString stringWithFormat:@"%ld", (long)item.quantity];
+    textField = (UITextField *)[cell viewWithTag:TAG_QUANTITY_TEXTFIELD];
+    textField.text = [NSString stringWithFormat:@"%ld", (long)item.quantity];
+    [self setTagForAmountTextField:textField withIndexPath:indexPath];
+    textField.delegate = self;
 }
 
-#pragma mark - AddItemViewControllerDelegate
-- (void)addItemViewControllerDidFinishAddingItem:(ShoppingListItem *)item
+#pragma mark - Configure button actions
+- (void)barButtonPressed:(id)sender
 {
-    NSInteger newRowIndex = [items count];
-    [items addObject:item];
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
-    NSMutableArray *indexPaths = [NSMutableArray arrayWithObjects:indexPath, nil];
-    
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)addItemViewControllerDidFinishEditingItem:(ShoppingListItem *)item
-{
-    NSInteger index = [items indexOfObject:item];
-    if (index)
+   
+    if ([_barButtonItem.title isEqualToString:@"+"])
     {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        if (cell)
-        {
-            [self configureTextForCell:cell withShoppinglistItem:item];
-        }
+        // perform +
+        [self didFinishAddingItem];
+        
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (ItemDetailViewController *)setItemDetailViewControllerDelegate:(UIStoryboardSegue *)segue
-{
-    UINavigationController *navigationController = segue.destinationViewController;
-    ItemDetailViewController *controller = (ItemDetailViewController *)navigationController.topViewController;
-    controller.delegate = self;
-    return controller;
-}
-
-- (void)addItemViewControllerDidCancel
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSString *identifier = segue.identifier;
-    if ([identifier isEqualToString: @"AddItem"])
+    else
     {
-        [self setItemDetailViewControllerDelegate:segue];
-    }
-    else if ([identifier isEqualToString:@"EditItem"])
-    {
-        ItemDetailViewController *controller = [self setItemDetailViewControllerDelegate:segue];
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        controller.itemToEdit = items[indexPath.row];
+        // perform save
+        [self didFinishEditingItem];
     }
 }
 
@@ -235,12 +214,67 @@
     }
 }
 
+#pragma mark - Logical supporting methods
+- (void)didFinishAddingItem
+{
+    // add empty item into items array
+    NSInteger newRowIndex = [items count];
+    ShoppingListItem *shoppinglistItem = [[ShoppingListItem alloc] initWithDefault];
+    [items addObject:shoppinglistItem];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
+    NSMutableArray *indexPaths = [NSMutableArray arrayWithObjects:indexPath, nil];
+    
+    // update tableview ui
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    // set first responder
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    UITextField *subjectTextField = (UITextField *)[cell viewWithTag:[self getTagForSubjectTextFieldWithIndexPath:indexPath]];
+    [subjectTextField becomeFirstResponder];
+    
+    _barButtonItem.title = @"DONE";
+}
+
+- (void)didFinishEditingItem
+{
+    NSIndexPath *indexPath = [self initialIndexPathWithBarButtonItem:_barButtonItem];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    if (cell)
+    {
+        ShoppingListItem *shoppinglistItem = (ShoppingListItem *)items[indexPath.row];
+        [self configureTextForCell:cell withShoppinglistItem:shoppinglistItem withIndexPath:indexPath];
+        [items replaceObjectAtIndex:indexPath.row withObject:shoppinglistItem];
+        [self.view endEditing:YES];
+    }
+    
+    _barButtonItem.title = @"+";
+}
+
 - (void)setButton:(UIButton *)button
         backgroundImageForShoppingListItem:(ShoppingListItem *)shoppinglistItem
 {
     [button setBackgroundImage:[UIImage imageNamed:shoppinglistItem.checked ? @"checkbox-checked" : @"checkbox-uncheck"] forState:UIControlStateNormal];
 }
 
+- (void)saveShoppinglistItem:(ShoppingListItem *)item
+{
+    NSInteger index = [items indexOfObject:item];
+    if (index)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell)
+        {
+            [self configureTextForCell:cell
+                  withShoppinglistItem:item
+                         withIndexPath:indexPath];
+        }
+    }
+}
+
+#pragma mark - Trivial supporting methods
 /*
  * use button's tag to record corresponding indexpath info
  * in case every object's default tag is 0
@@ -252,8 +286,42 @@
     button.tag = indexPath.row + TAG_CHECKSIGN_BUTTON;
 }
 
+- (void)setTagForBarButtonItem:(UIBarButtonItem *)barButtonItem
+                 withIndexPath:(NSIndexPath *)indexPath
+{
+    barButtonItem.tag = indexPath.row + kTAG_BARBUTTONITEM_BUTTON;
+}
+
+- (void)setTagForSubjectTextField:(UITextField *)textField
+                    withIndexPath:(NSIndexPath *)indexPath
+{
+    textField.tag = [self getTagForSubjectTextFieldWithIndexPath:indexPath];
+}
+
+- (void)setTagForAmountTextField:(UITextField *)textField
+                   withIndexPath:(NSIndexPath *)indexPath
+{
+    textField.tag = indexPath.row + TAG_QUANTITY_TEXTFIELD;
+}
+
+- (NSInteger)getTagForSubjectTextFieldWithIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row + TAG_SUBJECT_TEXTFIELD;
+}
+
 - (NSIndexPath *)initialIndexPathWithButton:(UIButton *)button
 {
     return [NSIndexPath indexPathForRow:button.tag - TAG_CHECKSIGN_BUTTON inSection:0];
 }
+
+- (NSIndexPath *)initialIndexPathWithBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    return [NSIndexPath indexPathForRow:barButtonItem.tag - kTAG_BARBUTTONITEM_BUTTON inSection:0];
+}
+
+- (NSIndexPath *)initialIndexPathWithTextField:(UITextField *)textField initialTagValue:(NSInteger)tagValue
+{
+    return [NSIndexPath indexPathForRow:textField.tag - tagValue  inSection:0];
+}
+
 @end

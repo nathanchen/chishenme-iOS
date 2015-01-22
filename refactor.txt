@@ -1,5 +1,13 @@
-one cell has two labels. one for subject; one for quantity.
+X one cell has two labels. one for subject; one for quantity.
 
 when click subject label, you can edit and only edit subject label; same to quantity label
 
-click on the button will check the item
+X click on the button will check the item
+
+show complete
+
++ not segue to another page
+
+split ShoppingListTableViewController into two controllers, one for bar buttons, and one for table view
+
+make shoppinglist background

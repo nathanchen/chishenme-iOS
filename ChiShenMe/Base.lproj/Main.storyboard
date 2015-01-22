@@ -18,35 +18,30 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tmj-B0-i6v" id="muo-Ti-DFr">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsg-oU-E6C">
-                                            <rect key="frame" x="56" y="12" width="186" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <button opaque="NO" tag="2000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkB-8P-lDK">
                                             <rect key="frame" x="23" y="10" width="25" height="25"/>
                                             <state key="normal" backgroundImage="checkbox-uncheck">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzG-8M-ryg">
-                                            <rect key="frame" x="283" y="12" width="29" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="× " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYS-WP-Zkv">
                                             <rect key="frame" x="259" y="12" width="16" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textField opaque="NO" clipsSubviews="YES" tag="3000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDN-xE-T68">
+                                            <rect key="frame" x="279" y="8" width="33" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" tag="1000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="subject" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ija-98-VDb">
+                                            <rect key="frame" x="60" y="8" width="190" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        </textField>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="73B-7T-4b2" kind="modal" identifier="EditItem" trigger="accessoryAction" id="zNm-t1-Nua"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -55,12 +50,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Shoppinglists" id="2bG-fK-hVb">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="7Vh-Dk-0mB">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="SYN-4D-loS">
                             <connections>
-                                <segue destination="73B-7T-4b2" kind="modal" identifier="AddItem" id="s2j-Wn-pVT"/>
+                                <action selector="barButtonPressed:" destination="WMC-ND-3W1" id="k3l-LS-nem"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="barButtonItem" destination="SYN-4D-loS" id="xom-0H-Tf1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYo-Lt-JxC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -412,7 +410,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="s2j-Wn-pVT"/>
-    </inferredMetricsTieBreakers>
 </document>
