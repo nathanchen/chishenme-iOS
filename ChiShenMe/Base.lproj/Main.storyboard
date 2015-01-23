@@ -8,14 +8,17 @@
         <scene sceneID="S9M-IY-wsC">
             <objects>
                 <tableViewController id="WMC-ND-3W1" customClass="ShoppingListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kk8-N9-SND">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kk8-N9-SND">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paper head" id="E0A-vK-JOx">
+                            <rect key="frame" x="0.0" y="64" width="320" height="7"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <prototypes>
                             <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingListItem" id="Tmj-B0-i6v">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tmj-B0-i6v" id="muo-Ti-DFr">
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tmj-B0-i6v" id="muo-Ti-DFr">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" tag="2000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkB-8P-lDK">
@@ -30,19 +33,18 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" tag="3000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDN-xE-T68">
+                                        <textField clipsSubviews="YES" tag="3000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDN-xE-T68">
                                             <rect key="frame" x="279" y="8" width="33" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" tag="1000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="subject" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ija-98-VDb">
+                                        <textField clipsSubviews="YES" tag="1000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="subject" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ija-98-VDb">
                                             <rect key="frame" x="60" y="8" width="190" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         </textField>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -336,6 +338,7 @@
     </scenes>
     <resources>
         <image name="checkbox-uncheck" width="25" height="25"/>
+        <image name="paper head" width="320" height="7"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

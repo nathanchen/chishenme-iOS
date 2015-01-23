@@ -73,8 +73,6 @@
         [items addObject:item];
     }
     
-    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"shoppinglist"]]];
-    
     _barButtonItem.title = @"+";
 
 }
