@@ -22,9 +22,6 @@
     ShoppingListItem *row0item, *row1item, *row2item, *row3item, *row4item;
     
     NSMutableArray *items;
-    
-    ShoppingListViewController *shoppinglistViewController;
-    
 }
 
 
@@ -76,7 +73,9 @@
         [items addObject:item];
     }
     
-    shoppinglistViewController.barButtonItem.title = @"+";
+    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"shoppinglist"]]];
+    
+    _barButtonItem.title = @"+";
 
 }
 
@@ -122,7 +121,7 @@
 - (void)tableView:(UITableView *)tableView
         didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    shoppinglistViewController.barButtonItem.title = @"+";
+    _barButtonItem.title = @"+";
     [self.view endEditing:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
@@ -165,7 +164,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    shoppinglistViewController.barButtonItem.title = @"Done";
+    _barButtonItem.title = @"Done";
     [textField setSelectedTextRange:[textField textRangeFromPosition:textField.beginningOfDocument toPosition:textField.endOfDocument]];
 }
 
@@ -214,6 +213,20 @@
 }
 
 #pragma mark - Logical supporting methods
+- (IBAction)barButtonPressed
+{
+    if ([_barButtonItem.title isEqualToString:@"+"])
+    {
+        [self didFinishAddingItem];
+        _barButtonItem.title = @"Done";
+    }
+    else
+    {
+        [self didFinishEditingItem];
+        _barButtonItem.title = @"+";
+    }
+}
+
 - (void)didFinishAddingItem
 {
     // add empty item into items array
@@ -232,12 +245,12 @@
     UITextField *subjectTextField = (UITextField *)[cell viewWithTag:[self getTagForSubjectTextFieldWithIndexPath:indexPath]];
     [subjectTextField becomeFirstResponder];
     
-    shoppinglistViewController.barButtonItem.title = @"DONE";
+    _barButtonItem.title = @"DONE";
 }
 
 - (void)didFinishEditingItem
 {
-    NSIndexPath *indexPath = [self initialIndexPathWithBarButtonItem:shoppinglistViewController.barButtonItem];
+    NSIndexPath *indexPath = [self initialIndexPathWithBarButtonItem:_barButtonItem];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     if (cell)
@@ -248,7 +261,7 @@
         [self.view endEditing:YES];
     }
     
-    shoppinglistViewController.barButtonItem.title = @"+";
+    _barButtonItem.title = @"+";
     [self.view endEditing:YES];
 }
 
@@ -325,12 +338,11 @@
 }
 
 # pragma mark - For debugging use only
-- (void)showItems
+- (IBAction)debugShowItems
 {
     for (ShoppingListItem *item in items)
     {
         NSLog(@"%@", [item description]);
     }
 }
-
 @end
