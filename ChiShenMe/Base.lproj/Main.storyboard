@@ -166,7 +166,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYo-Lt-JxC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8D1F41DD-3516-45C0-8167-DB7C99381791" id="erQ-Si-oDt">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B0D4EF6F-CB16-46E1-9B4E-9B1461F483AC" id="erQ-Si-oDt">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -530,7 +530,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8D1F41DD-3516-45C0-8167-DB7C99381791" width="320" height="1136">
+        <image name="B0D4EF6F-CB16-46E1-9B4E-9B1461F483AC" width="320" height="1136">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
