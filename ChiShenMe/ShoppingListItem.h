@@ -19,5 +19,6 @@
                                        quantity:(NSInteger)quantity
                                           check:(BOOL)checked;
 - (void)toggleChecked;
+- (NSString *)description;
 
 @end

@@ -22,6 +22,9 @@
     ShoppingListItem *row0item, *row1item, *row2item, *row3item, *row4item;
     
     NSMutableArray *items;
+    
+    ShoppingListViewController *shoppinglistViewController;
+    
 }
 
 
@@ -67,7 +70,14 @@
     row4item.checked = NO;
     [items addObject:row4item];
     
-    _barButtonItem.title = @"+";
+    ShoppingListItem *item;
+    for (int i = 0; i < 20; i ++) {
+        item = [[ShoppingListItem alloc] initShoppingListItemWithSubject:@"shadhf" quantity:10 check:NO];
+        [items addObject:item];
+    }
+    
+    shoppinglistViewController.barButtonItem.title = @"+";
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,7 +104,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingListItem" forIndexPath:indexPath];
-    
+        
     ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
     
     [self configureTextForCell:cell
@@ -112,6 +122,7 @@
 - (void)tableView:(UITableView *)tableView
         didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    shoppinglistViewController.barButtonItem.title = @"+";
     [self.view endEditing:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
@@ -135,7 +146,6 @@
     if (textField.tag < TAG_QUANTITY_TEXTFIELD)
     {
         NSIndexPath *indexPath = [self initialIndexPathWithTextField:textField initialTagValue:TAG_SUBJECT_TEXTFIELD];
-        NSLog(@"%d", indexPath.row);
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         UITextField *amountTextField = (UITextField *)[cell viewWithTag:textField.tag - TAG_SUBJECT_TEXTFIELD + TAG_QUANTITY_TEXTFIELD];
         [amountTextField becomeFirstResponder];
@@ -151,6 +161,12 @@
         [items replaceObjectAtIndex:index withObject:item];
     }
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    shoppinglistViewController.barButtonItem.title = @"Done";
+    [textField setSelectedTextRange:[textField textRangeFromPosition:textField.beginningOfDocument toPosition:textField.endOfDocument]];
 }
 
 #pragma mark - Configure for each cell
@@ -179,23 +195,6 @@
     textField.text = [NSString stringWithFormat:@"%ld", (long)item.quantity];
     [self setTagForAmountTextField:textField withIndexPath:indexPath];
     textField.delegate = self;
-}
-
-#pragma mark - Configure button actions
-- (void)barButtonPressed:(id)sender
-{
-   
-    if ([_barButtonItem.title isEqualToString:@"+"])
-    {
-        // perform +
-        [self didFinishAddingItem];
-        
-    }
-    else
-    {
-        // perform save
-        [self didFinishEditingItem];
-    }
 }
 
 - (void)checkButtonClicked:(UIButton *)sender
@@ -233,12 +232,12 @@
     UITextField *subjectTextField = (UITextField *)[cell viewWithTag:[self getTagForSubjectTextFieldWithIndexPath:indexPath]];
     [subjectTextField becomeFirstResponder];
     
-    _barButtonItem.title = @"DONE";
+    shoppinglistViewController.barButtonItem.title = @"DONE";
 }
 
 - (void)didFinishEditingItem
 {
-    NSIndexPath *indexPath = [self initialIndexPathWithBarButtonItem:_barButtonItem];
+    NSIndexPath *indexPath = [self initialIndexPathWithBarButtonItem:shoppinglistViewController.barButtonItem];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     if (cell)
@@ -249,7 +248,8 @@
         [self.view endEditing:YES];
     }
     
-    _barButtonItem.title = @"+";
+    shoppinglistViewController.barButtonItem.title = @"+";
+    [self.view endEditing:YES];
 }
 
 - (void)setButton:(UIButton *)button
@@ -322,6 +322,15 @@
 - (NSIndexPath *)initialIndexPathWithTextField:(UITextField *)textField initialTagValue:(NSInteger)tagValue
 {
     return [NSIndexPath indexPathForRow:textField.tag - tagValue  inSection:0];
+}
+
+# pragma mark - For debugging use only
+- (void)showItems
+{
+    for (ShoppingListItem *item in items)
+    {
+        NSLog(@"%@", [item description]);
+    }
 }
 
 @end

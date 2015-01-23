@@ -31,4 +31,9 @@
     _checked = !_checked;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@\t%ld", _subject, (long)_quantity];
+}
+
 @end

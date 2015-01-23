@@ -9,13 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "ItemDetailViewController.h"
 #import "ShoppingListItem.h"
-
-
+#import "ShoppingListViewController.h"
 
 @interface ShoppingListTableViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonItem;
+- (void)didFinishAddingItem;
 
-- (IBAction)barButtonPressed:(id)sender;
+- (void)didFinishEditingItem;
+
+
+
+// For debugging use only
+- (void)showItems;
 
 @end

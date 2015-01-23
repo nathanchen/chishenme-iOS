@@ -28,6 +28,7 @@
 		C595942A1A4BF382000B6DF3 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594261A4BF382000B6DF3 /* UIView+Toast.m */; };
 		C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C595942D1A5105ED000B6DF3 /* SignUpViewController.m */; };
 		C59DB2FD1A6F801300C9040E /* refactor.txt in Resources */ = {isa = PBXBuildFile; fileRef = C59DB2FC1A6F801300C9040E /* refactor.txt */; };
+		C59DB3031A7117C000C9040E /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59DB3021A7117C000C9040E /* ShoppingListViewController.m */; };
 		C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */; };
 		C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */; };
 		C5C9C3B91A4AA832003522D0 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = C5C9C3B81A4AA832003522D0 /* PodFile */; };
@@ -86,6 +87,8 @@
 		C595942C1A5105ED000B6DF3 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		C595942D1A5105ED000B6DF3 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		C59DB2FC1A6F801300C9040E /* refactor.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = refactor.txt; sourceTree = "<group>"; };
+		C59DB3011A7117C000C9040E /* ShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListViewController.h; sourceTree = "<group>"; };
+		C59DB3021A7117C000C9040E /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
 		C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C5C9C3B51A4A8CB0003522D0 /* ChishenmeFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChishenmeFetcher.h; path = ChishenmeFetcher/ChishenmeFetcher.h; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 				C57AC4801A66639C00383CF0 /* ShoppingListItem.m */,
 				C58724ED1A67930600A56179 /* ItemDetailViewController.h */,
 				C58724EE1A67930600A56179 /* ItemDetailViewController.m */,
+				C59DB3011A7117C000C9040E /* ShoppingListViewController.h */,
+				C59DB3021A7117C000C9040E /* ShoppingListViewController.m */,
 			);
 			name = ShoppingList;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 			files = (
 				C59594291A4BF382000B6DF3 /* Reachability.m in Sources */,
 				C55F336C1A318D7C00EEE2E2 /* AppDelegate.m in Sources */,
+				C59DB3031A7117C000C9040E /* ShoppingListViewController.m in Sources */,
 				C55F33691A318D7C00EEE2E2 /* main.m in Sources */,
 				C55F33721A318D7C00EEE2E2 /* ViewController.m in Sources */,
 				C595942A1A4BF382000B6DF3 /* UIView+Toast.m in Sources */,

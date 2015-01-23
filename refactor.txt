@@ -1,13 +1,19 @@
 X one cell has two labels. one for subject; one for quantity.
 
-when click subject label, you can edit and only edit subject label; same to quantity label
+X when click subject label, you can edit and only edit subject label; same to quantity label
 
 X click on the button will check the item
 
-show complete
+show completed items
 
-+ not segue to another page
+X not segue to another page
 
 split ShoppingListTableViewController into two controllers, one for bar buttons, and one for table view
 
-make shoppinglist background
+X make shoppinglist background
+
+X when text field is first responder, bar button item's text should be 'Done'; and when it's not the first responder, bar button item's title should be '+'
+
+checked items should have a different design
+
+ 
