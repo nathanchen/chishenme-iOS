@@ -104,6 +104,11 @@
         
     ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
     
+    if (indexPath.row == 15)
+    {
+        
+    }
+    
     [self configureTextForCell:cell
           withShoppinglistItem:item
                  withIndexPath:indexPath];
@@ -183,7 +188,7 @@
         withShoppinglistItem: (ShoppingListItem *)item
                withIndexPath:(NSIndexPath *)indexPath
 {
-    UITextField *textField = (UITextField *)[cell viewWithTag:TAG_SUBJECT_TEXTFIELD];
+    UITextField *textField = (UITextField *)[cell.contentView viewWithTag:TAG_SUBJECT_TEXTFIELD];
     textField.text = item.subject;
     [self setTagForSubjectTextField:textField withIndexPath:indexPath];
     textField.delegate = self;
@@ -294,13 +299,13 @@
 - (void)setTagForButton:(UIButton *)button
           withIndexPath:(NSIndexPath *)indexPath
 {
-    button.tag = indexPath.row + TAG_CHECKSIGN_BUTTON;
+    button.tag = indexPath.row + TAG_CHECKSIGN_BUTTON + 1;
 }
 
 - (void)setTagForBarButtonItem:(UIBarButtonItem *)barButtonItem
                  withIndexPath:(NSIndexPath *)indexPath
 {
-    barButtonItem.tag = indexPath.row + kTAG_BARBUTTONITEM_BUTTON;
+    barButtonItem.tag = indexPath.row + kTAG_BARBUTTONITEM_BUTTON + 1;
 }
 
 - (void)setTagForSubjectTextField:(UITextField *)textField
@@ -312,27 +317,27 @@
 - (void)setTagForAmountTextField:(UITextField *)textField
                    withIndexPath:(NSIndexPath *)indexPath
 {
-    textField.tag = indexPath.row + TAG_QUANTITY_TEXTFIELD;
+    textField.tag = indexPath.row + TAG_QUANTITY_TEXTFIELD + 1;
 }
 
 - (NSInteger)getTagForSubjectTextFieldWithIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.row + TAG_SUBJECT_TEXTFIELD;
+    return indexPath.row + TAG_SUBJECT_TEXTFIELD + 1;
 }
 
 - (NSIndexPath *)initialIndexPathWithButton:(UIButton *)button
 {
-    return [NSIndexPath indexPathForRow:button.tag - TAG_CHECKSIGN_BUTTON inSection:0];
+    return [NSIndexPath indexPathForRow:button.tag - TAG_CHECKSIGN_BUTTON - 1 inSection:0];
 }
 
 - (NSIndexPath *)initialIndexPathWithBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
-    return [NSIndexPath indexPathForRow:barButtonItem.tag - kTAG_BARBUTTONITEM_BUTTON inSection:0];
+    return [NSIndexPath indexPathForRow:barButtonItem.tag - kTAG_BARBUTTONITEM_BUTTON - 1 inSection:0];
 }
 
 - (NSIndexPath *)initialIndexPathWithTextField:(UITextField *)textField initialTagValue:(NSInteger)tagValue
 {
-    return [NSIndexPath indexPathForRow:textField.tag - tagValue  inSection:0];
+    return [NSIndexPath indexPathForRow:textField.tag - tagValue - 1  inSection:0];
 }
 
 # pragma mark - For debugging use only

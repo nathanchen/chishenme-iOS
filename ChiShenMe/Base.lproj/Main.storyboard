@@ -16,17 +16,11 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <prototypes>
-                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingListItem" id="Tmj-B0-i6v">
+                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingListItem" id="Tmj-B0-i6v" customClass="ShoppingListTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tmj-B0-i6v" id="muo-Ti-DFr">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" tag="2000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkB-8P-lDK">
-                                            <rect key="frame" x="23" y="10" width="25" height="25"/>
-                                            <state key="normal" backgroundImage="checkbox-uncheck">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="× " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYS-WP-Zkv">
                                             <rect key="frame" x="259" y="12" width="16" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -43,8 +37,19 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         </textField>
+                                        <button opaque="NO" tag="2000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkB-8P-lDK">
+                                            <rect key="frame" x="27" y="10" width="25" height="25"/>
+                                            <state key="normal" backgroundImage="checkbox-uncheck">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkmarkButton" destination="bkB-8P-lDK" id="o8B-qv-AkI"/>
+                                    <outlet property="quantityTextField" destination="gDN-xE-T68" id="bcb-ZO-9Xe"/>
+                                    <outlet property="subjectTextField" destination="Ija-98-VDb" id="tDz-IM-xEv"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

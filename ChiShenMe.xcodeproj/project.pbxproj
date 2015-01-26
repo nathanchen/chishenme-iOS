@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1EE01062D7C22F645617016B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4214831C0247D0CD86190F8F /* libPods.a */; };
+		C526D7121A7636C10029940C /* ShoppingListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C526D7111A7636C10029940C /* ShoppingListTableViewCell.m */; };
 		C55F33691A318D7C00EEE2E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33681A318D7C00EEE2E2 /* main.m */; };
 		C55F336C1A318D7C00EEE2E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F336B1A318D7C00EEE2E2 /* AppDelegate.m */; };
 		C55F336F1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C55F336D1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld */; };
@@ -47,6 +48,8 @@
 		4214831C0247D0CD86190F8F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB3A890E39B6BE20A74D66C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		804250A20B3EC86E949C41AA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C526D7101A7636C10029940C /* ShoppingListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListTableViewCell.h; sourceTree = "<group>"; };
+		C526D7111A7636C10029940C /* ShoppingListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListTableViewCell.m; sourceTree = "<group>"; };
 		C55F33631A318D7C00EEE2E2 /* ChiShenMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChiShenMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55F33671A318D7C00EEE2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55F33681A318D7C00EEE2E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 				C57AC47D1A663E0300383CF0 /* ShoppingListTableViewController.m */,
 				C57AC47F1A66639C00383CF0 /* ShoppingListItem.h */,
 				C57AC4801A66639C00383CF0 /* ShoppingListItem.m */,
+				C526D7101A7636C10029940C /* ShoppingListTableViewCell.h */,
+				C526D7111A7636C10029940C /* ShoppingListTableViewCell.m */,
 			);
 			name = ShoppingList;
 			sourceTree = "<group>";
@@ -411,6 +416,7 @@
 				C59594131A4BEE92000B6DF3 /* Notifications.m in Sources */,
 				C5A23AB81A72800B005F349D /* ItemDetailViewController.m in Sources */,
 				C59594101A4BE51E000B6DF3 /* Times.m in Sources */,
+				C526D7121A7636C10029940C /* ShoppingListTableViewCell.m in Sources */,
 				C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */,
 				C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */,
 				C57AC4811A66639C00383CF0 /* ShoppingListItem.m in Sources */,
