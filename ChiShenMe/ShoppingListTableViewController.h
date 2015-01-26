@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ItemDetailViewController.h"
 #import "ShoppingListItem.h"
+#import "ShoppingListTableViewCell.h"
 
 @interface ShoppingListTableViewController : UITableViewController
 

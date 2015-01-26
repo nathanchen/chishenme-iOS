@@ -100,7 +100,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingListItem" forIndexPath:indexPath];
+    ShoppingListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingListItem" forIndexPath:indexPath];
         
     ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
     
@@ -148,8 +148,8 @@
     if (textField.tag < TAG_QUANTITY_TEXTFIELD)
     {
         NSIndexPath *indexPath = [self initialIndexPathWithTextField:textField initialTagValue:TAG_SUBJECT_TEXTFIELD];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        UITextField *amountTextField = (UITextField *)[cell viewWithTag:textField.tag - TAG_SUBJECT_TEXTFIELD + TAG_QUANTITY_TEXTFIELD];
+        ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        UITextField *amountTextField = cell.quantityTextField;
         [amountTextField becomeFirstResponder];
     }
     else
@@ -173,10 +173,10 @@
 
 #pragma mark - Configure for each cell
 - (void)configureCheckmarkForButtonTag:(NSInteger)tag
-                               ForCell:(UITableViewCell *)cell
+                               ForCell:(ShoppingListTableViewCell *)cell
                   withShoppinglistItem:(ShoppingListItem *)item withIndexPath:(NSIndexPath *)indexPath
 {
-    UIButton *checkSignButton = (UIButton *)[cell viewWithTag:tag];
+    UIButton *checkSignButton = cell.checkmarkButton;
     
     [self setButton:checkSignButton backgroundImageForShoppingListItem:item];
     [self setTagForButton:checkSignButton withIndexPath:indexPath];
@@ -184,16 +184,16 @@
     [checkSignButton addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)configureTextForCell:(UITableViewCell *)cell
+- (void)configureTextForCell:(ShoppingListTableViewCell *)cell
         withShoppinglistItem: (ShoppingListItem *)item
                withIndexPath:(NSIndexPath *)indexPath
 {
-    UITextField *textField = (UITextField *)[cell.contentView viewWithTag:TAG_SUBJECT_TEXTFIELD];
+    UITextField *textField = cell.subjectTextField;
     textField.text = item.subject;
     [self setTagForSubjectTextField:textField withIndexPath:indexPath];
     textField.delegate = self;
     
-    textField = (UITextField *)[cell viewWithTag:TAG_QUANTITY_TEXTFIELD];
+    textField = cell.quantityTextField;
     textField.text = [NSString stringWithFormat:@"%ld", (long)item.quantity];
     [self setTagForAmountTextField:textField withIndexPath:indexPath];
     textField.delegate = self;
@@ -202,7 +202,7 @@
 - (void)checkButtonClicked:(UIButton *)sender
 {
     NSIndexPath *indexPath = [self initialIndexPathWithButton:sender];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
     if (cell)
     {
@@ -244,8 +244,8 @@
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     
     // set first responder
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    UITextField *subjectTextField = (UITextField *)[cell viewWithTag:[self getTagForSubjectTextFieldWithIndexPath:indexPath]];
+    ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    UITextField *subjectTextField = cell.subjectTextField;
     [subjectTextField becomeFirstResponder];
     
     _barButtonItem.title = @"DONE";
@@ -254,7 +254,7 @@
 - (void)didFinishEditingItem
 {
     NSIndexPath *indexPath = [self initialIndexPathWithBarButtonItem:_barButtonItem];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
     if (cell)
     {
@@ -280,7 +280,7 @@
     if (index)
     {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
         if (cell)
         {
             [self configureTextForCell:cell
