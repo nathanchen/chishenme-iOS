@@ -99,17 +99,25 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    ShoppingListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingListItem" forIndexPath:indexPath];
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
+    return [self tableViewCellFor:tableView withShoppingListItem:item atIndexPath:indexPath];
+}
+
+- (ShoppingListTableViewCell *)tableViewCellFor:(UITableView *)tableView
+                     withShoppingListItem:(ShoppingListItem *)shoppinglistItem
+                              atIndexPath:(NSIndexPath *)indexPath
+{
+    ShoppingListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingListItem" forIndexPath:indexPath];
     
-    cell = [cell initWithShoppingListItem:item andIndexPath:indexPath];
+    cell = [cell initWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
     cell.subjectTextField.delegate = self;
     cell.quantityTextField.delegate = self;
     [cell.checkmarkButton addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
+
 }
 
 #pragma mark - Table view delegate
@@ -212,7 +220,7 @@
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     
     // set first responder
-    ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    ShoppingListTableViewCell *cell = [self tableViewCellFor:self.tableView withShoppingListItem:shoppinglistItem atIndexPath:indexPath];
     [cell.subjectTextField becomeFirstResponder];
     
     _barButtonItem.title = @"DONE";
