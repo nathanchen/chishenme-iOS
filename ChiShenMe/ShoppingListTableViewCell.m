@@ -51,6 +51,7 @@ backgroundImageForShoppingListItem:(ShoppingListItem *)shoppinglistItem
     [button setBackgroundImage:[UIImage imageNamed:shoppinglistItem.checked ? @"checkbox-checked" : @"checkbox-uncheck"] forState:UIControlStateNormal];
 }
 
+#pragma mark - Cell tag logical methods
 /*
  * use button's tag to record corresponding indexpath info
  * in case every object's default tag is 0
@@ -99,5 +100,8 @@ backgroundImageForShoppingListItem:(ShoppingListItem *)shoppinglistItem
 {
     return [NSIndexPath indexPathForRow:textField.tag - tagValue - 1  inSection:0];
 }
+
+#pragma mark - Input validation
+
 
 @end
