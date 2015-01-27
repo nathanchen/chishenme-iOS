@@ -21,9 +21,10 @@
 {
     ShoppingListItem *row0item, *row1item, *row2item, *row3item, *row4item;
     
+    ShoppingListTableViewCell *shoppinglistTableViewCell;
+    
     NSMutableArray *items;
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,7 +75,7 @@
     }
     
     _barButtonItem.title = @"+";
-
+    shoppinglistTableViewCell = [[ShoppingListTableViewCell alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,21 +102,13 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ShoppingListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingListItem" forIndexPath:indexPath];
-        
     ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
     
-    if (indexPath.row == 15)
-    {
-        
-    }
+    cell = [cell initWithShoppingListItem:item andIndexPath:indexPath];
+    cell.subjectTextField.delegate = self;
+    cell.quantityTextField.delegate = self;
+    [cell.checkmarkButton addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self configureTextForCell:cell
-          withShoppinglistItem:item
-                 withIndexPath:indexPath];
-    [self configureCheckmarkForButtonTag:TAG_CHECKSIGN_BUTTON
-                                 ForCell:cell
-                    withShoppinglistItem:item
-                           withIndexPath:indexPath];
     return cell;
 }
 
@@ -147,10 +140,9 @@
     
     if (textField.tag < TAG_QUANTITY_TEXTFIELD)
     {
-        NSIndexPath *indexPath = [self initialIndexPathWithTextField:textField initialTagValue:TAG_SUBJECT_TEXTFIELD];
+        NSIndexPath *indexPath = [shoppinglistTableViewCell initialIndexPathWithTextField:textField initialTagValue:TAG_SUBJECT_TEXTFIELD];
         ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        UITextField *amountTextField = cell.quantityTextField;
-        [amountTextField becomeFirstResponder];
+        [cell.quantityTextField becomeFirstResponder];
     }
     else
     {
@@ -171,47 +163,23 @@
     [textField setSelectedTextRange:[textField textRangeFromPosition:textField.beginningOfDocument toPosition:textField.endOfDocument]];
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    _barButtonItem.title = @"+";
+    [self.view endEditing:YES];
+}
+
 #pragma mark - Configure for each cell
-- (void)configureCheckmarkForButtonTag:(NSInteger)tag
-                               ForCell:(ShoppingListTableViewCell *)cell
-                  withShoppinglistItem:(ShoppingListItem *)item withIndexPath:(NSIndexPath *)indexPath
-{
-    UIButton *checkSignButton = cell.checkmarkButton;
-    
-    [self setButton:checkSignButton backgroundImageForShoppingListItem:item];
-    [self setTagForButton:checkSignButton withIndexPath:indexPath];
-    
-    [checkSignButton addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)configureTextForCell:(ShoppingListTableViewCell *)cell
-        withShoppinglistItem: (ShoppingListItem *)item
-               withIndexPath:(NSIndexPath *)indexPath
-{
-    UITextField *textField = cell.subjectTextField;
-    textField.text = item.subject;
-    [self setTagForSubjectTextField:textField withIndexPath:indexPath];
-    textField.delegate = self;
-    
-    textField = cell.quantityTextField;
-    textField.text = [NSString stringWithFormat:@"%ld", (long)item.quantity];
-    [self setTagForAmountTextField:textField withIndexPath:indexPath];
-    textField.delegate = self;
-}
-
 - (void)checkButtonClicked:(UIButton *)sender
 {
-    NSIndexPath *indexPath = [self initialIndexPathWithButton:sender];
+    NSIndexPath *indexPath = [shoppinglistTableViewCell initialIndexPathWithButton:sender];
     ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
     if (cell)
     {
         ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
         [item toggleChecked];
-        [self configureCheckmarkForButtonTag:sender.tag
-                                     ForCell:cell
-                        withShoppinglistItem:item
-                               withIndexPath:indexPath];
+        [cell configCheckButtonWithShoppingListItem:item andIndexPath:indexPath];
     }
 }
 
@@ -245,99 +213,29 @@
     
     // set first responder
     ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    UITextField *subjectTextField = cell.subjectTextField;
-    [subjectTextField becomeFirstResponder];
+    [cell.subjectTextField becomeFirstResponder];
     
     _barButtonItem.title = @"DONE";
 }
 
 - (void)didFinishEditingItem
 {
-    NSIndexPath *indexPath = [self initialIndexPathWithBarButtonItem:_barButtonItem];
+    NSIndexPath *indexPath = [shoppinglistTableViewCell initialIndexPathWithBarButtonItem:_barButtonItem];
     ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
     if (cell)
     {
+        // update item in items array
         ShoppingListItem *shoppinglistItem = (ShoppingListItem *)items[indexPath.row];
-        [self configureTextForCell:cell withShoppinglistItem:shoppinglistItem withIndexPath:indexPath];
         [items replaceObjectAtIndex:indexPath.row withObject:shoppinglistItem];
-        [self.view endEditing:YES];
+        
+        // update tableview ui
+        [cell configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+        [cell configQuantityTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
     }
     
     _barButtonItem.title = @"+";
     [self.view endEditing:YES];
-}
-
-- (void)setButton:(UIButton *)button
-        backgroundImageForShoppingListItem:(ShoppingListItem *)shoppinglistItem
-{
-    [button setBackgroundImage:[UIImage imageNamed:shoppinglistItem.checked ? @"checkbox-checked" : @"checkbox-uncheck"] forState:UIControlStateNormal];
-}
-
-- (void)saveShoppinglistItem:(ShoppingListItem *)item
-{
-    NSInteger index = [items indexOfObject:item];
-    if (index)
-    {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        if (cell)
-        {
-            [self configureTextForCell:cell
-                  withShoppinglistItem:item
-                         withIndexPath:indexPath];
-        }
-    }
-}
-
-#pragma mark - Trivial supporting methods
-/*
- * use button's tag to record corresponding indexpath info
- * in case every object's default tag is 0
- * button's tag = TAG_CHECKSIGN_BUTTON + indexPath.row
- */
-- (void)setTagForButton:(UIButton *)button
-          withIndexPath:(NSIndexPath *)indexPath
-{
-    button.tag = indexPath.row + TAG_CHECKSIGN_BUTTON + 1;
-}
-
-- (void)setTagForBarButtonItem:(UIBarButtonItem *)barButtonItem
-                 withIndexPath:(NSIndexPath *)indexPath
-{
-    barButtonItem.tag = indexPath.row + kTAG_BARBUTTONITEM_BUTTON + 1;
-}
-
-- (void)setTagForSubjectTextField:(UITextField *)textField
-                    withIndexPath:(NSIndexPath *)indexPath
-{
-    textField.tag = [self getTagForSubjectTextFieldWithIndexPath:indexPath];
-}
-
-- (void)setTagForAmountTextField:(UITextField *)textField
-                   withIndexPath:(NSIndexPath *)indexPath
-{
-    textField.tag = indexPath.row + TAG_QUANTITY_TEXTFIELD + 1;
-}
-
-- (NSInteger)getTagForSubjectTextFieldWithIndexPath:(NSIndexPath *)indexPath
-{
-    return indexPath.row + TAG_SUBJECT_TEXTFIELD + 1;
-}
-
-- (NSIndexPath *)initialIndexPathWithButton:(UIButton *)button
-{
-    return [NSIndexPath indexPathForRow:button.tag - TAG_CHECKSIGN_BUTTON - 1 inSection:0];
-}
-
-- (NSIndexPath *)initialIndexPathWithBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    return [NSIndexPath indexPathForRow:barButtonItem.tag - kTAG_BARBUTTONITEM_BUTTON - 1 inSection:0];
-}
-
-- (NSIndexPath *)initialIndexPathWithTextField:(UITextField *)textField initialTagValue:(NSInteger)tagValue
-{
-    return [NSIndexPath indexPathForRow:textField.tag - tagValue - 1  inSection:0];
 }
 
 # pragma mark - For debugging use only
