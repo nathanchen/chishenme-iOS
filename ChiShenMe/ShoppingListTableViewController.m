@@ -15,7 +15,7 @@
 
 static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 
-@interface ShoppingListTableViewController () <UITextFieldDelegate>
+@interface ShoppingListTableViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDelegate>
 
 @end
 
@@ -76,6 +76,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
         [items addObject:item];
     }
     
+    
     _barButtonItem.title = @"+";
     shoppinglistTableViewCell = [[ShoppingListTableViewCell alloc] init];
 }
@@ -113,15 +114,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 {
     ShoppingListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
     
-    if (cell)
-    {
-        cell = [cell initWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-    }
-    else
-    {
-        cell = [[ShoppingListTableViewCell alloc] initWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-    }
-    
+    cell = [cell initWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
     cell.subjectTextField.delegate = self;
     cell.quantityTextField.delegate = self;
     [cell.checkmarkButton addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -160,6 +153,8 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     {
         NSIndexPath *indexPath = [shoppinglistTableViewCell initialIndexPathWithTextField:textField initialTagValue:TAG_SUBJECT_TEXTFIELD];
         ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        cell.subjectTextField.text = textField.text;
+        cell.quantityTextField.text = @"2";
         [cell.quantityTextField becomeFirstResponder];
     }
     else
@@ -228,12 +223,12 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     
     // update tableview ui
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    
+
     // set first responder
     ShoppingListTableViewCell *cell = [self tableViewCellFor:self.tableView withShoppingListItem:shoppinglistItem atIndexPath:indexPath];
     [cell.subjectTextField becomeFirstResponder];
     
-    _barButtonItem.title = @"DONE";
+    _barButtonItem.title = @"Done";
 }
 
 - (void)didFinishEditingItem

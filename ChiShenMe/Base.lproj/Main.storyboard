@@ -53,8 +53,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="WMC-ND-3W1" id="ttJ-hS-bnl"/>
-                            <outlet property="delegate" destination="WMC-ND-3W1" id="4BZ-Bt-3kT"/>
+                            <outlet property="dataSource" destination="WMC-ND-3W1" id="NQU-iy-Uwn"/>
+                            <outlet property="delegate" destination="WMC-ND-3W1" id="V3q-Xl-iGj"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Shoppinglists" id="2bG-fK-hVb">
