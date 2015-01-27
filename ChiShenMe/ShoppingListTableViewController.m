@@ -13,6 +13,8 @@
 #define TAG_QUANTITY_TEXTFIELD 3000
 #define kTAG_BARBUTTONITEM_BUTTON 4000
 
+static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
+
 @interface ShoppingListTableViewController () <UITextFieldDelegate>
 
 @end
@@ -109,9 +111,17 @@
                      withShoppingListItem:(ShoppingListItem *)shoppinglistItem
                               atIndexPath:(NSIndexPath *)indexPath
 {
-    ShoppingListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingListItem" forIndexPath:indexPath];
+    ShoppingListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
     
-    cell = [cell initWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+    if (cell)
+    {
+        cell = [cell initWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+    }
+    else
+    {
+        cell = [[ShoppingListTableViewCell alloc] initWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+    }
+    
     cell.subjectTextField.delegate = self;
     cell.quantityTextField.delegate = self;
     [cell.checkmarkButton addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -160,7 +170,7 @@
         ShoppingListItem *item = [[ShoppingListItem alloc] initShoppingListItemWithSubject:subjectTextField.text quantity:[textField.text intValue] check:NO];
         
         // record it in items array
-        [items replaceObjectAtIndex:index withObject:item];
+        [items replaceObjectAtIndex:index - 1 withObject:item];
     }
     return YES;
 }
