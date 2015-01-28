@@ -8,10 +8,14 @@
 
 #import "ShoppingListTableViewCell.h"
 
+const float LABEL_LEFT_MARGIN = 15.0F;
+
 @interface ShoppingListTableViewCell()
 {
     CGPoint originalCenter;
     BOOL deleteOnDragRelease;
+    ShoppingListStrikeThroughLabel *label;
+    CALayer *itemCompleteLayer;
 }
 @end
 
@@ -30,11 +34,39 @@
         [self configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
         [self configQuantityTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
         [self configCheckButtonWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+        [self addShoppingListStrikeThroughLabel];
         UIGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
         recognizer.delegate = self;
         [self addGestureRecognizer:recognizer];
+        [self addCALayer];
     }
     return self;
+}
+
+- (void)addShoppingListStrikeThroughLabel
+{
+    label = [[ShoppingListStrikeThroughLabel alloc] initWithFrame:CGRectNull];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:16];
+    label.backgroundColor = [UIColor clearColor];
+    [self addSubview:label];
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+- (void)addCALayer
+{
+    itemCompleteLayer = [CALayer layer];
+    itemCompleteLayer.backgroundColor = [[[UIColor alloc] initWithRed:0.0 green:0.6 blue:0.0 alpha:1.0] CGColor];
+    itemCompleteLayer.hidden = YES;
+    [self.layer insertSublayer:itemCompleteLayer atIndex:0];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    itemCompleteLayer.frame = self.bounds;
+    label.frame = CGRectMake(LABEL_LEFT_MARGIN, 0, self.bounds.size.width - LABEL_LEFT_MARGIN, self.bounds.size.height);
 }
 
 #pragma mark - Horizontal pan gesture methods
@@ -59,7 +91,7 @@
     {
         CGPoint translation = [recognizer translationInView:self];
         self.center = CGPointMake(originalCenter.x + translation.x, originalCenter.y);
-        deleteOnDragRelease = self.frame.origin.x < -self.frame.size.width / 2;
+        deleteOnDragRelease = (self.frame.origin.x < -self.frame.size.width / 2);
     }
     
     if (recognizer.state == UIGestureRecognizerStateEnded)
@@ -70,6 +102,9 @@
             [UIView animateWithDuration:0.2 animations:^{
                 self.frame = originalFrame;
             }];
+        }
+        else
+        {
             [self.delegate shoppinglistItemDeleted:_shoppinglistItem];
         }
     }

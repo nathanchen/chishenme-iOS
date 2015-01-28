@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ShoppingListItem.h"
 #import "ShoppingListTableViewController.h"
+#import "ShoppingListStrikeThroughLabel.h"
 
 #define kTAG_CHECKSIGN_BUTTON 2000
 #define kTAG_SUBJECT_TEXTFIELD 1000

@@ -28,6 +28,7 @@
 		C59594291A4BF382000B6DF3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594241A4BF382000B6DF3 /* Reachability.m */; };
 		C595942A1A4BF382000B6DF3 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594261A4BF382000B6DF3 /* UIView+Toast.m */; };
 		C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C595942D1A5105ED000B6DF3 /* SignUpViewController.m */; };
+		C599DEBD1A78B5030076240D /* ShoppingListStrikeThroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C599DEBC1A78B5030076240D /* ShoppingListStrikeThroughLabel.m */; };
 		C59DB2FD1A6F801300C9040E /* refactor.txt in Resources */ = {isa = PBXBuildFile; fileRef = C59DB2FC1A6F801300C9040E /* refactor.txt */; };
 		C5A23AB81A72800B005F349D /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A23AB71A72800B005F349D /* ItemDetailViewController.m */; };
 		C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */; };
@@ -89,6 +90,8 @@
 		C595942B1A4BF8CA000B6DF3 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		C595942C1A5105ED000B6DF3 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		C595942D1A5105ED000B6DF3 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		C599DEBB1A78B5030076240D /* ShoppingListStrikeThroughLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListStrikeThroughLabel.h; sourceTree = "<group>"; };
+		C599DEBC1A78B5030076240D /* ShoppingListStrikeThroughLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListStrikeThroughLabel.m; sourceTree = "<group>"; };
 		C59DB2FC1A6F801300C9040E /* refactor.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = refactor.txt; sourceTree = "<group>"; };
 		C5A23AB61A72800B005F349D /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
 		C5A23AB71A72800B005F349D /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				C57AC4801A66639C00383CF0 /* ShoppingListItem.m */,
 				C526D7101A7636C10029940C /* ShoppingListTableViewCell.h */,
 				C526D7111A7636C10029940C /* ShoppingListTableViewCell.m */,
+				C599DEBB1A78B5030076240D /* ShoppingListStrikeThroughLabel.h */,
+				C599DEBC1A78B5030076240D /* ShoppingListStrikeThroughLabel.m */,
 			);
 			name = ShoppingList;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				C5A23AB81A72800B005F349D /* ItemDetailViewController.m in Sources */,
 				C59594101A4BE51E000B6DF3 /* Times.m in Sources */,
 				C526D7151A7734950029940C /* Numbers.m in Sources */,
+				C599DEBD1A78B5030076240D /* ShoppingListStrikeThroughLabel.m in Sources */,
 				C526D7121A7636C10029940C /* ShoppingListTableViewCell.m in Sources */,
 				C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */,
 				C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */,
