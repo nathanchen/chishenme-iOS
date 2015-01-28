@@ -15,11 +15,19 @@
 #define kTAG_QUANTITY_TEXTFIELD 3000
 #define kTAG_BARBUTTONITEM_BUTTON 4000
 
+@protocol ShoppingListTableViewCellDelegate <NSObject>
+
+- (void)shoppinglistItemDeleted:(ShoppingListItem *)shoppinglistItem;
+
+@end
+
 @interface ShoppingListTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UITextField *subjectTextField;
 @property (weak, nonatomic) IBOutlet UITextField *quantityTextField;
 @property (weak, nonatomic) IBOutlet UIButton *checkmarkButton;
+@property (weak, nonatomic) id<ShoppingListTableViewCellDelegate> delegate;
+@property (weak, nonatomic) ShoppingListItem *shoppinglistItem;
 
 + (instancetype)shoppinglistTableViewCell:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath;
 
@@ -38,7 +46,5 @@
 - (NSIndexPath *)initialIndexPathWithBarButtonItem:(UIBarButtonItem *)barButtonItem;
 
 - (NSIndexPath *)initialIndexPathWithTextField:(UITextField *)textField initialTagValue:(NSInteger)tagValue;
-
-
 
 @end

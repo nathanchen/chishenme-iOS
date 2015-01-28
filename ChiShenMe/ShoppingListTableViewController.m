@@ -15,7 +15,7 @@
 
 static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 
-@interface ShoppingListTableViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDelegate>
+@interface ShoppingListTableViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDelegate, ShoppingListTableViewCellDelegate>
 
 @end
 
@@ -117,6 +117,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     cell = [cell initWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
     cell.subjectTextField.delegate = self;
     cell.quantityTextField.delegate = self;
+    cell.delegate = self;
     [cell.checkmarkButton addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
@@ -127,11 +128,6 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     return 50.0f;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    cell.backgroundColor = [self colorForIndex:indexPath.row];
-}
-
 #pragma mark - Table view delegate
 // TODO: should be edit rather than select/check
 - (void)tableView:(UITableView *)tableView
@@ -140,17 +136,6 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     _barButtonItem.title = @"+";
     [self.view endEditing:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:true];
-}
-
-- (void)tableView:(UITableView *)tableView
-        commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-        forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [items removeObjectAtIndex:indexPath.row];
-    
-    NSMutableArray *indexPaths = [NSMutableArray arrayWithObjects:indexPath, nil];
-    [self.tableView deleteRowsAtIndexPaths:indexPaths
-                          withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -259,11 +244,22 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     [self.view endEditing:YES];
 }
 
-- (UIColor *)colorForIndex:(NSInteger)index
+- (void)tableView:(UITableView *)tableView deleteRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger itemsCount = [items count] - 1;
-    float val = ((float)index / (float)itemsCount) * 0.8;
-    return [UIColor colorWithRed:1.0 green:val blue:0.0 alpha:1.0];
+    [tableView beginUpdates];
+    [items removeObjectAtIndex:indexPath.row];
+    
+    NSMutableArray *indexPaths = [NSMutableArray arrayWithObjects:indexPath, nil];
+    [self.tableView deleteRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView endUpdates];
+}
+
+# pragma mark - Shoppinglist View Controller Delegate
+- (void)shoppinglistItemDeleted:(ShoppingListItem *)shoppinglistItem
+{
+    NSInteger index = [items indexOfObject:shoppinglistItem];
+    [self tableView:self.tableView deleteRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
 }
 
 # pragma mark - For debugging use only

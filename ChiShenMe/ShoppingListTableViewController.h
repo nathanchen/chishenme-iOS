@@ -22,8 +22,6 @@
 
 - (void)didFinishEditingItem;
 
-
-
 // For debugging use only
 - (IBAction)debugShowItems;
 

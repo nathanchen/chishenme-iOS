@@ -9,7 +9,10 @@
 #import "ShoppingListTableViewCell.h"
 
 @interface ShoppingListTableViewCell()
-
+{
+    CGPoint originalCenter;
+    BOOL deleteOnDragRelease;
+}
 @end
 
 @implementation ShoppingListTableViewCell
@@ -23,11 +26,53 @@
 {
     if (self = [super init])
     {
+        _shoppinglistItem = shoppinglistItem;
         [self configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
         [self configQuantityTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
         [self configCheckButtonWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+        UIGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        recognizer.delegate = self;
+        [self addGestureRecognizer:recognizer];
     }
     return self;
+}
+
+#pragma mark - Horizontal pan gesture methods
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    CGPoint translation = [gestureRecognizer translationInView:[self superview]];
+    if (fabsf(translation.x) > fabsf(translation.y))
+    {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateBegan)
+    {
+        originalCenter = self.center;
+    }
+    
+    if (recognizer.state == UIGestureRecognizerStateChanged)
+    {
+        CGPoint translation = [recognizer translationInView:self];
+        self.center = CGPointMake(originalCenter.x + translation.x, originalCenter.y);
+        deleteOnDragRelease = self.frame.origin.x < -self.frame.size.width / 2;
+    }
+    
+    if (recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        CGRect originalFrame = CGRectMake(0, self.frame.origin.y, self.bounds.size.width, self.bounds.size.height);
+        if (!deleteOnDragRelease)
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                self.frame = originalFrame;
+            }];
+            [self.delegate shoppinglistItemDeleted:_shoppinglistItem];
+        }
+    }
 }
 
 #pragma mark - Cell layout configuration
