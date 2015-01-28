@@ -14,12 +14,19 @@
 
 @implementation ShoppingListTableViewCell
 
++ (instancetype)shoppinglistTableViewCell:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath
+{
+    return [[ShoppingListTableViewCell alloc] initWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+}
+
 - (instancetype)initWithShoppingListItem:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath
 {
-    [self configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-    [self configQuantityTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-    [self configCheckButtonWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-    
+    if (self = [super init])
+    {
+        [self configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+        [self configQuantityTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+        [self configCheckButtonWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+    }
     return self;
 }
 
@@ -84,6 +91,11 @@ backgroundImageForShoppingListItem:(ShoppingListItem *)shoppinglistItem
 - (NSInteger)getTagForSubjectTextFieldWithIndexPath:(NSIndexPath *)indexPath
 {
     return indexPath.row + kTAG_SUBJECT_TEXTFIELD + 1;
+}
+
+- (NSInteger)getTagForQuantityTextFieldWithIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row + kTAG_QUANTITY_TEXTFIELD + 1;
 }
 
 - (NSIndexPath *)initialIndexPathWithButton:(UIButton *)button

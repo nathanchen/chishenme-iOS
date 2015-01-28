@@ -72,7 +72,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     
     ShoppingListItem *item;
     for (int i = 0; i < 20; i ++) {
-        item = [[ShoppingListItem alloc] initShoppingListItemWithSubject:@"shadhf" quantity:10 check:NO];
+        item = [ShoppingListItem shoppinglistItem:@"shadhf" quantity:10 check:NO];
         [items addObject:item];
     }
     
@@ -120,7 +120,16 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     [cell.checkmarkButton addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.0f;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [self colorForIndex:indexPath.row];
 }
 
 #pragma mark - Table view delegate
@@ -152,17 +161,15 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     if (textField.tag < TAG_QUANTITY_TEXTFIELD)
     {
         NSIndexPath *indexPath = [shoppinglistTableViewCell initialIndexPathWithTextField:textField initialTagValue:TAG_SUBJECT_TEXTFIELD];
-        ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        cell.subjectTextField.text = textField.text;
-        cell.quantityTextField.text = @"2";
-        [cell.quantityTextField becomeFirstResponder];
+        UITextField *quantityTextField = (UITextField *)[self.tableView viewWithTag:[shoppinglistTableViewCell getTagForQuantityTextFieldWithIndexPath:indexPath]];
+        [quantityTextField becomeFirstResponder];
     }
     else
     {
         // save
         NSInteger index = textField.tag - TAG_QUANTITY_TEXTFIELD;
         UITextField *subjectTextField = (UITextField *)[self.view viewWithTag:index + TAG_SUBJECT_TEXTFIELD];
-        ShoppingListItem *item = [[ShoppingListItem alloc] initShoppingListItemWithSubject:subjectTextField.text quantity:[textField.text intValue] check:NO];
+        ShoppingListItem *item = [ShoppingListItem shoppinglistItem:subjectTextField.text quantity:[textField.text intValue] check:NO];
         
         // record it in items array
         [items replaceObjectAtIndex:index - 1 withObject:item];
@@ -218,15 +225,16 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     ShoppingListItem *shoppinglistItem = [[ShoppingListItem alloc] initWithDefault];
     [items addObject:shoppinglistItem];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     NSMutableArray *indexPaths = [NSMutableArray arrayWithObjects:indexPath, nil];
     
     // update tableview ui
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 
     // set first responder
-    ShoppingListTableViewCell *cell = [self tableViewCellFor:self.tableView withShoppingListItem:shoppinglistItem atIndexPath:indexPath];
-    [cell.subjectTextField becomeFirstResponder];
+//    ShoppingListTableViewCell *cell = [self tableViewCellFor:self.tableView withShoppingListItem:shoppinglistItem atIndexPath:indexPath];
+//    cell.subjectTextField.text = @"123";
+//    [cell.subjectTextField becomeFirstResponder];
     
     _barButtonItem.title = @"Done";
 }
@@ -249,6 +257,13 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     
     _barButtonItem.title = @"+";
     [self.view endEditing:YES];
+}
+
+- (UIColor *)colorForIndex:(NSInteger)index
+{
+    NSInteger itemsCount = [items count] - 1;
+    float val = ((float)index / (float)itemsCount) * 0.8;
+    return [UIColor colorWithRed:1.0 green:val blue:0.0 alpha:1.0];
 }
 
 # pragma mark - For debugging use only

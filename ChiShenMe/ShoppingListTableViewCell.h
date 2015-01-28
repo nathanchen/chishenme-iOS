@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *quantityTextField;
 @property (weak, nonatomic) IBOutlet UIButton *checkmarkButton;
 
++ (instancetype)shoppinglistTableViewCell:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath;
+
 - (instancetype)initWithShoppingListItem:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath;
 
 - (void)configSubjectTextFieldWithShoppingListItem:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath;
@@ -28,6 +30,8 @@
 - (void)configQuantityTextFieldWithShoppingListItem:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath;
 
 - (void)configCheckButtonWithShoppingListItem:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath;
+
+- (NSInteger)getTagForQuantityTextFieldWithIndexPath:(NSIndexPath *)indexPath;
 
 - (NSIndexPath *)initialIndexPathWithButton:(UIButton *)button;
 
