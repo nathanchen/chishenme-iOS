@@ -14,8 +14,8 @@ const float LABEL_LEFT_MARGIN = 15.0F;
 {
     CGPoint originalCenter;
     BOOL deleteOnDragRelease;
-    ShoppingListStrikeThroughLabel *label;
-    CALayer *itemCompleteLayer;
+    
+    BOOL completeOnDragRelease;
 }
 @end
 
@@ -31,42 +31,16 @@ const float LABEL_LEFT_MARGIN = 15.0F;
     if (self = [super init])
     {
         _shoppinglistItem = shoppinglistItem;
+        
         [self configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
         [self configQuantityTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
         [self configCheckButtonWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-        [self addShoppingListStrikeThroughLabel];
+
         UIGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
         recognizer.delegate = self;
         [self addGestureRecognizer:recognizer];
-        [self addCALayer];
     }
     return self;
-}
-
-- (void)addShoppingListStrikeThroughLabel
-{
-    label = [[ShoppingListStrikeThroughLabel alloc] initWithFrame:CGRectNull];
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:16];
-    label.backgroundColor = [UIColor clearColor];
-    [self addSubview:label];
-    
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-}
-
-- (void)addCALayer
-{
-    itemCompleteLayer = [CALayer layer];
-    itemCompleteLayer.backgroundColor = [[[UIColor alloc] initWithRed:0.0 green:0.6 blue:0.0 alpha:1.0] CGColor];
-    itemCompleteLayer.hidden = YES;
-    [self.layer insertSublayer:itemCompleteLayer atIndex:0];
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    itemCompleteLayer.frame = self.bounds;
-    label.frame = CGRectMake(LABEL_LEFT_MARGIN, 0, self.bounds.size.width - LABEL_LEFT_MARGIN, self.bounds.size.height);
 }
 
 #pragma mark - Horizontal pan gesture methods
@@ -92,20 +66,25 @@ const float LABEL_LEFT_MARGIN = 15.0F;
         CGPoint translation = [recognizer translationInView:self];
         self.center = CGPointMake(originalCenter.x + translation.x, originalCenter.y);
         deleteOnDragRelease = (self.frame.origin.x < -self.frame.size.width / 2);
+        completeOnDragRelease = (self.frame.origin.x < self.frame.size.width / 2);
     }
     
     if (recognizer.state == UIGestureRecognizerStateEnded)
     {
         CGRect originalFrame = CGRectMake(0, self.frame.origin.y, self.bounds.size.width, self.bounds.size.height);
-        if (!deleteOnDragRelease)
+        if (!deleteOnDragRelease || !completeOnDragRelease)
         {
             [UIView animateWithDuration:0.2 animations:^{
                 self.frame = originalFrame;
             }];
         }
-        else
+        else if (deleteOnDragRelease)
         {
             [self.delegate shoppinglistItemDeleted:_shoppinglistItem];
+        }
+        else
+        {
+            [self.delegate shoppinglistItemCompleted:_shoppinglistItem];
         }
     }
 }

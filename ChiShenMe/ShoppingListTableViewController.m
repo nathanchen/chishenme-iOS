@@ -178,14 +178,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 - (void)checkButtonClicked:(UIButton *)sender
 {
     NSIndexPath *indexPath = [shoppinglistTableViewCell initialIndexPathWithButton:sender];
-    ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    
-    if (cell)
-    {
-        ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
-        [item toggleChecked];
-        [cell configCheckButtonWithShoppingListItem:item andIndexPath:indexPath];
-    }
+    [self shoppinglistItemCheckedAtIndexPath:indexPath];
 }
 
 #pragma mark - Logical supporting methods
@@ -255,11 +248,30 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     [tableView endUpdates];
 }
 
+- (void)shoppinglistItemCheckedAtIndexPath:(NSIndexPath *)indexPath
+{
+    ShoppingListTableViewCell *cell = (ShoppingListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    if (cell)
+    {
+        ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
+        [item toggleChecked];
+        [cell configCheckButtonWithShoppingListItem:item andIndexPath:indexPath];
+    }
+}
+
 # pragma mark - Shoppinglist View Controller Delegate
 - (void)shoppinglistItemDeleted:(ShoppingListItem *)shoppinglistItem
 {
     NSInteger index = [items indexOfObject:shoppinglistItem];
     [self tableView:self.tableView deleteRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+}
+
+- (void)shoppinglistItemCompleted:(ShoppingListItem *)shoppinglistItem
+{
+    NSInteger index = [items indexOfObject:shoppinglistItem];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self shoppinglistItemCheckedAtIndexPath:indexPath];
 }
 
 # pragma mark - For debugging use only
