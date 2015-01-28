@@ -54,6 +54,15 @@ const float LABEL_LEFT_MARGIN = 15.0F;
     return NO;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isKindOfClass:[UIButton class]] || [touch.view isKindOfClass:[UITextField class]])
+    {
+        return NO;
+    }
+    return YES;
+}
+
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateBegan)
@@ -66,13 +75,14 @@ const float LABEL_LEFT_MARGIN = 15.0F;
         CGPoint translation = [recognizer translationInView:self];
         self.center = CGPointMake(originalCenter.x + translation.x, originalCenter.y);
         deleteOnDragRelease = (self.frame.origin.x < -self.frame.size.width / 2);
-        completeOnDragRelease = (self.frame.origin.x < self.frame.size.width / 2);
+        completeOnDragRelease = (self.frame.origin.x > self.frame.size.width / 2);
     }
     
     if (recognizer.state == UIGestureRecognizerStateEnded)
     {
         CGRect originalFrame = CGRectMake(0, self.frame.origin.y, self.bounds.size.width, self.bounds.size.height);
-        if (!deleteOnDragRelease || !completeOnDragRelease)
+        
+        if (!deleteOnDragRelease)
         {
             [UIView animateWithDuration:0.2 animations:^{
                 self.frame = originalFrame;
@@ -82,7 +92,7 @@ const float LABEL_LEFT_MARGIN = 15.0F;
         {
             [self.delegate shoppinglistItemDeleted:_shoppinglistItem];
         }
-        else
+        if (completeOnDragRelease)
         {
             [self.delegate shoppinglistItemCompleted:_shoppinglistItem];
         }
