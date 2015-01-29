@@ -34,14 +34,14 @@ const float UI_CUES_WIDTH = 50.0F;
     if (self = [super init])
     {
         _shoppinglistItem = shoppinglistItem;
-        
-        [self configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-        [self configQuantityTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-        [self configCheckButtonWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
 
         UIGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
         recognizer.delegate = self;
         [self addGestureRecognizer:recognizer];
+        
+        [self configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+        [self configQuantityTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+        [self configCheckButtonWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
         
         tickLabel = [self createCueLabel];
         tickLabel.text = @"Done";
@@ -81,6 +81,7 @@ const float UI_CUES_WIDTH = 50.0F;
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
+    NSLog(@"%@", [touch.view class]);
     if ([touch.view isKindOfClass:[UIButton class]] || [touch.view isKindOfClass:[UITextField class]])
     {
         return NO;
