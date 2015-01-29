@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *subjectTextField;
 @property (weak, nonatomic) IBOutlet UITextField *quantityTextField;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIButton *checkmarkButton;
 @property (weak, nonatomic) id<ShoppingListTableViewCellDelegate> delegate;
 @property (weak, nonatomic) ShoppingListItem *shoppinglistItem;

@@ -119,12 +119,30 @@ const float LABEL_LEFT_MARGIN = 15.0F;
     // set up check button
     [self setButton:_checkmarkButton backgroundImageForShoppingListItem:shoppinglistItem];
     [self setTagForButton:_checkmarkButton withIndexPath:indexPath];
+    [self setStrikethrough:shoppinglistItem];
 }
 
 - (void)setButton:(UIButton *)button
 backgroundImageForShoppingListItem:(ShoppingListItem *)shoppinglistItem
 {
     [button setBackgroundImage:[UIImage imageNamed:shoppinglistItem.checked ? @"checkbox-checked" : @"checkbox-uncheck"] forState:UIControlStateNormal];
+}
+
+- (void)setStrikethrough:(ShoppingListItem *)shoppinglistItem
+{
+    if (shoppinglistItem.checked)
+    {
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:_subjectTextField.text];
+        [attributedString addAttribute:NSStrikethroughStyleAttributeName
+                                value:@2
+                                range:NSMakeRange(0, [_subjectTextField.text length])];
+        [attributedString addAttribute:NSStrikethroughColorAttributeName
+                                 value:[UIColor blackColor]
+                                 range:NSMakeRange(0, [_subjectTextField.text length])];
+        [attributedString addAttribute:NSForegroundColorAttributeName
+                                 value:[UIColor grayColor] range:NSMakeRange(0, [_subjectTextField.text length])];
+        _subjectTextField.attributedText = attributedString;
+    }
 }
 
 #pragma mark - Cell tag logical methods

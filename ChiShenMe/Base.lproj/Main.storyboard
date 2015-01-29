@@ -47,6 +47,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="checkmarkButton" destination="bkB-8P-lDK" id="o8B-qv-AkI"/>
+                                    <outlet property="label" destination="KYS-WP-Zkv" id="Yk7-tl-ZqH"/>
                                     <outlet property="quantityTextField" destination="gDN-xE-T68" id="bcb-ZO-9Xe"/>
                                     <outlet property="subjectTextField" destination="Ija-98-VDb" id="tDz-IM-xEv"/>
                                 </connections>
