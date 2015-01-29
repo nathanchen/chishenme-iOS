@@ -162,6 +162,24 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     return YES;
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    NSIndexPath *indexPath;
+    if (textField.tag < TAG_SUBJECT_TEXTFIELD)
+    {
+        indexPath = [shoppinglistTableViewCell initialIndexPathWithTextField:textField initialTagValue:TAG_SUBJECT_TEXTFIELD];
+    }
+    else
+    {
+        indexPath = [shoppinglistTableViewCell initialIndexPathWithTextField:textField initialTagValue:TAG_QUANTITY_TEXTFIELD];
+    }
+    if (((ShoppingListItem *)items[indexPath.row]).checked)
+    {
+        return NO;
+    }
+    return YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     _barButtonItem.title = @"Done";

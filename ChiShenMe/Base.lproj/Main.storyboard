@@ -32,7 +32,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                         </textField>
-                                        <textField clipsSubviews="YES" tag="1000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="subject" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ija-98-VDb">
+                                        <textField clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="subject" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ija-98-VDb">
                                             <rect key="frame" x="60" y="8" width="190" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="next"/>

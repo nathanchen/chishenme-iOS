@@ -24,11 +24,8 @@ const float UI_CUES_WIDTH = 50.0F;
 
 @implementation ShoppingListTableViewCell
 
-
-
 - (instancetype)initWithShoppingListItem:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath
 {
-
     _shoppinglistItem = shoppinglistItem;
     
     [self configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
@@ -52,6 +49,7 @@ const float UI_CUES_WIDTH = 50.0F;
     tickLabel.frame = CGRectMake(-UI_CUES_WIDTH - UI_CUES_MARGIN, 0, UI_CUES_WIDTH, self.bounds.size.height);
     crossLabel.frame = CGRectMake(self.bounds.size.width + UI_CUES_MARGIN, 0, UI_CUES_WIDTH, self.bounds.size.height);
     
+
     return self;
 }
 
