@@ -9,13 +9,16 @@
 #import "ShoppingListTableViewCell.h"
 
 const float LABEL_LEFT_MARGIN = 15.0F;
+const float UI_CUES_MARGIN = 10.0F;
+const float UI_CUES_WIDTH = 50.0F;
 
 @interface ShoppingListTableViewCell()
 {
     CGPoint originalCenter;
     BOOL deleteOnDragRelease;
-    
     BOOL completeOnDragRelease;
+    UILabel *tickLabel;
+    UILabel *crossLabel;
 }
 @end
 
@@ -39,8 +42,30 @@ const float LABEL_LEFT_MARGIN = 15.0F;
         UIGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
         recognizer.delegate = self;
         [self addGestureRecognizer:recognizer];
+        
+        tickLabel = [self createCueLabel];
+        tickLabel.text = @"Done";
+        tickLabel.textAlignment = NSTextAlignmentLeft;
+        [self addSubview:tickLabel];
+        
+        crossLabel = [self createCueLabel];
+        crossLabel.text = @"Delete";
+        crossLabel.textAlignment = NSTextAlignmentRight;
+        [self addSubview:crossLabel];
+        
+        tickLabel.frame = CGRectMake(-UI_CUES_WIDTH - UI_CUES_MARGIN, 0, UI_CUES_WIDTH, self.bounds.size.height);
+        crossLabel.frame = CGRectMake(self.bounds.size.width + UI_CUES_MARGIN, 0, UI_CUES_WIDTH, self.bounds.size.height);
     }
     return self;
+}
+
+- (UILabel *)createCueLabel
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectNull];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:15.0];
+    label.backgroundColor = [UIColor clearColor];
+    return label;
 }
 
 #pragma mark - Horizontal pan gesture methods
@@ -76,6 +101,12 @@ const float LABEL_LEFT_MARGIN = 15.0F;
         self.center = CGPointMake(originalCenter.x + translation.x, originalCenter.y);
         deleteOnDragRelease = (self.frame.origin.x < -self.frame.size.width / 2);
         completeOnDragRelease = (self.frame.origin.x > self.frame.size.width / 2);
+        float cueAlpha = fabsf(self.frame.origin.x) / (self.frame.size.width / 2);
+        tickLabel.alpha = cueAlpha;
+        crossLabel.alpha = cueAlpha;
+        
+        tickLabel.textColor = completeOnDragRelease ? [UIColor greenColor] : [UIColor whiteColor];
+        crossLabel.textColor = deleteOnDragRelease ? [UIColor redColor] : [UIColor whiteColor];
     }
     
     if (recognizer.state == UIGestureRecognizerStateEnded)
@@ -142,6 +173,10 @@ backgroundImageForShoppingListItem:(ShoppingListItem *)shoppinglistItem
         [attributedString addAttribute:NSForegroundColorAttributeName
                                  value:[UIColor grayColor] range:NSMakeRange(0, [_subjectTextField.text length])];
         _subjectTextField.attributedText = attributedString;
+    }
+    else
+    {
+        _subjectTextField.text = _subjectTextField.text;
     }
 }
 
