@@ -24,38 +24,34 @@ const float UI_CUES_WIDTH = 50.0F;
 
 @implementation ShoppingListTableViewCell
 
-+ (instancetype)shoppinglistTableViewCell:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath
-{
-    return [[ShoppingListTableViewCell alloc] initWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-}
+
 
 - (instancetype)initWithShoppingListItem:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath
 {
-    if (self = [super init])
-    {
-        _shoppinglistItem = shoppinglistItem;
-        
-        [self configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-        [self configQuantityTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
-        [self configCheckButtonWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
 
-        UIGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-        recognizer.delegate = self;
-        [self addGestureRecognizer:recognizer];
-        
-        tickLabel = [self createCueLabel];
-        tickLabel.text = @"Done";
-        tickLabel.textAlignment = NSTextAlignmentLeft;
-        [self addSubview:tickLabel];
-        
-        crossLabel = [self createCueLabel];
-        crossLabel.text = @"Delete";
-        crossLabel.textAlignment = NSTextAlignmentRight;
-        [self addSubview:crossLabel];
-        
-        tickLabel.frame = CGRectMake(-UI_CUES_WIDTH - UI_CUES_MARGIN, 0, UI_CUES_WIDTH, self.bounds.size.height);
-        crossLabel.frame = CGRectMake(self.bounds.size.width + UI_CUES_MARGIN, 0, UI_CUES_WIDTH, self.bounds.size.height);
-    }
+    _shoppinglistItem = shoppinglistItem;
+    
+    [self configSubjectTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+    [self configQuantityTextFieldWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+    [self configCheckButtonWithShoppingListItem:shoppinglistItem andIndexPath:indexPath];
+
+    UIGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    recognizer.delegate = self;
+    [self addGestureRecognizer:recognizer];
+    
+    tickLabel = [self createCueLabel];
+    tickLabel.text = @"Done";
+    tickLabel.textAlignment = NSTextAlignmentLeft;
+    [self addSubview:tickLabel];
+    
+    crossLabel = [self createCueLabel];
+    crossLabel.text = @"Delete";
+    crossLabel.textAlignment = NSTextAlignmentRight;
+    [self addSubview:crossLabel];
+    
+    tickLabel.frame = CGRectMake(-UI_CUES_WIDTH - UI_CUES_MARGIN, 0, UI_CUES_WIDTH, self.bounds.size.height);
+    crossLabel.frame = CGRectMake(self.bounds.size.width + UI_CUES_MARGIN, 0, UI_CUES_WIDTH, self.bounds.size.height);
+    
     return self;
 }
 
@@ -77,15 +73,6 @@ const float UI_CUES_WIDTH = 50.0F;
         return YES;
     }
     return NO;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    if ([touch.view isKindOfClass:[UIButton class]] || [touch.view isKindOfClass:[UITextField class]])
-    {
-        return NO;
-    }
-    return YES;
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer

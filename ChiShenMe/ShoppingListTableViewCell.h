@@ -33,8 +33,6 @@
 @property (weak, nonatomic) id<ShoppingListTableViewCellDelegate> delegate;
 @property (weak, nonatomic) ShoppingListItem *shoppinglistItem;
 
-+ (instancetype)shoppinglistTableViewCell:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath;
-
 - (instancetype)initWithShoppingListItem:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath;
 
 - (void)configSubjectTextFieldWithShoppingListItem:(ShoppingListItem *)shoppinglistItem andIndexPath:(NSIndexPath *)indexPath;
