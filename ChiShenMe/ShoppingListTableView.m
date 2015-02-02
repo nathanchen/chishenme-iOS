@@ -12,7 +12,6 @@ const float SHOPPINGLIST_ROW_HEIGHT = 50.0F;
 
 @implementation ShoppingListTableView
 {
-    UIScrollView *scrollView;
     NSMutableSet *reuseCells;
     Class _cellClass;
 }
@@ -22,10 +21,10 @@ const float SHOPPINGLIST_ROW_HEIGHT = 50.0F;
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        scrollView = [[UIScrollView alloc] initWithFrame:CGRectNull];
-        [self addSubview:scrollView];
-        scrollView.backgroundColor = [UIColor clearColor];
-        scrollView.delegate = self;
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectNull];
+        [self addSubview:_scrollView];
+        _scrollView.backgroundColor = [UIColor clearColor];
+        _scrollView.delegate = self;
         self.backgroundColor = [UIColor clearColor];
         
         reuseCells = [[NSMutableSet alloc] init];
@@ -56,35 +55,35 @@ const float SHOPPINGLIST_ROW_HEIGHT = 50.0F;
 
 - (void)layoutSubviews
 {
-    scrollView.frame = self.frame;
+    _scrollView.frame = self.frame;
     [self refreshView];
 }
 
 - (void)refreshView
 {
-    if (CGRectIsNull(scrollView.frame))
+    if (CGRectIsNull(_scrollView.frame))
     {
         return;
     }
     
-    scrollView.contentSize = CGSizeMake(scrollView.bounds.size.width, [_shoppingListItemTableViewDataSource numberOfRows] * SHOPPINGLIST_ROW_HEIGHT);
+    _scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width, [_shoppingListItemTableViewDataSource numberOfRows] * SHOPPINGLIST_ROW_HEIGHT);
     
     for (UIView *cell in [self cellSubviews])
     {
         // is the cell off the top of the scrollview?
-        if (cell.frame.origin.y + cell.frame.size.height < scrollView.contentOffset.y)
+        if (cell.frame.origin.y + cell.frame.size.height < _scrollView.contentOffset.y)
         {
             [self recycleCell:cell];
         }
         // is the cell off the bottom of the subview?
-        if (cell.frame.origin.y > scrollView.contentOffset.y + scrollView.frame.size.height)
+        if (cell.frame.origin.y > _scrollView.contentOffset.y + _scrollView.frame.size.height)
         {
             [self recycleCell:cell];
         }
     }
 
-    int firstVisibleIndex = MAX(0, floor(scrollView.contentOffset.y / SHOPPINGLIST_ROW_HEIGHT));
-    int lastVisibleIndex = MIN([_shoppingListItemTableViewDataSource numberOfRows], firstVisibleIndex + 1 + ceil(scrollView.frame.size.height / SHOPPINGLIST_ROW_HEIGHT));
+    int firstVisibleIndex = MAX(0, floor(_scrollView.contentOffset.y / SHOPPINGLIST_ROW_HEIGHT));
+    int lastVisibleIndex = MIN([_shoppingListItemTableViewDataSource numberOfRows], firstVisibleIndex + 1 + ceil(_scrollView.frame.size.height / SHOPPINGLIST_ROW_HEIGHT));
     
     for (int row = firstVisibleIndex; row < lastVisibleIndex; row ++)
     {
@@ -93,9 +92,9 @@ const float SHOPPINGLIST_ROW_HEIGHT = 50.0F;
         {
             UIView *cell = [_shoppingListItemTableViewDataSource cellForRow:row];
             float topEdgeForRow = row * SHOPPINGLIST_ROW_HEIGHT;
-            CGRect frame = CGRectMake(0, topEdgeForRow, scrollView.frame.size.width, SHOPPINGLIST_ROW_HEIGHT);
+            CGRect frame = CGRectMake(0, topEdgeForRow, _scrollView.frame.size.width, SHOPPINGLIST_ROW_HEIGHT);
             cell.frame = frame;
-            [scrollView insertSubview:cell atIndex:0];            
+            [_scrollView insertSubview:cell atIndex:0];
         }
     }
 }
@@ -122,7 +121,7 @@ const float SHOPPINGLIST_ROW_HEIGHT = 50.0F;
 - (NSArray *)cellSubviews
 {
     NSMutableArray *cells = [[NSMutableArray alloc] init];
-    for (UIView *subView in scrollView.subviews)
+    for (UIView *subView in _scrollView.subviews)
     {
         if ([subView isKindOfClass:[ShoppingListItemTableViewCell class]])
         {

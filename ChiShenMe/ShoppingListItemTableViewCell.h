@@ -14,7 +14,7 @@
 #define kTAG_QUANTITY_TEXTFIELD 3000
 #define kTAG_BARBUTTONITEM_BUTTON 4000
 
-@interface ShoppingListItemTableViewCell : UITableViewCell
+@interface ShoppingListItemTableViewCell : UITableViewCell <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *subjectTextField;
 @property (strong, nonatomic) IBOutlet UITextField *quantityTextField;

@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) id<ShoppingListItemTableViewDataSource> shoppingListItemTableViewDataSource;
 
+@property (strong, nonatomic) UIScrollView *scrollView;
+
 - (UIView *)dequeueReusableCell;
 
 //- (UIView *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;

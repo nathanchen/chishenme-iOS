@@ -9,10 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "ShoppingListItem.h"
 
+@class ShoppingListItemTableViewCell;
+
 @protocol ShoppingListItemTableViewCellDelegate <NSObject>
 
 - (void)shoppinglistItemDeleted:(ShoppingListItem *)shoppinglistItem;
 
 - (void)shoppinglistItemCompleted:(ShoppingListItem *)shoppinglistItem;
+
+- (void)cellDidBeginEditing:(ShoppingListItemTableViewCell *)editingCell;
+
+- (void)cellDidEndEditing:(ShoppingListItemTableViewCell *)editingCell;
 
 @end

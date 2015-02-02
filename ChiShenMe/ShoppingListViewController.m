@@ -18,6 +18,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 {
     NSMutableArray *items;
     ShoppingListItem *row0item, *row1item, *row2item, *row3item, *row4item;
+    float editingOffset;
 }
 
 - (void)viewDidLoad {
@@ -86,7 +87,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     {
         if (startAnimating)
         {
-            [UIView animateWithDuration:0.3
+            [UIView animateWithDuration:0.5
                                   delay:delay
                                 options:UIViewAnimationOptionCurveEaseOut
                              animations:^{
@@ -97,7 +98,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
                                      [self.tableView reloadData];
                                  }
             }];
-            delay += 0.03;
+            delay += 0.1;
         }
         
         if (cell.shoppinglistItem == shoppinglistItem)
@@ -108,26 +109,50 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     }
 }
 
-//- (void)shoppinglistItemCompleted:(ShoppingListItem *)shoppinglistItem
-//{
-//    NSInteger index = [items indexOfObject:shoppinglistItem];
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-//    [self shoppinglistItemCheckedAtIndexPath:indexPath];
-//}
+- (void)cellDidBeginEditing:(ShoppingListItemTableViewCell *)editingCell
+{
+    editingOffset = _tableView.scrollView.contentOffset.y - editingCell.frame.origin.y;
+    for (ShoppingListItemTableViewCell *cell in [_tableView visibleCells])
+    {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             cell.frame = CGRectOffset(cell.frame, 0, editingOffset);
+                             if (cell != editingCell)
+                             {
+                                 cell.alpha = 0.3;
+                             }
+                         }];
+    }
+}
 
-//
-//- (void)shoppinglistItemCheckedAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    ShoppingListItemTableViewCell *cell = (ShoppingListItemTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-//    
-//    if (cell)
-//    {
-//        ShoppingListItem *item = (ShoppingListItem *)items[indexPath.row];
-//        [item toggleChecked];
-//        [cell setStrikethrough];
-//    }
-//}
-//
+- (void)cellDidEndEditing:(ShoppingListItemTableViewCell *)editingCell
+{
+    for (ShoppingListItemTableViewCell *cell in [_tableView visibleCells])
+    {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             cell.frame = CGRectOffset(cell.frame, 0, -editingOffset);
+                             if (cell != editingCell)
+                             {
+                                 cell.alpha = 1;
+                             }
+        
+        }];
+    }
+}
+
+- (void)shoppinglistItemCompleted:(ShoppingListItem *)shoppinglistItem
+{
+    shoppinglistItem.checked = !shoppinglistItem.checked;
+    for (ShoppingListItemTableViewCell *cell in _tableView.visibleCells)
+    {
+        if (cell.shoppinglistItem == shoppinglistItem)
+        {
+            [cell setStrikethrough];
+        }
+    }
+}
+
 #pragma mark - ShoppingListTableViewDataSource methods
 - (NSInteger)numberOfRows
 {

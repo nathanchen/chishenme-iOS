@@ -89,6 +89,7 @@ const float UI_CUES_WIDTH = 50.0F;
     [_xLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [self addSubview:_xLabel];
 }
+
 - (void)configSubjectTextField
 {
     CGSize size = self.frame.size;
@@ -99,6 +100,8 @@ const float UI_CUES_WIDTH = 50.0F;
     [_subjectTextField setTextColor:[UIColor orangeColor]];
     [_subjectTextField setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [self addSubview:_subjectTextField];
+    
+    _subjectTextField.delegate = self;
 }
 
 - (void)configQuantityTextField
@@ -111,6 +114,8 @@ const float UI_CUES_WIDTH = 50.0F;
     [_quantityTextField setTextColor:[UIColor orangeColor]];
     [_quantityTextField setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [self addSubview:_quantityTextField];
+    
+    _quantityTextField.delegate = self;
 }
 
 - (void)setStrikethrough
@@ -200,6 +205,51 @@ const float UI_CUES_WIDTH = 50.0F;
 {
     [super layoutSubviews];
     gradientLayer.frame = self.bounds;
+}
+
+#pragma mark - TextFieldsDelegate methods
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    if (textField == _subjectTextField)
+    {
+        [_quantityTextField becomeFirstResponder];
+    }
+        
+    return NO;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return !_shoppinglistItem.checked;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self.delegate cellDidEndEditing:self];
+    if (textField == _subjectTextField)
+    {
+        _shoppinglistItem.subject = _subjectTextField.text;
+    }
+    else
+    {
+        _shoppinglistItem.quantity = [_quantityTextField.text integerValue];
+    }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self.delegate cellDidBeginEditing:self];
+}
+
+- (BOOL)isSubjectTextField:(UITextField *)textField
+{
+    if (textField.tag < kTAG_QUANTITY_TEXTFIELD)
+    {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - Cell tag logical methods
