@@ -17,6 +17,22 @@ const float SHOPPINGLIST_ROW_HEIGHT = 50.0F;
     Class _cellClass;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        scrollView = [[UIScrollView alloc] initWithFrame:CGRectNull];
+        [self addSubview:scrollView];
+        scrollView.backgroundColor = [UIColor clearColor];
+        scrollView.delegate = self;
+        self.backgroundColor = [UIColor clearColor];
+        
+        reuseCells = [[NSMutableSet alloc] init];
+    }
+    return self;
+}
+
 - (void)registerClassForCells:(Class)cellClass
 {
     _cellClass = cellClass;
@@ -36,21 +52,6 @@ const float SHOPPINGLIST_ROW_HEIGHT = 50.0F;
         cell = [[_cellClass alloc] init];
     }
     return cell;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self)
-    {
-        scrollView = [[UIScrollView alloc] initWithFrame:CGRectNull];
-        [self addSubview:scrollView];
-        scrollView.backgroundColor = [UIColor clearColor];
-        self.backgroundColor = [UIColor clearColor];
-        
-        reuseCells = [[NSMutableSet alloc] init];
-    }
-    return self;
 }
 
 - (void)layoutSubviews
@@ -131,10 +132,49 @@ const float SHOPPINGLIST_ROW_HEIGHT = 50.0F;
     return cells;
 }
 
+- (NSArray *)visibleCells
+{
+    NSMutableArray *cells = [[NSMutableArray alloc] init];
+    for (UIView *subView in [self cellSubviews])
+    {
+        [cells addObject:subView];
+    }
+    NSArray *sortedCells = [cells sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        UIView *view1 = (UIView *)obj1;
+        UIView *view2 = (UIView *)obj2;
+        float result = view2.frame.origin.y - view1.frame.origin.y;
+        if (result > 0)
+        {
+            return NSOrderedAscending;
+        }
+        else if (result < 0)
+        {
+            return NSOrderedDescending;
+        }
+        else
+        {
+            return NSOrderedSame;
+        }
+    }];
+    return sortedCells;
+}
+
+- (void)reloadData
+{
+    [[self cellSubviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self refreshView];
+}
+
 #pragma mark - property setters
 - (void)setDataSource:(id<ShoppingListItemTableViewDataSource>)shoppingListItemTableViewDataSource
 {
     _shoppingListItemTableViewDataSource = shoppingListItemTableViewDataSource;
+    [self refreshView];
+}
+
+#pragma mark - UIScrollViewDelegate handlers
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
     [self refreshView];
 }
 @end

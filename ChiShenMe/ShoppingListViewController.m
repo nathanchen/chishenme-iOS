@@ -73,29 +73,48 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 }
 
 #pragma mark - ShoppingListItemTableViewCell Delegate methods
-//- (void)shoppinglistItemDeleted:(ShoppingListItem *)shoppinglistItem
-//{
-//    NSInteger index = [items indexOfObject:shoppinglistItem];
-//    [self tableView:self.tableView deleteRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-//}
-//
+- (void)shoppinglistItemDeleted:(ShoppingListItem *)shoppinglistItem
+{
+    float delay = 0.0;
+    
+    [items removeObject:shoppinglistItem];
+    NSArray *visibleCells = [_tableView visibleCells];
+    UIView *lastView = [visibleCells lastObject];
+    BOOL startAnimating = false;
+    
+    for (ShoppingListItemTableViewCell *cell in visibleCells)
+    {
+        if (startAnimating)
+        {
+            [UIView animateWithDuration:0.3
+                                  delay:delay
+                                options:UIViewAnimationOptionCurveEaseOut
+                             animations:^{
+                                 cell.frame = CGRectOffset(cell.frame, 0.0f, -cell.frame.size.height);
+                             }
+                             completion:^(BOOL finished) {
+                                 if (cell == lastView) {
+                                     [self.tableView reloadData];
+                                 }
+            }];
+            delay += 0.03;
+        }
+        
+        if (cell.shoppinglistItem == shoppinglistItem)
+        {
+            startAnimating = true;
+            cell.hidden = YES;
+        }
+    }
+}
+
 //- (void)shoppinglistItemCompleted:(ShoppingListItem *)shoppinglistItem
 //{
 //    NSInteger index = [items indexOfObject:shoppinglistItem];
 //    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
 //    [self shoppinglistItemCheckedAtIndexPath:indexPath];
 //}
-//
-//- (void)tableView:(UITableView *)tableView deleteRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [tableView beginUpdates];
-//    [items removeObjectAtIndex:indexPath.row];
-//    
-//    NSMutableArray *indexPaths = [NSMutableArray arrayWithObjects:indexPath, nil];
-//    [self.tableView deleteRowsAtIndexPaths:indexPaths
-//                          withRowAnimation:UITableViewRowAnimationAutomatic];
-//    [tableView endUpdates];
-//}
+
 //
 //- (void)shoppinglistItemCheckedAtIndexPath:(NSIndexPath *)indexPath
 //{

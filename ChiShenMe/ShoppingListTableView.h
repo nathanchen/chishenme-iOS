@@ -10,7 +10,7 @@
 #import "ShoppingListItemTableViewDataSource.h"
 #import "ShoppingListItemTableViewCell.h"
 
-@interface ShoppingListTableView : UIView
+@interface ShoppingListTableView : UIView <UIScrollViewDelegate>
 
 @property (weak, nonatomic) id<ShoppingListItemTableViewDataSource> shoppingListItemTableViewDataSource;
 
@@ -20,6 +20,8 @@
 
 - (void)registerClassForCells:(Class)cellClass;
 
+- (NSArray *)visibleCells;
 
+- (void)reloadData;
 
 @end
