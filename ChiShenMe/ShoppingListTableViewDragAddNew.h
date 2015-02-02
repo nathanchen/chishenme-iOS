@@ -8,6 +8,8 @@
 
 #import "ShoppingListTableView.h"
 
-@interface ShoppingListTableViewDragAddNew : ShoppingListTableView
+@interface ShoppingListTableViewDragAddNew : NSObject<UIScrollViewDelegate>
+
+- (id)initWithTableView:(ShoppingListTableView *)shoppinglistTableView;
 
 @end

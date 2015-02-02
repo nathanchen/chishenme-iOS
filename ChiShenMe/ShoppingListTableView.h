@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 
+@property (nonatomic, weak) id<UIScrollViewDelegate> scrollViewDelegate;
+
 - (UIView *)dequeueReusableCell;
 
 //- (UIView *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;

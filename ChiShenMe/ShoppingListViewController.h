@@ -13,6 +13,6 @@
 
 @interface ShoppingListViewController : UIViewController <ShoppingListItemTableViewDataSource, ShoppingListItemTableViewCellDelegate>
 
-@property (strong, nonatomic) IBOutlet ShoppingListTableViewDragAddNew *tableView;
+@property (strong, nonatomic) IBOutlet ShoppingListTableView *tableView;
 
 @end

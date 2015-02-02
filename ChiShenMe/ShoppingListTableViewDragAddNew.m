@@ -10,17 +10,20 @@
 
 @implementation ShoppingListTableViewDragAddNew
 {
+    ShoppingListTableView *tableView;
     ShoppingListItemTableViewCell *placeholderCell;
     BOOL pullDownInProgress;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (id)initWithTableView:(ShoppingListTableView *)shoppinglistTableView
 {
-    self = [super initWithCoder:aDecoder];
+    self = [super init];
     if (self)
     {
         placeholderCell = [[ShoppingListItemTableViewCell alloc] init];
         placeholderCell.backgroundColor = [UIColor redColor];
+        tableView = shoppinglistTableView;
+        tableView.scrollViewDelegate = self;
     }
     return self;
 }
@@ -31,19 +34,19 @@
     pullDownInProgress = (scrollView.contentOffset.y <= 0.0f);
     if (pullDownInProgress)
     {
-        [self insertSubview:placeholderCell atIndex:0];
+        [tableView insertSubview:placeholderCell atIndex:0];
     }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [super scrollViewDidScroll:scrollView];
+    [tableView scrollViewDidScroll:scrollView];
     
-    if (pullDownInProgress && self.scrollView.contentOffset.y <= 0.0f)
+    if (pullDownInProgress && tableView.scrollView.contentOffset.y <= 0.0f)
     {
-        placeholderCell.frame = CGRectMake(0, -self.scrollView.contentOffset.y - SHOPPINGLIST_ROW_HEIGHT, self.frame.size.width, SHOPPINGLIST_ROW_HEIGHT);
-        placeholderCell.subjectTextField.text = (-self.scrollView.contentOffset.y > SHOPPINGLIST_ROW_HEIGHT ? @"Release to Add Item" : @"Pull to Add Item");
-        placeholderCell.alpha = MIN(1.0f, -self.scrollView.contentOffset.y / SHOPPINGLIST_ROW_HEIGHT);
+        placeholderCell.frame = CGRectMake(0, -tableView.scrollView.contentOffset.y - SHOPPINGLIST_ROW_HEIGHT, tableView.frame.size.width, SHOPPINGLIST_ROW_HEIGHT);
+        placeholderCell.subjectTextField.text = (-tableView.scrollView.contentOffset.y > SHOPPINGLIST_ROW_HEIGHT ? @"Release to Add Item" : @"Pull to Add Item");
+        placeholderCell.alpha = MIN(1.0f, -tableView.scrollView.contentOffset.y / SHOPPINGLIST_ROW_HEIGHT);
     }
     else
     {
@@ -53,9 +56,9 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (pullDownInProgress && -self.scrollView.contentOffset.y > SHOPPINGLIST_ROW_HEIGHT)
+    if (pullDownInProgress && -tableView.scrollView.contentOffset.y > SHOPPINGLIST_ROW_HEIGHT)
     {
-        [self.shoppingListItemTableViewDataSource itemAdded];
+        [tableView.shoppingListItemTableViewDataSource itemAdded];
     }
     pullDownInProgress = NO;
     [placeholderCell removeFromSuperview];

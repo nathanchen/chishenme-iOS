@@ -170,6 +170,25 @@
     [self refreshView];
 }
 
+#pragma mark - UIScrollViewDelegate forwarding
+- (BOOL)respondsToSelector:(SEL)aSelector
+{
+    if ([self.scrollViewDelegate respondsToSelector:aSelector])
+    {
+        return YES;
+    }
+    return [super respondsToSelector:aSelector];
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector
+{
+    if ([self.scrollViewDelegate respondsToSelector:aSelector])
+    {
+        return self.scrollViewDelegate;
+    }
+    return [super forwardingTargetForSelector:aSelector];
+}
+
 #pragma mark - UIScrollViewDelegate handlers
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

@@ -256,13 +256,13 @@
                         <viewControllerLayoutGuide type="top" id="x0W-hS-8rI"/>
                         <viewControllerLayoutGuide type="bottom" id="JOk-8w-RUE"/>
                     </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" id="LQj-sC-epb" customClass="ShoppingListTableViewDragAddNew">
+                    <view key="view" autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" id="LQj-sC-epb" customClass="ShoppingListTableView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="LQj-sC-epb" id="oq0-g8-tex"/>
+                        <outlet property="tableView" destination="LQj-sC-epb" id="esU-1t-C8H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mda-ux-kG2" userLabel="First Responder" sceneMemberID="firstResponder"/>

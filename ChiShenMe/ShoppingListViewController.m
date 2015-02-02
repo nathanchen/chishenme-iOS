@@ -19,6 +19,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     NSMutableArray *items;
     ShoppingListItem *row0item, *row1item, *row2item, *row3item, *row4item;
     float editingOffset;
+    ShoppingListTableViewDragAddNew *dragAddNewView;
 }
 
 - (void)viewDidLoad {
@@ -66,6 +67,8 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     self.tableView.shoppingListItemTableViewDataSource = self;
     self.tableView.backgroundColor = [UIColor blackColor];
     [self.tableView registerClassForCells:[ShoppingListItemTableViewCell class]];
+    
+    dragAddNewView = [[ShoppingListTableViewDragAddNew alloc] initWithTableView:_tableView];
 }
 
 - (void)didReceiveMemoryWarning {
