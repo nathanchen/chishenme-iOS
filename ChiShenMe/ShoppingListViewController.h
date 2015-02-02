@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ShoppingListItem.h"
 #import "ShoppingListItemTableViewCell.h"
-#import "ShoppingListTableView.h"
+#import "ShoppingListTableViewDragAddNew.h"
 
 @interface ShoppingListViewController : UIViewController <ShoppingListItemTableViewDataSource, ShoppingListItemTableViewCellDelegate>
 
-@property (strong, nonatomic) IBOutlet ShoppingListTableView *tableView;
+@property (strong, nonatomic) IBOutlet ShoppingListTableViewDragAddNew *tableView;
 
 @end

@@ -172,5 +172,22 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     return cell;
 }
 
+- (void)itemAdded
+{
+    ShoppingListItem *shoppinglistItem = [[ShoppingListItem alloc] init];
+    [items insertObject:shoppinglistItem atIndex:0];
+    [_tableView reloadData];
+    ShoppingListItemTableViewCell *editingCell;
+    for (ShoppingListItemTableViewCell *cell in _tableView.visibleCells)
+    {
+        if (cell.shoppinglistItem == shoppinglistItem)
+        {
+            editingCell = cell;
+            break;
+        }
+    }
+    [editingCell.subjectTextField becomeFirstResponder];
+}
+
 
 @end

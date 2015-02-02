@@ -14,4 +14,6 @@
 
 - (UIView *)cellForRow:(NSInteger)row;
 
+- (void)itemAdded;
+
 @end

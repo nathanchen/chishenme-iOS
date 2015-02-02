@@ -256,7 +256,7 @@
                         <viewControllerLayoutGuide type="top" id="x0W-hS-8rI"/>
                         <viewControllerLayoutGuide type="bottom" id="JOk-8w-RUE"/>
                     </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" id="LQj-sC-epb" customClass="ShoppingListTableView">
+                    <view key="view" autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" id="LQj-sC-epb" customClass="ShoppingListTableViewDragAddNew">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

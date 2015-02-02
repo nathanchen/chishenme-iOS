@@ -8,12 +8,11 @@
 
 #import "ShoppingListTableView.h"
 
-const float SHOPPINGLIST_ROW_HEIGHT = 50.0F;
-
 @implementation ShoppingListTableView
 {
     NSMutableSet *reuseCells;
     Class _cellClass;
+    UITapGestureRecognizer *tapGestureRecognizer;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder

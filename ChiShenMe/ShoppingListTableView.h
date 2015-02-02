@@ -10,6 +10,8 @@
 #import "ShoppingListItemTableViewDataSource.h"
 #import "ShoppingListItemTableViewCell.h"
 
+#define SHOPPINGLIST_ROW_HEIGHT 50.0F
+
 @interface ShoppingListTableView : UIView <UIScrollViewDelegate>
 
 @property (weak, nonatomic) id<ShoppingListItemTableViewDataSource> shoppingListItemTableViewDataSource;
