@@ -1,84 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mYq-Dm-Sh2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="XUJ-CX-KtE">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Shoppinglists-->
-        <scene sceneID="S9M-IY-wsC">
-            <objects>
-                <tableViewController id="WMC-ND-3W1" customClass="ShoppingListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kk8-N9-SND">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paper head" id="E0A-vK-JOx">
-                            <rect key="frame" x="0.0" y="64" width="320" height="7"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <prototypes>
-                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingListItem" id="Tmj-B0-i6v" customClass="ShoppingListTableViewCell">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tmj-B0-i6v" id="muo-Ti-DFr">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="× " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYS-WP-Zkv">
-                                            <rect key="frame" x="259" y="12" width="16" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField clipsSubviews="YES" tag="3000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDN-xE-T68">
-                                            <rect key="frame" x="279" y="8" width="33" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
-                                        </textField>
-                                        <textField clipsSubviews="YES" tag="1000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="subject" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ija-98-VDb">
-                                            <rect key="frame" x="60" y="8" width="190" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        </textField>
-                                        <button opaque="NO" tag="2000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkB-8P-lDK">
-                                            <rect key="frame" x="27" y="10" width="25" height="25"/>
-                                            <state key="normal" backgroundImage="checkbox-uncheck">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="checkmarkButton" destination="bkB-8P-lDK" id="o8B-qv-AkI"/>
-                                    <outlet property="label" destination="KYS-WP-Zkv" id="Yk7-tl-ZqH"/>
-                                    <outlet property="quantityTextField" destination="gDN-xE-T68" id="bcb-ZO-9Xe"/>
-                                    <outlet property="subjectTextField" destination="Ija-98-VDb" id="tDz-IM-xEv"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="WMC-ND-3W1" id="NQU-iy-Uwn"/>
-                            <outlet property="delegate" destination="WMC-ND-3W1" id="V3q-Xl-iGj"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Shoppinglists" id="2bG-fK-hVb">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="xKu-mV-2o3">
-                            <connections>
-                                <action selector="debugShowItems" destination="WMC-ND-3W1" id="eIf-F1-3wG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="SYN-4D-loS">
-                            <connections>
-                                <action selector="barButtonPressed" destination="WMC-ND-3W1" id="hPv-Pj-t1H"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="barButtonItem" destination="SYN-4D-loS" id="7Zs-NK-QRa"/>
-                        <outlet property="debugButton" destination="xKu-mV-2o3" id="TTb-lA-C11"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RYo-Lt-JxC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="186" y="-188"/>
-        </scene>
         <!--Login View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -323,29 +248,28 @@
             </objects>
             <point key="canvasLocation" x="2183" y="195"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="eLB-yF-D0F">
+        <!--Shopping List View Controller-->
+        <scene sceneID="UKS-VA-IDQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mYq-Dm-Sh2" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="K2c-c0-SJs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="XUJ-CX-KtE" customClass="ShoppingListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x0W-hS-8rI"/>
+                        <viewControllerLayoutGuide type="bottom" id="JOk-8w-RUE"/>
+                    </layoutGuides>
+                    <view key="view" autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" id="LQj-sC-epb" customClass="ShoppingListTableView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <connections>
-                        <segue destination="WMC-ND-3W1" kind="relationship" relationship="rootViewController" id="xGF-Hl-tip"/>
+                        <outlet property="tableView" destination="LQj-sC-epb" id="oq0-g8-tex"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ay2-zT-aNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mda-ux-kG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-361" y="-188"/>
+            <point key="canvasLocation" x="-356" y="-878"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="checkbox-uncheck" width="25" height="25"/>
-        <image name="paper head" width="320" height="7"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

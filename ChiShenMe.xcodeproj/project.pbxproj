@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1EE01062D7C22F645617016B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4214831C0247D0CD86190F8F /* libPods.a */; };
-		C526D7121A7636C10029940C /* ShoppingListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C526D7111A7636C10029940C /* ShoppingListTableViewCell.m */; };
 		C526D7151A7734950029940C /* Numbers.m in Sources */ = {isa = PBXBuildFile; fileRef = C526D7141A7734950029940C /* Numbers.m */; };
+		C540B3AA1A7B6C3000A568DE /* ShoppingListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C540B3A91A7B6C3000A568DE /* ShoppingListTableView.m */; };
 		C55F33691A318D7C00EEE2E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33681A318D7C00EEE2E2 /* main.m */; };
 		C55F336C1A318D7C00EEE2E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F336B1A318D7C00EEE2E2 /* AppDelegate.m */; };
 		C55F336F1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C55F336D1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld */; };
@@ -17,7 +17,6 @@
 		C55F33751A318D7C00EEE2E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55F33731A318D7C00EEE2E2 /* Main.storyboard */; };
 		C55F33771A318D7C00EEE2E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C55F33761A318D7C00EEE2E2 /* Images.xcassets */; };
 		C55F33831A318D7C00EEE2E2 /* ChiShenMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */; };
-		C57AC47E1A663E0300383CF0 /* ShoppingListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57AC47D1A663E0300383CF0 /* ShoppingListTableViewController.m */; };
 		C57AC4811A66639C00383CF0 /* ShoppingListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C57AC4801A66639C00383CF0 /* ShoppingListItem.m */; };
 		C595940D1A4BE390000B6DF3 /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = C595940C1A4BE390000B6DF3 /* Strings.m */; };
 		C59594101A4BE51E000B6DF3 /* Times.m in Sources */ = {isa = PBXBuildFile; fileRef = C595940F1A4BE51E000B6DF3 /* Times.m */; };
@@ -29,7 +28,8 @@
 		C595942A1A4BF382000B6DF3 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594261A4BF382000B6DF3 /* UIView+Toast.m */; };
 		C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C595942D1A5105ED000B6DF3 /* SignUpViewController.m */; };
 		C59DB2FD1A6F801300C9040E /* refactor.txt in Resources */ = {isa = PBXBuildFile; fileRef = C59DB2FC1A6F801300C9040E /* refactor.txt */; };
-		C5A23AB81A72800B005F349D /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A23AB71A72800B005F349D /* ItemDetailViewController.m */; };
+		C5B09B031A7B497000759049 /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B09B021A7B497000759049 /* ShoppingListViewController.m */; };
+		C5B09B061A7B4DF100759049 /* ShoppingListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B09B051A7B4DF100759049 /* ShoppingListItemTableViewCell.m */; };
 		C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */; };
 		C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */; };
 		C5C9C3B91A4AA832003522D0 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = C5C9C3B81A4AA832003522D0 /* PodFile */; };
@@ -49,10 +49,11 @@
 		4214831C0247D0CD86190F8F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB3A890E39B6BE20A74D66C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		804250A20B3EC86E949C41AA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		C526D7101A7636C10029940C /* ShoppingListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListTableViewCell.h; sourceTree = "<group>"; };
-		C526D7111A7636C10029940C /* ShoppingListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListTableViewCell.m; sourceTree = "<group>"; };
 		C526D7131A7734950029940C /* Numbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Numbers.h; sourceTree = "<group>"; };
 		C526D7141A7734950029940C /* Numbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Numbers.m; sourceTree = "<group>"; };
+		C540B3A81A7B6C3000A568DE /* ShoppingListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListTableView.h; sourceTree = "<group>"; };
+		C540B3A91A7B6C3000A568DE /* ShoppingListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListTableView.m; sourceTree = "<group>"; };
+		C540B3AB1A7B6CB600A568DE /* ShoppingListItemTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItemTableViewDataSource.h; sourceTree = "<group>"; };
 		C55F33631A318D7C00EEE2E2 /* ChiShenMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChiShenMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55F33671A318D7C00EEE2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55F33681A318D7C00EEE2E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,8 +67,6 @@
 		C55F337C1A318D7C00EEE2E2 /* ChiShenMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChiShenMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55F33811A318D7C00EEE2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChiShenMeTests.m; sourceTree = "<group>"; };
-		C57AC47C1A663E0300383CF0 /* ShoppingListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListTableViewController.h; sourceTree = "<group>"; };
-		C57AC47D1A663E0300383CF0 /* ShoppingListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListTableViewController.m; sourceTree = "<group>"; };
 		C57AC47F1A66639C00383CF0 /* ShoppingListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItem.h; sourceTree = "<group>"; };
 		C57AC4801A66639C00383CF0 /* ShoppingListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListItem.m; sourceTree = "<group>"; };
 		C595940B1A4BE390000B6DF3 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Strings.h; path = Utils/Strings.h; sourceTree = "<group>"; };
@@ -90,8 +89,11 @@
 		C595942C1A5105ED000B6DF3 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		C595942D1A5105ED000B6DF3 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		C59DB2FC1A6F801300C9040E /* refactor.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = refactor.txt; sourceTree = "<group>"; };
-		C5A23AB61A72800B005F349D /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
-		C5A23AB71A72800B005F349D /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
+		C5B09B011A7B497000759049 /* ShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListViewController.h; sourceTree = "<group>"; };
+		C5B09B021A7B497000759049 /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
+		C5B09B041A7B4DF100759049 /* ShoppingListItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItemTableViewCell.h; sourceTree = "<group>"; };
+		C5B09B051A7B4DF100759049 /* ShoppingListItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListItemTableViewCell.m; sourceTree = "<group>"; };
+		C5B09B071A7B54F600759049 /* ShoppingListItemTableViewCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItemTableViewCellDelegate.h; sourceTree = "<group>"; };
 		C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C5C9C3B51A4A8CB0003522D0 /* ChishenmeFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChishenmeFetcher.h; path = ChishenmeFetcher/ChishenmeFetcher.h; sourceTree = "<group>"; };
@@ -198,14 +200,16 @@
 		C57AC47B1A663DC800383CF0 /* ShoppingList */ = {
 			isa = PBXGroup;
 			children = (
-				C5A23AB61A72800B005F349D /* ItemDetailViewController.h */,
-				C5A23AB71A72800B005F349D /* ItemDetailViewController.m */,
-				C57AC47C1A663E0300383CF0 /* ShoppingListTableViewController.h */,
-				C57AC47D1A663E0300383CF0 /* ShoppingListTableViewController.m */,
 				C57AC47F1A66639C00383CF0 /* ShoppingListItem.h */,
 				C57AC4801A66639C00383CF0 /* ShoppingListItem.m */,
-				C526D7101A7636C10029940C /* ShoppingListTableViewCell.h */,
-				C526D7111A7636C10029940C /* ShoppingListTableViewCell.m */,
+				C5B09B011A7B497000759049 /* ShoppingListViewController.h */,
+				C5B09B021A7B497000759049 /* ShoppingListViewController.m */,
+				C5B09B041A7B4DF100759049 /* ShoppingListItemTableViewCell.h */,
+				C5B09B051A7B4DF100759049 /* ShoppingListItemTableViewCell.m */,
+				C540B3A81A7B6C3000A568DE /* ShoppingListTableView.h */,
+				C540B3A91A7B6C3000A568DE /* ShoppingListTableView.m */,
+				C5B09B071A7B54F600759049 /* ShoppingListItemTableViewCellDelegate.h */,
+				C540B3AB1A7B6CB600A568DE /* ShoppingListItemTableViewDataSource.h */,
 			);
 			name = ShoppingList;
 			sourceTree = "<group>";
@@ -324,6 +328,7 @@
 				TargetAttributes = {
 					C55F33621A318D7C00EEE2E2 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 49W6M76X2M;
 					};
 					C55F337B1A318D7C00EEE2E2 = {
 						CreatedOnToolsVersion = 6.0;
@@ -409,20 +414,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5B09B031A7B497000759049 /* ShoppingListViewController.m in Sources */,
 				C59594291A4BF382000B6DF3 /* Reachability.m in Sources */,
 				C55F336C1A318D7C00EEE2E2 /* AppDelegate.m in Sources */,
 				C55F33691A318D7C00EEE2E2 /* main.m in Sources */,
 				C55F33721A318D7C00EEE2E2 /* ViewController.m in Sources */,
+				C540B3AA1A7B6C3000A568DE /* ShoppingListTableView.m in Sources */,
 				C595942A1A4BF382000B6DF3 /* UIView+Toast.m in Sources */,
-				C57AC47E1A663E0300383CF0 /* ShoppingListTableViewController.m in Sources */,
 				C55F336F1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld in Sources */,
+				C5B09B061A7B4DF100759049 /* ShoppingListItemTableViewCell.m in Sources */,
 				C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */,
 				C59594281A4BF382000B6DF3 /* ExtendNSLogFunctionality.m in Sources */,
 				C59594131A4BEE92000B6DF3 /* Notifications.m in Sources */,
-				C5A23AB81A72800B005F349D /* ItemDetailViewController.m in Sources */,
 				C59594101A4BE51E000B6DF3 /* Times.m in Sources */,
 				C526D7151A7734950029940C /* Numbers.m in Sources */,
-				C526D7121A7636C10029940C /* ShoppingListTableViewCell.m in Sources */,
 				C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */,
 				C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */,
 				C57AC4811A66639C00383CF0 /* ShoppingListItem.m in Sources */,
@@ -545,10 +550,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Chishenme-Prefix.pch";
 				INFOPLIST_FILE = ChiShenMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -558,10 +566,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Chishenme-Prefix.pch";
 				INFOPLIST_FILE = ChiShenMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
