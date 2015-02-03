@@ -16,4 +16,6 @@
 
 - (void)itemAdded;
 
+- (void)itemAddedAtIndex:(NSInteger)index;
+
 @end

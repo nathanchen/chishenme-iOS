@@ -10,6 +10,7 @@
 #import "ShoppingListItem.h"
 #import "ShoppingListItemTableViewCell.h"
 #import "ShoppingListTableViewDragAddNew.h"
+#import "ShoppingListTableViewPinchToAdd.h"
 
 @interface ShoppingListViewController : UIViewController <ShoppingListItemTableViewDataSource, ShoppingListItemTableViewCellDelegate>
 

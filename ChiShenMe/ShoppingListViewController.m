@@ -20,6 +20,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     ShoppingListItem *row0item, *row1item, *row2item, *row3item, *row4item;
     float editingOffset;
     ShoppingListTableViewDragAddNew *dragAddNewView;
+    ShoppingListTableViewPinchToAdd *pinchAddNew;
 }
 
 - (void)viewDidLoad {
@@ -69,6 +70,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     [self.tableView registerClassForCells:[ShoppingListItemTableViewCell class]];
     
     dragAddNewView = [[ShoppingListTableViewDragAddNew alloc] initWithTableView:_tableView];
+    pinchAddNew = [[ShoppingListTableViewPinchToAdd alloc] initWithTableView:_tableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -177,8 +179,13 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 
 - (void)itemAdded
 {
+    [self itemAddedAtIndex:0];
+}
+
+- (void)itemAddedAtIndex:(NSInteger)index
+{
     ShoppingListItem *shoppinglistItem = [[ShoppingListItem alloc] init];
-    [items insertObject:shoppinglistItem atIndex:0];
+    [items insertObject:shoppinglistItem atIndex:index];
     [_tableView reloadData];
     ShoppingListItemTableViewCell *editingCell;
     for (ShoppingListItemTableViewCell *cell in _tableView.visibleCells)
@@ -190,6 +197,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
         }
     }
     [editingCell.subjectTextField becomeFirstResponder];
+
 }
 
 

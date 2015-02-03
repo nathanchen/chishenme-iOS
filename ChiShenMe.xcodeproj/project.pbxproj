@@ -11,6 +11,7 @@
 		C526D7151A7734950029940C /* Numbers.m in Sources */ = {isa = PBXBuildFile; fileRef = C526D7141A7734950029940C /* Numbers.m */; };
 		C540B3AA1A7B6C3000A568DE /* ShoppingListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C540B3A91A7B6C3000A568DE /* ShoppingListTableView.m */; };
 		C540B3B01A7F691200A568DE /* ShoppingListTableViewDragAddNew.m in Sources */ = {isa = PBXBuildFile; fileRef = C540B3AF1A7F691200A568DE /* ShoppingListTableViewDragAddNew.m */; };
+		C540B3B31A80775400A568DE /* ShoppingListTableViewPinchToAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C540B3B21A80775400A568DE /* ShoppingListTableViewPinchToAdd.m */; };
 		C55F33691A318D7C00EEE2E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33681A318D7C00EEE2E2 /* main.m */; };
 		C55F336C1A318D7C00EEE2E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F336B1A318D7C00EEE2E2 /* AppDelegate.m */; };
 		C55F336F1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C55F336D1A318D7C00EEE2E2 /* ChiShenMe.xcdatamodeld */; };
@@ -57,6 +58,8 @@
 		C540B3AB1A7B6CB600A568DE /* ShoppingListItemTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItemTableViewDataSource.h; sourceTree = "<group>"; };
 		C540B3AE1A7F691200A568DE /* ShoppingListTableViewDragAddNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListTableViewDragAddNew.h; sourceTree = "<group>"; };
 		C540B3AF1A7F691200A568DE /* ShoppingListTableViewDragAddNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListTableViewDragAddNew.m; sourceTree = "<group>"; };
+		C540B3B11A80775400A568DE /* ShoppingListTableViewPinchToAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListTableViewPinchToAdd.h; sourceTree = "<group>"; };
+		C540B3B21A80775400A568DE /* ShoppingListTableViewPinchToAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListTableViewPinchToAdd.m; sourceTree = "<group>"; };
 		C55F33631A318D7C00EEE2E2 /* ChiShenMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChiShenMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55F33671A318D7C00EEE2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55F33681A318D7C00EEE2E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 				C540B3A91A7B6C3000A568DE /* ShoppingListTableView.m */,
 				C540B3AE1A7F691200A568DE /* ShoppingListTableViewDragAddNew.h */,
 				C540B3AF1A7F691200A568DE /* ShoppingListTableViewDragAddNew.m */,
+				C540B3B11A80775400A568DE /* ShoppingListTableViewPinchToAdd.h */,
+				C540B3B21A80775400A568DE /* ShoppingListTableViewPinchToAdd.m */,
 				C5B09B071A7B54F600759049 /* ShoppingListItemTableViewCellDelegate.h */,
 				C540B3AB1A7B6CB600A568DE /* ShoppingListItemTableViewDataSource.h */,
 			);
@@ -432,6 +437,7 @@
 				C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */,
 				C59594281A4BF382000B6DF3 /* ExtendNSLogFunctionality.m in Sources */,
 				C59594131A4BEE92000B6DF3 /* Notifications.m in Sources */,
+				C540B3B31A80775400A568DE /* ShoppingListTableViewPinchToAdd.m in Sources */,
 				C59594101A4BE51E000B6DF3 /* Times.m in Sources */,
 				C526D7151A7734950029940C /* Numbers.m in Sources */,
 				C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */,
