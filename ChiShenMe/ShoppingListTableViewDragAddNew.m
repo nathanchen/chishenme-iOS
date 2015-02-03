@@ -39,9 +39,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [tableView scrollViewDidScroll:scrollView];
-    
+{    
     if (pullDownInProgress && tableView.scrollView.contentOffset.y <= 0.0f)
     {
         placeholderCell.frame = CGRectMake(0, -tableView.scrollView.contentOffset.y - SHOPPINGLIST_ROW_HEIGHT, tableView.frame.size.width, SHOPPINGLIST_ROW_HEIGHT);

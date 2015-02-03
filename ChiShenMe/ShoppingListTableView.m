@@ -193,5 +193,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self refreshView];
+    if ([self.scrollViewDelegate respondsToSelector:@selector(scrollViewDidScroll:)]){
+        [self.scrollViewDelegate scrollViewDidScroll:scrollView];
+    }
 }
 @end
