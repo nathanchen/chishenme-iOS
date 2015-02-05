@@ -2,13 +2,19 @@
 //  ShoppingListItem.m
 //  ChiShenMe
 //
-//  Created by Nate on 14/01/2015.
+//  Created by Nate on 5/02/2015.
 //  Copyright (c) 2015 Nathan CHEN. All rights reserved.
 //
 
 #import "ShoppingListItem.h"
 
+
 @implementation ShoppingListItem
+
+@dynamic checked;
+@dynamic quantity;
+@dynamic shoppinglistitem_id;
+@dynamic subject;
 
 + (instancetype)shoppinglistItem
 {
@@ -26,9 +32,9 @@
 {
     if (self = [super init])
     {
-        _subject = subject;
-        _quantity = quantity;
-        _checked = checked;
+        self.subject = subject;
+        self.quantity = quantity;
+        self.checked = checked;
     }
     
     return self;
@@ -41,12 +47,12 @@
 
 - (void)toggleChecked
 {
-    _checked = !_checked;
+    self.checked = !self.checked;
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@\t%ld", _subject, (long)_quantity];
+    return [NSString stringWithFormat:@"%@\t%ld", self.subject, (long)self.quantity];
 }
 
 @end

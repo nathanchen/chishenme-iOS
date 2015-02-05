@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 #import "ShoppingListItem.h"
 #import "ShoppingListItemTableViewCell.h"
 #import "ShoppingListTableViewDragAddNew.h"

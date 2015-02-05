@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "ShoppingListItem.h"
+
+#define TB_SHOPPINGLISTITEM @"ShoppingListItem"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

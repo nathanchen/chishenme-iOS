@@ -19,7 +19,6 @@
 		C55F33751A318D7C00EEE2E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55F33731A318D7C00EEE2E2 /* Main.storyboard */; };
 		C55F33771A318D7C00EEE2E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C55F33761A318D7C00EEE2E2 /* Images.xcassets */; };
 		C55F33831A318D7C00EEE2E2 /* ChiShenMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */; };
-		C57AC4811A66639C00383CF0 /* ShoppingListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C57AC4801A66639C00383CF0 /* ShoppingListItem.m */; };
 		C595940D1A4BE390000B6DF3 /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = C595940C1A4BE390000B6DF3 /* Strings.m */; };
 		C59594101A4BE51E000B6DF3 /* Times.m in Sources */ = {isa = PBXBuildFile; fileRef = C595940F1A4BE51E000B6DF3 /* Times.m */; };
 		C59594131A4BEE92000B6DF3 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = C59594121A4BEE92000B6DF3 /* Notifications.m */; };
@@ -35,6 +34,7 @@
 		C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */; };
 		C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */; };
 		C5C9C3B91A4AA832003522D0 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = C5C9C3B81A4AA832003522D0 /* PodFile */; };
+		C5E0300E1A835F2400A2E8C3 /* ShoppingListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E0300D1A835F2400A2E8C3 /* ShoppingListItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +73,6 @@
 		C55F337C1A318D7C00EEE2E2 /* ChiShenMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChiShenMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55F33811A318D7C00EEE2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55F33821A318D7C00EEE2E2 /* ChiShenMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChiShenMeTests.m; sourceTree = "<group>"; };
-		C57AC47F1A66639C00383CF0 /* ShoppingListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItem.h; sourceTree = "<group>"; };
-		C57AC4801A66639C00383CF0 /* ShoppingListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListItem.m; sourceTree = "<group>"; };
 		C595940B1A4BE390000B6DF3 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Strings.h; path = Utils/Strings.h; sourceTree = "<group>"; };
 		C595940C1A4BE390000B6DF3 /* Strings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Strings.m; path = Utils/Strings.m; sourceTree = "<group>"; };
 		C595940E1A4BE51E000B6DF3 /* Times.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Times.h; path = Utils/Times.h; sourceTree = "<group>"; };
@@ -106,6 +104,8 @@
 		C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChishenmeFetcher.m; path = ChishenmeFetcher/ChishenmeFetcher.m; sourceTree = "<group>"; };
 		C5C9C3B81A4AA832003522D0 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
 		C5C9C3C81A4ABB36003522D0 /* Chishenme-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chishenme-Prefix.pch"; sourceTree = "<group>"; };
+		C5E0300C1A835F2400A2E8C3 /* ShoppingListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItem.h; sourceTree = "<group>"; };
+		C5E0300D1A835F2400A2E8C3 /* ShoppingListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,8 +206,8 @@
 		C57AC47B1A663DC800383CF0 /* ShoppingList */ = {
 			isa = PBXGroup;
 			children = (
-				C57AC47F1A66639C00383CF0 /* ShoppingListItem.h */,
-				C57AC4801A66639C00383CF0 /* ShoppingListItem.m */,
+				C5E0300C1A835F2400A2E8C3 /* ShoppingListItem.h */,
+				C5E0300D1A835F2400A2E8C3 /* ShoppingListItem.m */,
 				C5B09B011A7B497000759049 /* ShoppingListViewController.h */,
 				C5B09B021A7B497000759049 /* ShoppingListViewController.m */,
 				C5B09B041A7B4DF100759049 /* ShoppingListItemTableViewCell.h */,
@@ -436,13 +436,13 @@
 				C5B09B061A7B4DF100759049 /* ShoppingListItemTableViewCell.m in Sources */,
 				C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */,
 				C59594281A4BF382000B6DF3 /* ExtendNSLogFunctionality.m in Sources */,
+				C5E0300E1A835F2400A2E8C3 /* ShoppingListItem.m in Sources */,
 				C59594131A4BEE92000B6DF3 /* Notifications.m in Sources */,
 				C540B3B31A80775400A568DE /* ShoppingListTableViewPinchToAdd.m in Sources */,
 				C59594101A4BE51E000B6DF3 /* Times.m in Sources */,
 				C526D7151A7734950029940C /* Numbers.m in Sources */,
 				C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */,
 				C595942E1A5105ED000B6DF3 /* SignUpViewController.m in Sources */,
-				C57AC4811A66639C00383CF0 /* ShoppingListItem.m in Sources */,
 				C59594271A4BF382000B6DF3 /* Encryption.m in Sources */,
 				C59594191A4BEFE3000B6DF3 /* Networks.m in Sources */,
 				C595940D1A4BE390000B6DF3 /* Strings.m in Sources */,

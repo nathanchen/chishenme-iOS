@@ -21,49 +21,20 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     float editingOffset;
     ShoppingListTableViewDragAddNew *dragAddNewView;
     ShoppingListTableViewPinchToAdd *pinchAddNew;
+    AppDelegate *appDelegate;
+    NSManagedObjectContext *context;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    items = [[NSMutableArray alloc] init];
-    
-    row0item = [[ShoppingListItem alloc] init];
-    row1item = [[ShoppingListItem alloc] init];
-    row2item = [[ShoppingListItem alloc] init];
-    row3item = [[ShoppingListItem alloc] init];
-    row4item = [[ShoppingListItem alloc] init];
-    
-    row0item.subject = @"Walk the dog";
-    row0item.quantity = 2;
-    row0item.checked = NO;
-    [items addObject:row0item];
-    
-    row1item.subject = @"Brush my teeth";
-    row1item.quantity = 1;
-    row1item.checked = YES;
-    [items addObject:row1item];
-    
-    row2item.subject = @"Soccer practice";
-    row2item.quantity = 3;
-    row2item.checked = NO;
-    [items addObject:row2item];
-    
-    row3item.subject = @"Learn iOS development";
-    row3item.quantity = 9;
-    row3item.checked = YES;
-    [items addObject:row3item];
-    
-    row4item.subject = @"Eat ice cream";
-    row4item.quantity = 5;
-    row4item.checked = NO;
-    [items addObject:row4item];
-    
-    ShoppingListItem *item;
-    for (int i = 0; i < 20; i ++) {
-        item = [ShoppingListItem shoppinglistItem:@"shadhf" quantity:10 check:NO];
-        [items addObject:item];
-    }
+    appDelegate = [[AppDelegate alloc] init];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    context = appDelegate.managedObjectContext;
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+    [fetchRequest setEntity:entityDescription];
+    NSError *error;
+    items = [[context executeFetchRequest:fetchRequest error:&error] mutableCopy];
     
     self.tableView.shoppingListItemTableViewDataSource = self;
     self.tableView.backgroundColor = [UIColor blackColor];
