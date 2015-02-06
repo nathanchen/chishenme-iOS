@@ -7,28 +7,28 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "TBShoppingListItem.h"
+#import "Strings.h"
 
+@interface ShoppingListItem : NSObject
 
-@interface ShoppingListItem : NSManagedObject
-
+@property (nonatomic) int shoppinglistitem_id;
+@property (nonatomic, weak) NSString *subject;
+@property (nonatomic) int quantity;
 @property (nonatomic) BOOL checked;
-@property (nonatomic) int16_t quantity;
-@property (nonatomic) int32_t shoppinglistitem_id;
-@property (nonatomic, retain) NSString * subject;
 
-+ (instancetype)shoppinglistItem:(NSString *)subject
-                        quantity:(NSInteger)quantity
-                           check:(BOOL)checked;
+- (instancetype)initShoppingListItemWithSubject:(NSString *)subject quantity:(int)quantity checked:(BOOL)checked;
 
-+ (instancetype)shoppinglistItem;
+- (instancetype)initShoppingListItemWithTBShoppingListItem:(TBShoppingListItem *)tb_shoppinglistItem;
 
-- (instancetype)initWithDefault;
-- (instancetype)initShoppingListItemWithSubject:(NSString *)subject
-                                       quantity:(NSInteger)quantity
-                                          check:(BOOL)checked;
+- (BOOL)isValidShoppingListItemWithSubject:(NSString *)subject
+                                  quantity:(NSInteger)quantity
+                                     check:(BOOL)checked;
+
 - (void)toggleChecked;
+
 - (NSString *)description;
 
+- (instancetype)initWithDefault;
 
 @end

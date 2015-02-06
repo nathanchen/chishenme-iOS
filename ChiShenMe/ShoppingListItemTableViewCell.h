@@ -28,6 +28,6 @@
 
 - (void)setStrikethrough;
 
-- (void)lodeData;
+- (void)loadData;
 
 @end

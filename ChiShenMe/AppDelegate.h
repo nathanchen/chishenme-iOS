@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "ShoppingListItem.h"
 
-#define TB_SHOPPINGLISTITEM @"ShoppingListItem"
+#define TB_SHOPPINGLISTITEM @"TBShoppingListItem"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

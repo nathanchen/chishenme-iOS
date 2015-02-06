@@ -65,13 +65,13 @@ const float UI_CUES_WIDTH = 50.0F;
     return self;
 }
 
-- (void)lodeData
+- (void)loadData
 {
     _subjectTextField.text = _shoppinglistItem.subject;
-    [self setTagForSubjectTextField:_subjectTextField withIndexPath:_indexPath];
+//    [self setTagForSubjectTextField:_subjectTextField withIndexPath:_indexPath];
     
     _quantityTextField.text = [NSString stringWithFormat:@"%ld", (long)_shoppinglistItem.quantity];
-    [self setTagForAmountTextField:_quantityTextField withIndexPath:_indexPath];
+//    [self setTagForAmountTextField:_quantityTextField withIndexPath:_indexPath];
     
     [self setStrikethrough];
 }
@@ -234,8 +234,10 @@ const float UI_CUES_WIDTH = 50.0F;
     }
     else
     {
-        _shoppinglistItem.quantity = [_quantityTextField.text integerValue];
+        _shoppinglistItem.quantity = (int)[_quantityTextField.text integerValue];
     }
+    
+    // if subject and quantity fulfill valid shoppinglistitem criteria, then save it to DB or update
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -258,54 +260,54 @@ const float UI_CUES_WIDTH = 50.0F;
  * in case every object's default tag is 0
  * button's tag = TAG_CHECKSIGN_BUTTON + indexPath.row
  */
-- (void)setTagForButton:(UIButton *)button
-          withIndexPath:(NSIndexPath *)indexPath
-{
-    button.tag = indexPath.row + kTAG_CHECKSIGN_BUTTON + 1;
-}
-
-- (void)setTagForBarButtonItem:(UIBarButtonItem *)barButtonItem
-                 withIndexPath:(NSIndexPath *)indexPath
-{
-    barButtonItem.tag = indexPath.row + kTAG_BARBUTTONITEM_BUTTON + 1;
-}
-
-- (void)setTagForSubjectTextField:(UITextField *)textField
-                    withIndexPath:(NSIndexPath *)indexPath
-{
-    textField.tag = [self getTagForSubjectTextFieldWithIndexPath:indexPath];
-}
-
-- (void)setTagForAmountTextField:(UITextField *)textField
-                   withIndexPath:(NSIndexPath *)indexPath
-{
-    textField.tag = indexPath.row + kTAG_QUANTITY_TEXTFIELD + 1;
-}
-
-- (NSInteger)getTagForSubjectTextFieldWithIndexPath:(NSIndexPath *)indexPath
-{
-    return indexPath.row + kTAG_SUBJECT_TEXTFIELD + 1;
-}
-
-- (NSInteger)getTagForQuantityTextFieldWithIndexPath:(NSIndexPath *)indexPath
-{
-    return indexPath.row + kTAG_QUANTITY_TEXTFIELD + 1;
-}
-
-- (NSIndexPath *)initialIndexPathWithButton:(UIButton *)button
-{
-    return [NSIndexPath indexPathForRow:button.tag - kTAG_CHECKSIGN_BUTTON - 1 inSection:0];
-}
-
-- (NSIndexPath *)initialIndexPathWithBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    return [NSIndexPath indexPathForRow:barButtonItem.tag - kTAG_BARBUTTONITEM_BUTTON - 1 inSection:0];
-}
-
-- (NSIndexPath *)initialIndexPathWithTextField:(UITextField *)textField initialTagValue:(NSInteger)tagValue
-{
-    return [NSIndexPath indexPathForRow:textField.tag - tagValue - 1  inSection:0];
-}
+//- (void)setTagForButton:(UIButton *)button
+//          withIndexPath:(NSIndexPath *)indexPath
+//{
+//    button.tag = indexPath.row + kTAG_CHECKSIGN_BUTTON + 1;
+//}
+//
+//- (void)setTagForBarButtonItem:(UIBarButtonItem *)barButtonItem
+//                 withIndexPath:(NSIndexPath *)indexPath
+//{
+//    barButtonItem.tag = indexPath.row + kTAG_BARBUTTONITEM_BUTTON + 1;
+//}
+//
+//- (void)setTagForSubjectTextField:(UITextField *)textField
+//                    withIndexPath:(NSIndexPath *)indexPath
+//{
+//    textField.tag = [self getTagForSubjectTextFieldWithIndexPath:indexPath];
+//}
+//
+//- (void)setTagForAmountTextField:(UITextField *)textField
+//                   withIndexPath:(NSIndexPath *)indexPath
+//{
+//    textField.tag = indexPath.row + kTAG_QUANTITY_TEXTFIELD + 1;
+//}
+//
+//- (NSInteger)getTagForSubjectTextFieldWithIndexPath:(NSIndexPath *)indexPath
+//{
+//    return indexPath.row + kTAG_SUBJECT_TEXTFIELD + 1;
+//}
+//
+//- (NSInteger)getTagForQuantityTextFieldWithIndexPath:(NSIndexPath *)indexPath
+//{
+//    return indexPath.row + kTAG_QUANTITY_TEXTFIELD + 1;
+//}
+//
+//- (NSIndexPath *)initialIndexPathWithButton:(UIButton *)button
+//{
+//    return [NSIndexPath indexPathForRow:button.tag - kTAG_CHECKSIGN_BUTTON - 1 inSection:0];
+//}
+//
+//- (NSIndexPath *)initialIndexPathWithBarButtonItem:(UIBarButtonItem *)barButtonItem
+//{
+//    return [NSIndexPath indexPathForRow:barButtonItem.tag - kTAG_BARBUTTONITEM_BUTTON - 1 inSection:0];
+//}
+//
+//- (NSIndexPath *)initialIndexPathWithTextField:(UITextField *)textField initialTagValue:(NSInteger)tagValue
+//{
+//    return [NSIndexPath indexPathForRow:textField.tag - tagValue - 1  inSection:0];
+//}
 
 #pragma mark - For Debugging
 - (void)showBoudary

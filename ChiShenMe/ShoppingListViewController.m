@@ -17,7 +17,6 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 @implementation ShoppingListViewController
 {
     NSMutableArray *items;
-    ShoppingListItem *row0item, *row1item, *row2item, *row3item, *row4item;
     float editingOffset;
     ShoppingListTableViewDragAddNew *dragAddNewView;
     ShoppingListTableViewPinchToAdd *pinchAddNew;
@@ -143,7 +142,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     cell.shoppinglistItem = item;
     cell.indexPath = indexPath;
     cell.delegate = self;
-    [cell lodeData];
+    [cell loadData];
     
     return cell;
 }
@@ -155,7 +154,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 
 - (void)itemAddedAtIndex:(NSInteger)index
 {
-    ShoppingListItem *shoppinglistItem = [[ShoppingListItem alloc] init];
+    ShoppingListItem *shoppinglistItem = [[ShoppingListItem alloc] initWithDefault];
     [items insertObject:shoppinglistItem atIndex:index];
     [_tableView reloadData];
     ShoppingListItemTableViewCell *editingCell;
@@ -168,7 +167,6 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
         }
     }
     [editingCell.subjectTextField becomeFirstResponder];
-
 }
 
 

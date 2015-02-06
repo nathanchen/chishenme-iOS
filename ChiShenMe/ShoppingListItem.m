@@ -8,51 +8,56 @@
 
 #import "ShoppingListItem.h"
 
-
 @implementation ShoppingListItem
 
-@dynamic checked;
-@dynamic quantity;
-@dynamic shoppinglistitem_id;
-@dynamic subject;
-
-+ (instancetype)shoppinglistItem
+- (instancetype)initShoppingListItemWithSubject:(NSString *)subject quantity:(int)quantity checked:(BOOL)checked
 {
-    return [[ShoppingListItem alloc] initWithDefault];
-}
-
-+ (instancetype)shoppinglistItem:(NSString *)subject quantity:(NSInteger)quantity check:(BOOL)checked
-{
-    return [[ShoppingListItem alloc] initShoppingListItemWithSubject:subject quantity:quantity check:checked];
-}
-
-- (instancetype)initShoppingListItemWithSubject:(NSString *)subject
-                                       quantity:(NSInteger)quantity
-                                          check:(BOOL)checked
-{
-    if (self = [super init])
+    self = [super init];
+    if (self)
     {
-        self.subject = subject;
-        self.quantity = quantity;
-        self.checked = checked;
+        _subject = subject;
+        _quantity = quantity;
+        _checked = checked;
     }
-    
     return self;
 }
 
-- (instancetype)initWithDefault
+- (instancetype)initShoppingListItemWithTBShoppingListItem:(TBShoppingListItem *)tb_shoppinglistItem
 {
-    return [self initShoppingListItemWithSubject:@"" quantity:0 check:NO];
+    return [self initShoppingListItemWithSubject:tb_shoppinglistItem.subject quantity:tb_shoppinglistItem.quantity checked:tb_shoppinglistItem.checked];
+}
+
+- (BOOL)isValidShoppingListItemWithSubject:(NSString *)subject
+                                  quantity:(NSInteger)quantity
+                                     check:(BOOL)checked
+{
+    if ([Strings isEmptyString:subject])
+    {
+        return NO;
+    }
+    else if (quantity <= 0)
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
 }
 
 - (void)toggleChecked
 {
-    self.checked = !self.checked;
+    _checked = !_checked;
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@\t%ld", self.subject, (long)self.quantity];
+    return [NSString stringWithFormat:@"%@ %ld %d", _subject, (long)_quantity, _checked];
+}
+
+- (instancetype)initWithDefault
+{
+    return [self initShoppingListItemWithSubject:@"" quantity:0 checked:NO];
 }
 
 @end
