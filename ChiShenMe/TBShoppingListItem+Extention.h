@@ -13,9 +13,7 @@
 
 @interface TBShoppingListItem (Extention)
 
-+ (instancetype)newTBShoppingListItem;
-
-+ (instancetype)insertNewTBShoppingListItemWithShoppingListItem: (ShoppingListItem *)shoppinglistItem inContext:(NSManagedObjectContext *)context;
++ (instancetype)insertNewTBShoppingListItemWithShoppingListItem: (ShoppingListItem *)shoppinglistItem;
 
 - (NSString *)description;
 

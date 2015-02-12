@@ -216,6 +216,7 @@ const float UI_CUES_WIDTH = 50.0F;
     }
     
     [textField resignFirstResponder];
+    
     if (textField == _subjectTextField)
     {
         [_quantityTextField becomeFirstResponder];
@@ -229,7 +230,7 @@ const float UI_CUES_WIDTH = 50.0F;
     {
         return NO;
     }
-    else if (textField == _quantityTextField && ![Strings isEmptyString:_shoppinglistItem.subject])
+    else if (textField == _quantityTextField && [Strings isEmptyString:_shoppinglistItem.subject])
     {
         return NO;
     }
@@ -251,6 +252,16 @@ const float UI_CUES_WIDTH = 50.0F;
     if (![Strings isEmptyString:_shoppinglistItem.subject] && _shoppinglistItem.quantity > 0)
     {
         // save it to DB or update
+        if (_shoppinglistItem.shoppinglistitem_id != nil)
+        {
+            // update
+        }
+        else
+        {
+            // insert
+            TBShoppingListItem *tbShoppingListItem = [TBShoppingListItem insertNewTBShoppingListItemWithShoppingListItem:_shoppinglistItem];
+            _shoppinglistItem.shoppinglistitem_id = [tbShoppingListItem objectID];
+        }
     }
 }
 

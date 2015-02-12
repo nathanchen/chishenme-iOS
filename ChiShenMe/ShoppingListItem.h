@@ -12,8 +12,8 @@
 
 @interface ShoppingListItem : NSObject
 
-@property (nonatomic, weak) NSManagedObjectID *shoppinglistitem_id;
-@property (nonatomic, weak) NSString *subject;
+@property (nonatomic, strong) NSManagedObjectID *shoppinglistitem_id;
+@property (nonatomic, strong) NSString *subject;
 @property (nonatomic) int quantity;
 @property (nonatomic) BOOL checked;
 

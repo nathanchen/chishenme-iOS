@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ShoppingListItemTableViewCellDelegate.h"
 #import "Strings.h"
+#import "TBShoppingListItem+Extention.h"
 
 #define kTAG_CHECKSIGN_BUTTON 2000
 #define kTAG_SUBJECT_TEXTFIELD 1000

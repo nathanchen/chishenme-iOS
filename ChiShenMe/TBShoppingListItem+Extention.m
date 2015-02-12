@@ -10,16 +10,11 @@
 
 @implementation TBShoppingListItem (Extention)
 
-+ (instancetype)newTBShoppingListItem
++ (instancetype)insertNewTBShoppingListItemWithShoppingListItem: (ShoppingListItem *)shoppinglistItem
 {
     AppDelegate *appDelegate = [[AppDelegate alloc] init];
     NSManagedObjectContext *context = appDelegate.managedObjectContext;
-    return [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-}
-
-+ (instancetype)insertNewTBShoppingListItemWithShoppingListItem: (ShoppingListItem *)shoppinglistItem inContext:(NSManagedObjectContext *)context
-{
-    TBShoppingListItem *tb_shoppinglistItem = [self newTBShoppingListItem];
+    TBShoppingListItem *tb_shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
 
     tb_shoppinglistItem.subject = shoppinglistItem.subject;
     tb_shoppinglistItem.quantity = shoppinglistItem.quantity;
