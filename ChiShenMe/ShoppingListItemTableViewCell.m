@@ -210,19 +210,30 @@ const float UI_CUES_WIDTH = 50.0F;
 #pragma mark - TextFieldsDelegate methods
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    if ([Strings isEmptyString:textField.text])
+    {
+        return NO;
+    }
     
+    [textField resignFirstResponder];
     if (textField == _subjectTextField)
     {
         [_quantityTextField becomeFirstResponder];
     }
-        
     return NO;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    return !_shoppinglistItem.checked;
+    if (_shoppinglistItem.checked)
+    {
+        return NO;
+    }
+    else if (textField == _quantityTextField && ![Strings isEmptyString:_shoppinglistItem.subject])
+    {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -237,7 +248,10 @@ const float UI_CUES_WIDTH = 50.0F;
         _shoppinglistItem.quantity = (int)[_quantityTextField.text integerValue];
     }
     
-    // if subject and quantity fulfill valid shoppinglistitem criteria, then save it to DB or update
+    if (![Strings isEmptyString:_shoppinglistItem.subject] && _shoppinglistItem.quantity > 0)
+    {
+        // save it to DB or update
+    }
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField

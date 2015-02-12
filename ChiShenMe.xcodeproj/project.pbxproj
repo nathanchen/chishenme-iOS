@@ -31,11 +31,11 @@
 		C59DB2FD1A6F801300C9040E /* refactor.txt in Resources */ = {isa = PBXBuildFile; fileRef = C59DB2FC1A6F801300C9040E /* refactor.txt */; };
 		C5B09B031A7B497000759049 /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B09B021A7B497000759049 /* ShoppingListViewController.m */; };
 		C5B09B061A7B4DF100759049 /* ShoppingListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B09B051A7B4DF100759049 /* ShoppingListItemTableViewCell.m */; };
+		C5C717071A85020F00B67528 /* TBShoppingListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C717061A85020F00B67528 /* TBShoppingListItem.m */; };
 		C5C9C3B31A4A8AF6003522D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */; };
 		C5C9C3B71A4A8CB0003522D0 /* ChishenmeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C9C3B61A4A8CB0003522D0 /* ChishenmeFetcher.m */; };
 		C5C9C3B91A4AA832003522D0 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = C5C9C3B81A4AA832003522D0 /* PodFile */; };
 		C5E030201A8376B300A2E8C3 /* ShoppingListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E0301F1A8376B300A2E8C3 /* ShoppingListItem.m */; };
-		C5E030231A8376DD00A2E8C3 /* TBShoppingListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E030221A8376DD00A2E8C3 /* TBShoppingListItem.m */; };
 		C5E030261A8376F500A2E8C3 /* TBShoppingListItem+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E030251A8376F500A2E8C3 /* TBShoppingListItem+Extention.m */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +100,8 @@
 		C5B09B041A7B4DF100759049 /* ShoppingListItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItemTableViewCell.h; sourceTree = "<group>"; };
 		C5B09B051A7B4DF100759049 /* ShoppingListItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListItemTableViewCell.m; sourceTree = "<group>"; };
 		C5B09B071A7B54F600759049 /* ShoppingListItemTableViewCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItemTableViewCellDelegate.h; sourceTree = "<group>"; };
+		C5C717051A85020F00B67528 /* TBShoppingListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBShoppingListItem.h; sourceTree = "<group>"; };
+		C5C717061A85020F00B67528 /* TBShoppingListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBShoppingListItem.m; sourceTree = "<group>"; };
 		C5C9C3B11A4A8AF6003522D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C5C9C3B21A4A8AF6003522D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C5C9C3B51A4A8CB0003522D0 /* ChishenmeFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChishenmeFetcher.h; path = ChishenmeFetcher/ChishenmeFetcher.h; sourceTree = "<group>"; };
@@ -108,8 +110,6 @@
 		C5C9C3C81A4ABB36003522D0 /* Chishenme-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chishenme-Prefix.pch"; sourceTree = "<group>"; };
 		C5E0301E1A8376B300A2E8C3 /* ShoppingListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListItem.h; sourceTree = "<group>"; };
 		C5E0301F1A8376B300A2E8C3 /* ShoppingListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListItem.m; sourceTree = "<group>"; };
-		C5E030211A8376DD00A2E8C3 /* TBShoppingListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBShoppingListItem.h; sourceTree = "<group>"; };
-		C5E030221A8376DD00A2E8C3 /* TBShoppingListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBShoppingListItem.m; sourceTree = "<group>"; };
 		C5E030241A8376F500A2E8C3 /* TBShoppingListItem+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBShoppingListItem+Extention.h"; sourceTree = "<group>"; };
 		C5E030251A8376F500A2E8C3 /* TBShoppingListItem+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBShoppingListItem+Extention.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,8 +214,8 @@
 			children = (
 				C5E0301E1A8376B300A2E8C3 /* ShoppingListItem.h */,
 				C5E0301F1A8376B300A2E8C3 /* ShoppingListItem.m */,
-				C5E030211A8376DD00A2E8C3 /* TBShoppingListItem.h */,
-				C5E030221A8376DD00A2E8C3 /* TBShoppingListItem.m */,
+				C5C717051A85020F00B67528 /* TBShoppingListItem.h */,
+				C5C717061A85020F00B67528 /* TBShoppingListItem.m */,
 				C5E030241A8376F500A2E8C3 /* TBShoppingListItem+Extention.h */,
 				C5E030251A8376F500A2E8C3 /* TBShoppingListItem+Extention.m */,
 				C5B09B011A7B497000759049 /* ShoppingListViewController.h */,
@@ -434,8 +434,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C717071A85020F00B67528 /* TBShoppingListItem.m in Sources */,
 				C5E030201A8376B300A2E8C3 /* ShoppingListItem.m in Sources */,
-				C5E030231A8376DD00A2E8C3 /* TBShoppingListItem.m in Sources */,
 				C5B09B031A7B497000759049 /* ShoppingListViewController.m in Sources */,
 				C59594291A4BF382000B6DF3 /* Reachability.m in Sources */,
 				C55F336C1A318D7C00EEE2E2 /* AppDelegate.m in Sources */,

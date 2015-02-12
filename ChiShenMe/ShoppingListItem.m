@@ -10,11 +10,15 @@
 
 @implementation ShoppingListItem
 
-- (instancetype)initShoppingListItemWithSubject:(NSString *)subject quantity:(int)quantity checked:(BOOL)checked
+- (instancetype)initShoppingListItemWithId:(NSManagedObjectID *)shoppinglistitem_id
+                                   subject:(NSString *)subject
+                                  quantity:(int)quantity
+                                   checked:(BOOL)checked
 {
     self = [super init];
     if (self)
     {
+        _shoppinglistitem_id = shoppinglistitem_id;
         _subject = subject;
         _quantity = quantity;
         _checked = checked;
@@ -24,14 +28,27 @@
 
 - (instancetype)initShoppingListItemWithTBShoppingListItem:(TBShoppingListItem *)tb_shoppinglistItem
 {
-    return [self initShoppingListItemWithSubject:tb_shoppinglistItem.subject quantity:tb_shoppinglistItem.quantity checked:tb_shoppinglistItem.checked];
+    return [self initShoppingListItemWithId:[tb_shoppinglistItem objectID]
+                                    subject:tb_shoppinglistItem.subject
+                                   quantity:tb_shoppinglistItem.quantity
+                                    checked:tb_shoppinglistItem.checked];
 }
 
-- (BOOL)isValidShoppingListItemWithSubject:(NSString *)subject
-                                  quantity:(NSInteger)quantity
-                                     check:(BOOL)checked
+- (instancetype)initWithDefault
 {
-    if ([Strings isEmptyString:subject])
+    return [self initShoppingListItemWithId:nil subject:@"" quantity:0 checked:NO];
+}
+
+- (BOOL)isValidShoppingListItemWithId:(NSManagedObjectID *)shoppinglistitem_id
+                              subject:(NSString *)subject
+                             quantity:(NSInteger)quantity
+                                checked:(BOOL)checked
+{
+    if (shoppinglistitem_id.temporaryID)
+    {
+        return NO;
+    }
+    else if ([Strings isEmptyString:subject])
     {
         return NO;
     }
@@ -53,11 +70,6 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@ %ld %d", _subject, (long)_quantity, _checked];
-}
-
-- (instancetype)initWithDefault
-{
-    return [self initShoppingListItemWithSubject:@"" quantity:0 checked:NO];
 }
 
 @end

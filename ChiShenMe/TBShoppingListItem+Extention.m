@@ -20,6 +20,7 @@
 + (instancetype)insertNewTBShoppingListItemWithShoppingListItem: (ShoppingListItem *)shoppinglistItem inContext:(NSManagedObjectContext *)context
 {
     TBShoppingListItem *tb_shoppinglistItem = [self newTBShoppingListItem];
+
     tb_shoppinglistItem.subject = shoppinglistItem.subject;
     tb_shoppinglistItem.quantity = shoppinglistItem.quantity;
     tb_shoppinglistItem.checked = shoppinglistItem.checked;

@@ -2,7 +2,7 @@
 //  TBShoppingListItem.h
 //  ChiShenMe
 //
-//  Created by Nate on 5/02/2015.
+//  Created by Nate on 6/02/2015.
 //  Copyright (c) 2015 Nathan CHEN. All rights reserved.
 //
 
@@ -14,7 +14,6 @@
 
 @property (nonatomic) BOOL checked;
 @property (nonatomic) int16_t quantity;
-@property (nonatomic) int32_t shoppinglistitem_id;
 @property (nonatomic, retain) NSString * subject;
 
 @end

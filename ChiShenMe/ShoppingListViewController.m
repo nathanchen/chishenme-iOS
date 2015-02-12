@@ -27,6 +27,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // load data from DB
     appDelegate = [[AppDelegate alloc] init];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     context = appDelegate.managedObjectContext;
@@ -35,10 +36,12 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     NSError *error;
     items = [[context executeFetchRequest:fetchRequest error:&error] mutableCopy];
     
+    // config table
     self.tableView.shoppingListItemTableViewDataSource = self;
     self.tableView.backgroundColor = [UIColor blackColor];
     [self.tableView registerClassForCells:[ShoppingListItemTableViewCell class]];
     
+    // config table view
     dragAddNewView = [[ShoppingListTableViewDragAddNew alloc] initWithTableView:_tableView];
     pinchAddNew = [[ShoppingListTableViewPinchToAdd alloc] initWithTableView:_tableView];
 }
@@ -152,6 +155,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     [self itemAddedAtIndex:0];
 }
 
+// add a default model into table view array, and begin editing it
 - (void)itemAddedAtIndex:(NSInteger)index
 {
     ShoppingListItem *shoppinglistItem = [[ShoppingListItem alloc] initWithDefault];
@@ -168,6 +172,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     }
     [editingCell.subjectTextField becomeFirstResponder];
 }
+
 
 
 @end

@@ -2,7 +2,7 @@
 //  TBShoppingListItem.m
 //  ChiShenMe
 //
-//  Created by Nate on 5/02/2015.
+//  Created by Nate on 6/02/2015.
 //  Copyright (c) 2015 Nathan CHEN. All rights reserved.
 //
 
@@ -13,7 +13,6 @@
 
 @dynamic checked;
 @dynamic quantity;
-@dynamic shoppinglistitem_id;
 @dynamic subject;
 
 @end

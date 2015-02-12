@@ -12,18 +12,22 @@
 
 @interface ShoppingListItem : NSObject
 
-@property (nonatomic) int shoppinglistitem_id;
+@property (nonatomic, weak) NSManagedObjectID *shoppinglistitem_id;
 @property (nonatomic, weak) NSString *subject;
 @property (nonatomic) int quantity;
 @property (nonatomic) BOOL checked;
 
-- (instancetype)initShoppingListItemWithSubject:(NSString *)subject quantity:(int)quantity checked:(BOOL)checked;
+- (instancetype)initShoppingListItemWithId:(NSManagedObjectID *)shoppinglistitem_id
+                                   subject:(NSString *)subject
+                                  quantity:(int)quantity
+                                   checked:(BOOL)checked;
 
 - (instancetype)initShoppingListItemWithTBShoppingListItem:(TBShoppingListItem *)tb_shoppinglistItem;
 
-- (BOOL)isValidShoppingListItemWithSubject:(NSString *)subject
-                                  quantity:(NSInteger)quantity
-                                     check:(BOOL)checked;
+- (BOOL)isValidShoppingListItemWithId:(NSManagedObjectID *)shoppinglistitem_id
+                              subject:(NSString *)subject
+                             quantity:(NSInteger)quantity
+                                checked:(BOOL)checked;
 
 - (void)toggleChecked;
 

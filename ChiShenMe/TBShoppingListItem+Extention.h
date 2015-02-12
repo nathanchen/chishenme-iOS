@@ -15,7 +15,7 @@
 
 + (instancetype)newTBShoppingListItem;
 
-+ (instancetype)insertNewTBShoppingListItemWithShoppingListItem: (ShoppingListItem *)shoppinglistItem;
++ (instancetype)insertNewTBShoppingListItemWithShoppingListItem: (ShoppingListItem *)shoppinglistItem inContext:(NSManagedObjectContext *)context;
 
 - (NSString *)description;
 
