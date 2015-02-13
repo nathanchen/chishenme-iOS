@@ -13,7 +13,13 @@
 
 @interface TBShoppingListItem (Extention)
 
++ (instancetype)initTBShoppingListItemWithDefault;
+
 + (instancetype)insertNewTBShoppingListItemWithShoppingListItem: (ShoppingListItem *)shoppinglistItem;
+
++ (instancetype)initTBShoppingListItem: (TBShoppingListItem *) tb_shoppinglistItem withShoppingListItem: (ShoppingListItem *)shoppinglistItem;
+
++ (instancetype)updateTBShoppingListItemWithShoppingListItem: (ShoppingListItem *)shoppinglistItem;
 
 - (NSString *)description;
 

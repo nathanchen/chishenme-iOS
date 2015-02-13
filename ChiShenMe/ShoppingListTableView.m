@@ -41,12 +41,12 @@
     UIView *cell = [reuseCells anyObject];
     if (cell)
     {
-        NSLog(@"Returning a cell from the pool");
+//        NSLog(@"Returning a cell from the pool");
         [reuseCells removeObject:cell];
     }
     else
     {
-        NSLog(@"Creating a new cell");
+//        NSLog(@"Creating a new cell");
         cell = [[_cellClass alloc] init];
     }
     return cell;

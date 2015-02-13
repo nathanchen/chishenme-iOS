@@ -141,8 +141,9 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     ShoppingListItemTableViewCell *cell = (ShoppingListItemTableViewCell *)[self.tableView dequeueReusableCell];
-    ShoppingListItem *item = items[indexPath.row];
-    cell.shoppinglistItem = item;
+    TBShoppingListItem *item = items[indexPath.row];
+    
+    cell.shoppinglistItem = [[ShoppingListItem alloc] initShoppingListItemWithTBShoppingListItem:item];
     cell.indexPath = indexPath;
     cell.delegate = self;
     [cell loadData];
@@ -159,7 +160,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 - (void)itemAddedAtIndex:(NSInteger)index
 {
     ShoppingListItem *shoppinglistItem = [[ShoppingListItem alloc] initWithDefault];
-    [items insertObject:shoppinglistItem atIndex:index];
+    [items insertObject:[TBShoppingListItem initTBShoppingListItemWithDefault] atIndex:index];
     [_tableView reloadData];
     ShoppingListItemTableViewCell *editingCell;
     for (ShoppingListItemTableViewCell *cell in _tableView.visibleCells)

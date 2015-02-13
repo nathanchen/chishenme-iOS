@@ -28,7 +28,7 @@
 
 - (instancetype)initShoppingListItemWithTBShoppingListItem:(TBShoppingListItem *)tb_shoppinglistItem
 {
-    return [self initShoppingListItemWithId:[tb_shoppinglistItem objectID]
+    return [self initShoppingListItemWithId:([tb_shoppinglistItem objectID] ? [tb_shoppinglistItem objectID] : nil)
                                     subject:tb_shoppinglistItem.subject
                                    quantity:tb_shoppinglistItem.quantity
                                     checked:tb_shoppinglistItem.checked];

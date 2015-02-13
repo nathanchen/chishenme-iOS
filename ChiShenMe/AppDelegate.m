@@ -23,31 +23,39 @@
     // Override point for customization after application launch.
     
     NSManagedObjectContext *context = [self managedObjectContext];
-    ShoppingListItem *shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-    shoppinglistItem.subject = @"Walk the dog";
-    shoppinglistItem.quantity = 2;
-    shoppinglistItem.checked = NO;
     
-    shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-    shoppinglistItem.subject = @"Brush my teeth";
-    shoppinglistItem.quantity = 1;
-    shoppinglistItem.checked = YES;
+    // For Debugging only
+    [self deleteAllEntryInTable:TB_SHOPPINGLISTITEM inContext:context];
     
-    shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-    shoppinglistItem.subject = @"Soccer practice";
-    shoppinglistItem.quantity = 3;
-    shoppinglistItem.checked = NO;
+    TBShoppingListItem *shoppinglistItem;
+    for (int i = 0; i < 3; i ++)
+    {
+        shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+        shoppinglistItem.subject = @"Walk the dog";
+        shoppinglistItem.quantity = 2;
+        shoppinglistItem.checked = NO;
+        
+        shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+        shoppinglistItem.subject = @"Brush my teeth";
+        shoppinglistItem.quantity = 1;
+        shoppinglistItem.checked = YES;
+        
+        shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+        shoppinglistItem.subject = @"Soccer practice";
+        shoppinglistItem.quantity = 3;
+        shoppinglistItem.checked = NO;
+        
+        shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+        shoppinglistItem.subject = @"Learn iOS development";
+        shoppinglistItem.quantity = 9;
+        shoppinglistItem.checked = YES;
+        
+        shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+        shoppinglistItem.subject = @"Eat ice cream";
+        shoppinglistItem.quantity = 5;
+        shoppinglistItem.checked = NO;
+    }
     
-    shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-    shoppinglistItem.subject = @"Learn iOS development";
-    shoppinglistItem.quantity = 9;
-    shoppinglistItem.checked = YES;
-    
-    shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-    shoppinglistItem.subject = @"Eat ice cream";
-    shoppinglistItem.quantity = 5;
-    shoppinglistItem.checked = NO;
-
     NSError *error;
     if (![context save:&error]) {
         NSLog(@"error: %@", [error localizedDescription]);
@@ -168,6 +176,22 @@
 // Returns the URL to the application's Documents directory.
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark - For Debugging only
+- (void)deleteAllEntryInTable:(NSString *)tableName inContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest * allEntry = [[NSFetchRequest alloc] init];
+    [allEntry setEntity:[NSEntityDescription entityForName:tableName inManagedObjectContext:context]];
+    [allEntry setIncludesPropertyValues:NO];
+    NSError * error = nil;
+    NSArray * items = [context executeFetchRequest:allEntry error:&error];
+    
+    for (NSManagedObject * car in items) {
+        [context deleteObject:car];
+    }
+    NSError *saveError = nil;
+    [context save:&saveError];
 }
 
 @end
