@@ -159,13 +159,12 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 // add a default model into table view array, and begin editing it
 - (void)itemAddedAtIndex:(NSInteger)index
 {
-    ShoppingListItem *shoppinglistItem = [[ShoppingListItem alloc] initWithDefault];
     [items insertObject:[TBShoppingListItem initTBShoppingListItemWithDefault] atIndex:index];
     [_tableView reloadData];
     ShoppingListItemTableViewCell *editingCell;
     for (ShoppingListItemTableViewCell *cell in _tableView.visibleCells)
     {
-        if (cell.shoppinglistItem == shoppinglistItem)
+        if ([Strings isEmptyString: [cell.shoppinglistItem subject]])
         {
             editingCell = cell;
             break;
