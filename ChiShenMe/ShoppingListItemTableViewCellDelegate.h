@@ -21,4 +21,6 @@
 
 - (void)cellDidEndEditing:(ShoppingListItemTableViewCell *)editingCell;
 
+- (void)tbItemAdded:(TBShoppingListItem *)tb_shoppinglistItem;
+
 @end

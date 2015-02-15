@@ -17,6 +17,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 @implementation ShoppingListViewController
 {
     NSMutableArray *items;
+    NSMutableArray *itemsInDB;
     float editingOffset;
     ShoppingListTableViewDragAddNew *dragAddNewView;
     ShoppingListTableViewPinchToAdd *pinchAddNew;
@@ -34,7 +35,8 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
     [fetchRequest setEntity:entityDescription];
     NSError *error;
-    items = [[context executeFetchRequest:fetchRequest error:&error] mutableCopy];
+    itemsInDB = [[context executeFetchRequest:fetchRequest error:&error] mutableCopy];
+    items = [itemsInDB mutableCopy];
     
     // config table
     self.tableView.shoppingListItemTableViewDataSource = self;
@@ -141,11 +143,13 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     ShoppingListItemTableViewCell *cell = (ShoppingListItemTableViewCell *)[self.tableView dequeueReusableCell];
-    TBShoppingListItem *item = items[indexPath.row];
+    ShoppingListItem *item = items[indexPath.row];
+    TBShoppingListItem *tb_item = itemsInDB[indexPath.row];
     
-    cell.shoppinglistItem = [[ShoppingListItem alloc] initShoppingListItemWithTBShoppingListItem:item];
+    cell.shoppinglistItem = item;
     cell.indexPath = indexPath;
     cell.delegate = self;
+    cell.managedObjectId = [tb_item objectID];
     [cell loadData];
     
     return cell;
@@ -159,18 +163,30 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 // add a default model into table view array, and begin editing it
 - (void)itemAddedAtIndex:(NSInteger)index
 {
-    [items insertObject:[TBShoppingListItem initTBShoppingListItemWithDefault] atIndex:index];
+    ShoppingListItem *shoppinglistItem = [[ShoppingListItem alloc] initWithDefault];
+    [items insertObject:shoppinglistItem atIndex:index];
     [_tableView reloadData];
     ShoppingListItemTableViewCell *editingCell;
     for (ShoppingListItemTableViewCell *cell in _tableView.visibleCells)
     {
-        if ([Strings isEmptyString: [cell.shoppinglistItem subject]])
+        if (cell.shoppinglistItem == shoppinglistItem)
         {
             editingCell = cell;
             break;
         }
     }
     [editingCell.subjectTextField becomeFirstResponder];
+}
+
+- (void)tbItemAdded:(TBShoppingListItem *)tb_shoppinglistItem
+{
+    [self tbItem:tb_shoppinglistItem addedAtIndex:0];
+}
+
+// add a tb_shoppinglistitem into DB array
+- (void)tbItem:(TBShoppingListItem *)tb_shoppinglistItem addedAtIndex:(NSInteger)index
+{
+    [itemsInDB insertObject:tb_shoppinglistItem atIndex:index];
 }
 
 

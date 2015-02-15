@@ -255,12 +255,14 @@ const float UI_CUES_WIDTH = 50.0F;
         if (_shoppinglistItem.shoppinglistitem_id != nil)
         {
             // update
+            NSLog(@"%@", _shoppinglistItem.shoppinglistitem_id);
         }
         else
         {
             // insert
             TBShoppingListItem *tbShoppingListItem = [TBShoppingListItem insertNewTBShoppingListItemWithShoppingListItem:_shoppinglistItem];
             _shoppinglistItem.shoppinglistitem_id = [tbShoppingListItem objectID];
+            [self.delegate tbItemAdded:tbShoppingListItem];
         }
     }
 }
