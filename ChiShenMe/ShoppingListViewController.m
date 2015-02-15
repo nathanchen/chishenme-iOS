@@ -36,7 +36,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     [fetchRequest setEntity:entityDescription];
     NSError *error;
     itemsInDB = [[context executeFetchRequest:fetchRequest error:&error] mutableCopy];
-    items = [itemsInDB mutableCopy];
+    [self initialItemsWithItemsInDB];
     
     // config table
     self.tableView.shoppingListItemTableViewDataSource = self;
@@ -46,6 +46,17 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     // config table view
     dragAddNewView = [[ShoppingListTableViewDragAddNew alloc] initWithTableView:_tableView];
     pinchAddNew = [[ShoppingListTableViewPinchToAdd alloc] initWithTableView:_tableView];
+}
+
+- (void)initialItemsWithItemsInDB
+{
+    items = [[NSMutableArray alloc] init];
+    ShoppingListItem *shoppinglistItem;
+    for (TBShoppingListItem *tb_shoppinglistItem in itemsInDB)
+    {
+        shoppinglistItem = [[ShoppingListItem alloc] initShoppingListItemWithTBShoppingListItem:tb_shoppinglistItem];
+        [items addObject:shoppinglistItem];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,12 +98,6 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
             cell.hidden = YES;
         }
     }
-    
-    // For debugging only
-    for (ShoppingListItem *item in items)
-    {
-        NSLog(@"%@", [item description]);
-    }
 }
 
 - (void)cellDidBeginEditing:(ShoppingListItemTableViewCell *)editingCell
@@ -130,7 +135,6 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 - (void)shoppinglistItemCompleted:(ShoppingListItem *)shoppinglistItem
 {
     shoppinglistItem.checked = !shoppinglistItem.checked;
-    shoppinglistItem.subject = @"wwwww";
     for (ShoppingListItemTableViewCell *cell in _tableView.visibleCells)
     {
         if (cell.shoppinglistItem == shoppinglistItem)
@@ -151,18 +155,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     ShoppingListItemTableViewCell *cell = (ShoppingListItemTableViewCell *)[self.tableView dequeueReusableCell];
     
-    id item_temp = items[indexPath.row];
-    ShoppingListItem *item;
-    if ([item_temp isKindOfClass:[TBShoppingListItem class]])
-    {
-        item = [[ShoppingListItem alloc] initShoppingListItemWithTBShoppingListItem:item_temp];
-    }
-    else
-    {
-        item = (ShoppingListItem *)item_temp;
-    }
-
-    cell.shoppinglistItem = item;
+    cell.shoppinglistItem = items[indexPath.row];
     cell.indexPath = indexPath;
     cell.delegate = self;
     [cell loadData];
