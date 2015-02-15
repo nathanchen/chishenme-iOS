@@ -23,4 +23,6 @@
 
 - (void)tbItemAdded:(TBShoppingListItem *)tb_shoppinglistItem;
 
+- (void)tbItemUpdated:(TBShoppingListItem *)tb_shoppinglistItem atIndex:(NSUInteger)index;
+
 @end

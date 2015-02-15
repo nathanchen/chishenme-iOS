@@ -22,43 +22,48 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    NSManagedObjectContext *context = [self managedObjectContext];
+    int flag = 1;
     
-    // For Debugging only
-    [self deleteAllEntryInTable:TB_SHOPPINGLISTITEM inContext:context];
-    
-    TBShoppingListItem *shoppinglistItem;
-    for (int i = 0; i < 3; i ++)
+    if (flag == 0)
     {
-        shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-        shoppinglistItem.subject = @"Walk the dog";
-        shoppinglistItem.quantity = 2;
-        shoppinglistItem.checked = NO;
+        NSManagedObjectContext *context = [self managedObjectContext];
         
-        shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-        shoppinglistItem.subject = @"Brush my teeth";
-        shoppinglistItem.quantity = 1;
-        shoppinglistItem.checked = YES;
+        // For Debugging only
+        [self deleteAllEntryInTable:TB_SHOPPINGLISTITEM inContext:context];
         
-        shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-        shoppinglistItem.subject = @"Soccer practice";
-        shoppinglistItem.quantity = 3;
-        shoppinglistItem.checked = NO;
+        TBShoppingListItem *shoppinglistItem;
+        for (int i = 0; i < 3; i ++)
+        {
+            shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+            shoppinglistItem.subject = @"Walk the dog";
+            shoppinglistItem.quantity = 2;
+            shoppinglistItem.checked = NO;
+            
+            shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+            shoppinglistItem.subject = @"Brush my teeth";
+            shoppinglistItem.quantity = 1;
+            shoppinglistItem.checked = YES;
+            
+            shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+            shoppinglistItem.subject = @"Soccer practice";
+            shoppinglistItem.quantity = 3;
+            shoppinglistItem.checked = NO;
+            
+            shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+            shoppinglistItem.subject = @"Learn iOS development";
+            shoppinglistItem.quantity = 9;
+            shoppinglistItem.checked = YES;
+            
+            shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
+            shoppinglistItem.subject = @"Eat ice cream";
+            shoppinglistItem.quantity = 5;
+            shoppinglistItem.checked = NO;
+        }
         
-        shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-        shoppinglistItem.subject = @"Learn iOS development";
-        shoppinglistItem.quantity = 9;
-        shoppinglistItem.checked = YES;
-        
-        shoppinglistItem = [NSEntityDescription insertNewObjectForEntityForName:TB_SHOPPINGLISTITEM inManagedObjectContext:context];
-        shoppinglistItem.subject = @"Eat ice cream";
-        shoppinglistItem.quantity = 5;
-        shoppinglistItem.checked = NO;
-    }
-    
-    NSError *error;
-    if (![context save:&error]) {
-        NSLog(@"error: %@", [error localizedDescription]);
+        NSError *error;
+        if (![context save:&error]) {
+            NSLog(@"error: %@", [error localizedDescription]);
+        }
     }
     
     return YES;

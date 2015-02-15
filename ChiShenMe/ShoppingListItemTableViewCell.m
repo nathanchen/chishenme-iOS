@@ -254,8 +254,12 @@ const float UI_CUES_WIDTH = 50.0F;
         // save it to DB or update
         if (_shoppinglistItem.shoppinglistitem_id != nil)
         {
-            // update
             NSLog(@"%@", _shoppinglistItem.shoppinglistitem_id);
+            // update
+            TBShoppingListItem *tbShoppingListItem = [TBShoppingListItem updateTBShoppingListItemWithShoppingListItem:_shoppinglistItem];
+//            _shoppinglistItem.shoppinglistitem_id = [tbShoppingListItem objectID];
+            NSLog(@"%@", [tbShoppingListItem objectID]);
+            [self.delegate tbItemUpdated:tbShoppingListItem atIndex:_indexPath.row];
         }
         else
         {

@@ -87,6 +87,12 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
             cell.hidden = YES;
         }
     }
+    
+    // For debugging only
+    for (ShoppingListItem *item in items)
+    {
+        NSLog(@"%@", [item description]);
+    }
 }
 
 - (void)cellDidBeginEditing:(ShoppingListItemTableViewCell *)editingCell
@@ -124,6 +130,7 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 - (void)shoppinglistItemCompleted:(ShoppingListItem *)shoppinglistItem
 {
     shoppinglistItem.checked = !shoppinglistItem.checked;
+    shoppinglistItem.subject = @"wwwww";
     for (ShoppingListItemTableViewCell *cell in _tableView.visibleCells)
     {
         if (cell.shoppinglistItem == shoppinglistItem)
@@ -143,13 +150,21 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     ShoppingListItemTableViewCell *cell = (ShoppingListItemTableViewCell *)[self.tableView dequeueReusableCell];
-    ShoppingListItem *item = items[indexPath.row];
-    TBShoppingListItem *tb_item = itemsInDB[indexPath.row];
     
+    id item_temp = items[indexPath.row];
+    ShoppingListItem *item;
+    if ([item_temp isKindOfClass:[TBShoppingListItem class]])
+    {
+        item = [[ShoppingListItem alloc] initShoppingListItemWithTBShoppingListItem:item_temp];
+    }
+    else
+    {
+        item = (ShoppingListItem *)item_temp;
+    }
+
     cell.shoppinglistItem = item;
     cell.indexPath = indexPath;
     cell.delegate = self;
-    cell.managedObjectId = [tb_item objectID];
     [cell loadData];
     
     return cell;
@@ -189,6 +204,10 @@ static NSString *CELL_IDENTIFIER = @"ShoppingListItem";
     [itemsInDB insertObject:tb_shoppinglistItem atIndex:index];
 }
 
+- (void)tbItemUpdated:(TBShoppingListItem *)tb_shoppinglistItem atIndex:(NSUInteger)index
+{
+    [itemsInDB replaceObjectAtIndex:index withObject:tb_shoppinglistItem];
+}
 
 
 @end

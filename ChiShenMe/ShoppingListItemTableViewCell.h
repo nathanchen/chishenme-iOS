@@ -22,7 +22,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *quantityTextField;
 
 @property (strong, nonatomic) IBOutlet UILabel *xLabel;
-@property (strong, nonatomic) NSManagedObjectID *managedObjectId;
 
 @property (nonatomic) ShoppingListItem *shoppinglistItem;
 @property (nonatomic) NSIndexPath *indexPath;
